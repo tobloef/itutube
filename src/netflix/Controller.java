@@ -1,4 +1,4 @@
-package sample;
+package netflix;
 
 public class Controller {
 }
