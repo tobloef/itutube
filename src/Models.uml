@@ -4,22 +4,22 @@
   <OriginalElement />
   <nodes>
     <node x="369.20689655172424" y="287.0">netflix.models.User</node>
-    <node x="54.875" y="208.0">netflix.models.Media.VideoMedia</node>
-    <node x="312.69683908045977" y="79.0">netflix.models.Media.Media</node>
-    <node x="115.5" y="287.0">netflix.models.Media.Movie</node>
-    <node x="185.875" y="208.0">netflix.models.Media.Music</node>
-    <node x="396.716235632184" y="406.0">netflix.models.Database</node>
+    <node x="54.875" y="208.0">VideoMedia</node>
+    <node x="312.69683908045977" y="79.0">Media</node>
+    <node x="115.5" y="287.0">Movie</node>
+    <node x="185.875" y="208.0">Music</node>
+    <node x="396.716235632184" y="406.0">Database</node>
     <node x="295.875" y="208.0">netflix.models.UserType</node>
     <node x="82.44683908045977" y="79.0">netflix.models.Playable</node>
-    <node x="310.69683908045977" y="0.0">netflix.models.Credits</node>
+    <node x="310.69683908045977" y="0.0">Credits</node>
     <node x="411.875" y="208.0">netflix.models.MediaList</node>
-    <node x="5.5" y="287.0">netflix.models.Media.Episode</node>
-    <node x="87.50287356321843" y="406.0">netflix.models.Media.Season</node>
-    <node x="74.00287356321843" y="515.0">netflix.models.Media.Series</node>
+    <node x="5.5" y="287.0">Episode</node>
+    <node x="87.50287356321843" y="406.0">Season</node>
+    <node x="74.00287356321843" y="515.0">Series</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="netflix.models.Media.Episode" target="netflix.models.Media.Series">
+    <edge source="Episode" target="Series">
       <point x="-22.5" y="14.5" />
       <point x="28.0" y="376.0" />
       <point x="77.00287356321843" y="376.0" />
@@ -27,17 +27,17 @@
       <point x="88.62787356321843" y="485.0" />
       <point x="-24.375" y="-14.5" />
     </edge>
-    <edge source="netflix.models.Media.Series" target="netflix.models.Media.Season">
+    <edge source="Series" target="Season">
       <point x="-14.625" y="-14.5" />
       <point x="-32.25" y="14.5" />
     </edge>
-    <edge source="netflix.models.Media.Music" target="netflix.models.Playable">
+    <edge source="Music" target="netflix.models.Playable">
       <point x="-26.0" y="-14.5" />
       <point x="198.875" y="128.0" />
       <point x="150.69683908045977" y="128.0" />
       <point x="22.75" y="14.5" />
     </edge>
-    <edge source="netflix.models.Database" target="netflix.models.Media.Media">
+    <edge source="Database" target="Media">
       <point x="36.375000000000014" y="-14.5" />
       <point x="481.591235632184" y="386.0" />
       <point x="545.9791666666666" y="386.0" />
@@ -51,35 +51,35 @@
       <point x="436.375" y="257.0" />
       <point x="-24.5" y="14.5" />
     </edge>
-    <edge source="netflix.models.Media.VideoMedia" target="netflix.models.Media.Media">
+    <edge source="VideoMedia" target="Media">
       <point x="0.0" y="-14.5" />
       <point x="110.375" y="138.0" />
       <point x="316.0301724137931" y="138.0" />
       <point x="-36.666666666666686" y="14.5" />
     </edge>
-    <edge source="netflix.models.Media.Music" target="netflix.models.Media.Media">
+    <edge source="Music" target="Media">
       <point x="26.0" y="-14.5" />
       <point x="250.875" y="168.0" />
       <point x="336.03017241379314" y="168.0" />
       <point x="-16.666666666666657" y="14.5" />
     </edge>
-    <edge source="netflix.models.Media.Season" target="netflix.models.Media.Episode">
+    <edge source="Season" target="Episode">
       <point x="-35.83333333333337" y="-14.5" />
       <point x="94.66954022988506" y="366.0" />
       <point x="43.0" y="366.0" />
       <point x="-7.5" y="14.5" />
     </edge>
-    <edge source="netflix.models.Media.Media" target="netflix.models.Credits">
+    <edge source="Media" target="Credits">
       <point x="-20.0" y="-14.5" />
       <point x="-21.0" y="14.5" />
     </edge>
-    <edge source="netflix.models.Media.Episode" target="netflix.models.Media.Season">
+    <edge source="Episode" target="Season">
       <point x="37.5" y="14.5" />
       <point x="88.0" y="336.0" />
       <point x="137.66954022988511" y="336.0" />
       <point x="7.166666666666686" y="-14.5" />
     </edge>
-    <edge source="netflix.models.Media.VideoMedia" target="netflix.models.Playable">
+    <edge source="VideoMedia" target="netflix.models.Playable">
       <point x="-37.0" y="-14.5" />
       <point x="73.375" y="188.0" />
       <point x="105.19683908045977" y="188.0" />
@@ -91,13 +91,13 @@
       <point x="319.875" y="267.0" />
       <point x="-24.0" y="14.5" />
     </edge>
-    <edge source="netflix.models.Database" target="netflix.models.User">
+    <edge source="Database" target="netflix.models.User">
       <point x="-36.375" y="-14.5" />
       <point x="408.841235632184" y="386.0" />
       <point x="386.95689655172424" y="386.0" />
       <point x="-17.75" y="14.5" />
     </edge>
-    <edge source="netflix.models.Media.Season" target="netflix.models.Media.Media">
+    <edge source="Season" target="Media">
       <point x="35.833333333333314" y="-14.5" />
       <point x="166.33620689655174" y="386.0" />
       <point x="285.375" y="386.0" />
@@ -105,19 +105,19 @@
       <point x="349.36350574712645" y="188.0" />
       <point x="-3.3333333333333144" y="14.5" />
     </edge>
-    <edge source="netflix.models.Media.Movie" target="netflix.models.Media.VideoMedia">
+    <edge source="Movie" target="VideoMedia">
       <point x="-20.0" y="-14.5" />
       <point x="135.5" y="267.0" />
       <point x="124.25" y="267.0" />
       <point x="13.875" y="14.5" />
     </edge>
-    <edge source="netflix.models.Media.Episode" target="netflix.models.Media.VideoMedia">
+    <edge source="Episode" target="VideoMedia">
       <point x="22.5" y="-14.5" />
       <point x="73.0" y="267.0" />
       <point x="96.5" y="267.0" />
       <point x="-13.875" y="14.5" />
     </edge>
-    <edge source="netflix.models.Media.Series" target="netflix.models.Media.Media">
+    <edge source="Series" target="Media">
       <point x="24.375" y="-14.5" />
       <point x="137.37787356321843" y="485.0" />
       <point x="552.6458333333333" y="485.0" />
@@ -125,13 +125,13 @@
       <point x="382.6968390804598" y="148.0" />
       <point x="30.000000000000057" y="14.5" />
     </edge>
-    <edge source="netflix.models.Media.Season" target="netflix.models.Media.Series">
+    <edge source="Season" target="Series">
       <point x="32.25" y="14.5" />
       <point x="162.75287356321843" y="475.0" />
       <point x="127.62787356321843" y="475.0" />
       <point x="14.625" y="-14.5" />
     </edge>
-    <edge source="netflix.models.MediaList" target="netflix.models.Media.Media">
+    <edge source="netflix.models.MediaList" target="Media">
       <point x="-24.5" y="-14.5" />
       <point x="436.375" y="188.0" />
       <point x="356.0301724137931" y="188.0" />

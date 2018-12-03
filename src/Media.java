@@ -1,7 +1,3 @@
-package netflix.models.Media;
-
-import netflix.models.Credits;
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,16 +6,20 @@ public abstract class Media {
     private String name;
     private String description;
     private Date releaseDate;
-    private ArrayList<String> categories;
+    private String[] categories;
     private double rating;
-    private ArrayList<Credits> credits;
+    private Credits[] credits;
+    private String imageFileName;
 
-    public Media(String name, String description, Date releaseDate, ArrayList<String> categories, double rating) {
+    public Media(String id, String name, String description, Date releaseDate, String[] categories, double rating, Credits[] credits, String imageFileName) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.releaseDate = releaseDate;
         this.categories = categories;
         this.rating = rating;
+        this.credits = credits;
+        this.imageFileName = imageFileName;
     }
 
     public String getId() {
@@ -38,7 +38,7 @@ public abstract class Media {
         return releaseDate;
     }
 
-    public ArrayList<String> getCategories() {
+    public String[] getCategories() {
         return categories;
     }
 
@@ -46,7 +46,11 @@ public abstract class Media {
         return rating;
     }
 
-    public ArrayList<Credits> getCredits() {
+    public Credits[] getCredits() {
         return credits;
+    }
+
+    public String getImageFileName() {
+        return imageFileName;
     }
 }

@@ -1,6 +1,6 @@
 package netflix.models;
 
-import netflix.models.Media.Media;
+import Media;
 
 import java.util.ArrayList;
 
