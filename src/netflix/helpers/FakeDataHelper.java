@@ -1,4 +1,4 @@
-package netflix;
+package netflix.helpers;
 
 import netflix.models.Credits;
 
@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.UUID;
 
-class FakeDataGenerator {
+class FakeDataHelper {
     private static String[] fakeNames = {"Mario Speedwagon", "Petey Cruiser", "Anna Sthesia", "Anna Mull", "Gail Forcewind", "Nick R. Bocker", "Mike Hunt", "Don Stairs"};
     private static String[] fakeRoles = {"Directors", "Actors", "Cameramen", "Audio"};
 

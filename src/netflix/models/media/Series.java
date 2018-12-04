@@ -1,9 +1,12 @@
-package netflix.media;
+package netflix.models.media;
 
 import netflix.models.Credits;
 
 import java.util.Date;
 
+/**
+ * A series
+ */
 public class Series extends Media {
     private Date endDate;
     private Season[] seasons;
