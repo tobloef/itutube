@@ -20,4 +20,8 @@ public class Series extends Media {
     public Date getEndDate() {
         return endDate;
     }
+
+    public void setSeasons(Season[] seasons) {
+        this.seasons = seasons;
+    }
 }
