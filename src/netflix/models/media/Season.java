@@ -23,4 +23,8 @@ public class Season extends Media {
     public Series getSeries() {
         return series;
     }
+
+    public void setEpisodes(Episode[] episodes) {
+        this.episodes = episodes;
+    }
 }
