@@ -41,4 +41,9 @@ class FakeDataGenerator {
         Random r = new Random();
         return (double) Math.round(r.nextDouble() * 10) / 10;
     }
+
+    static int generateFakeRuntime() {
+        Random r = new Random();
+        return r.nextInt(10800);
+    }
 }
