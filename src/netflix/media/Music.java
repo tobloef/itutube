@@ -1,3 +1,6 @@
+package netflix.media;
+
+import netflix.models.Credits;
 import netflix.models.Playable;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -5,10 +8,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 
-public abstract class VideoMedia extends Media implements Playable {
-    private int runtime;
-
-    public VideoMedia(String id, String name, String description, Date releaseDate, String[] categories, double rating, Credits[] credits, String imageFileName) {
+public class Music extends Media implements Playable {
+    public Music(String id, String name, String description, Date releaseDate, String[] categories, double rating, Credits[] credits, String imageFileName) {
         super(id, name, description, releaseDate, categories, rating, credits, imageFileName);
     }
 

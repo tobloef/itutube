@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+package netflix.media;
+
+import netflix.models.Credits;
+
 import java.util.Date;
 
 public abstract class Media {

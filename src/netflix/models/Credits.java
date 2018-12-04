@@ -1,3 +1,5 @@
+package netflix.models;
+
 import java.util.ArrayList;
 
 public class Credits {
