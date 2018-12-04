@@ -21,9 +21,8 @@ public class Main extends Application {
 
         this.stage = stage;
         stage.setTitle("ITU-tube");
-        StackPane stackpane = new StackPane();
-        //ContentPage contentPage = new ContentPage(this::setPage);
-        stage.setScene(new Scene(stackpane, 600, 400));
+        ContentPage contentPage = new ContentPage(this::setPage);
+        stage.setScene(new Scene(contentPage, 600, 400));
         stage.show();
 
     }
@@ -35,9 +34,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Database.load();
-        for(Media m : Database.getMediaList()) {
-            System.out.println(m.getId() + ";" + m.getName() + ";" + Arrays.toString(m.getCategories()) + ";" + m.getRating() + ";");
-        }
         launch(args);
 
     }
