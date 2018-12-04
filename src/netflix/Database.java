@@ -94,8 +94,8 @@ public final class Database {
 
     /**
      * Helper-function to trim white-space from strings inside an array.
-     * @param toTrim
-     * @return trimmed string, without spaces on each end
+     * @param toTrim An array of strings
+     * @return array of trimmed strings
      */
     private static String[] trimArray(String[] toTrim) {
         for(int i = 0; i < toTrim.length; i++) {
