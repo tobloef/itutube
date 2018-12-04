@@ -20,20 +20,24 @@ public abstract class VideoMedia extends Media implements Playable {
 
     @Override
     public Color getMediaContent() {
+        // TODO
         throw new NotImplementedException();
     }
 
     @Override
     public double getProgress() {
+        // TODO
         throw new NotImplementedException();
     }
 
     @Override
     public String getProgressString() {
+        // TODO
         throw new NotImplementedException();
     }
 
     public int getRuntime() {
+        // TODO
         return runtime;
     }
 }

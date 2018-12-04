@@ -1,4 +1,4 @@
-package netflix.creators;
+package netflix.views.creators;
 
 import javafx.scene.Parent;
 import netflix.models.MediaList;

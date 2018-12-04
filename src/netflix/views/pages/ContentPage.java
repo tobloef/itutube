@@ -3,12 +3,13 @@ package netflix.views.pages;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import netflix.helpers.MediaListsHelper;
-import netflix.creators.FrontPageCreator;
-import netflix.creators.ViewCreator;
+import java.util.function.Consumer;
+import netflix.views.creators.FrontPageCreator;
+import netflix.views.creators.ViewCreator;
 import netflix.models.MediaList;
 import netflix.views.Header;
 
-import java.util.function.Consumer;
+// TODO
 
 /**
  * A page with a header and some main content

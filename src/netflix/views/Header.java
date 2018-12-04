@@ -1,9 +1,10 @@
 package netflix.views;
 
 import javafx.scene.layout.HBox;
-import netflix.creators.ViewCreator;
-
+import netflix.views.creators.ViewCreator;
 import java.util.function.Consumer;
+
+// TODO
 
 /**
  * A top bar with navigation links

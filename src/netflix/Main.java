@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import netflix.views.pages.ContentPage;
-import netflix.creators.ViewCreator;
+import netflix.views.creators.ViewCreator;
 
 public class Main extends Application {
 

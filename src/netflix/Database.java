@@ -36,6 +36,7 @@ public final class Database {
      * @return netflix.media.Media with the ID, otherwise null
      */
     public static Media getMediaById(String id) {
+        // TODO
         throw new NotImplementedException();
     }
 
@@ -60,6 +61,7 @@ public final class Database {
      * @param user The user to add
      */
     public static void addUser(User user) {
+        // TODO
         throw new NotImplementedException();
     }
 
@@ -67,6 +69,7 @@ public final class Database {
      * Save the database to the disk.
      */
     public static void save() {
+        // TODO
         throw new NotImplementedException();
     }
 
