@@ -1,9 +1,12 @@
-package netflix.media;
+package netflix.models.media;
 
 import netflix.models.Credits;
 
 import java.util.Date;
 
+/**
+ * An episode of a series
+ */
 public class Episode extends VideoMedia {
     private Season season;
     private Series series;

@@ -1,9 +1,12 @@
-package netflix.media;
+package netflix.models.media;
 
 import netflix.models.Credits;
 
 import java.util.Date;
 
+/**
+ * Generic media class, for all types of media on the site
+ */
 public abstract class Media {
     private String id;
     private String name;

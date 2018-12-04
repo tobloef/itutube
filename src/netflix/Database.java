@@ -1,8 +1,9 @@
 package netflix;
 
-import netflix.media.*;
+import netflix.helpers.FakeDataHelper;
 import netflix.models.Credits;
 import netflix.models.User;
+import netflix.models.media.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
@@ -35,6 +36,7 @@ public final class Database {
      * @return netflix.media.Media with the ID, otherwise null
      */
     public static Media getMediaById(String id) {
+        // TODO
         throw new NotImplementedException();
     }
 
@@ -59,6 +61,7 @@ public final class Database {
      * @param user The user to add
      */
     public static void addUser(User user) {
+        // TODO
         throw new NotImplementedException();
     }
 
@@ -66,6 +69,7 @@ public final class Database {
      * Save the database to the disk.
      */
     public static void save() {
+        // TODO
         throw new NotImplementedException();
     }
 
@@ -112,10 +116,10 @@ public final class Database {
         String[] categories = properties[3].split(", ");
         double rating = Double.parseDouble(properties[4]);
 
-        String description = FakeDataGenerator.getLoremIpsum(100);
-        Credits[] credits = FakeDataGenerator.generateFakeCredits();
+        String description = FakeDataHelper.getLoremIpsum(100);
+        Credits[] credits = FakeDataHelper.generateFakeCredits();
         String imageFileName = name + ".png";
-        int runtime = FakeDataGenerator.generateFakeRuntime();
+        int runtime = FakeDataHelper.generateFakeRuntime();
 
         return new Movie(id, name, description, releaseDate, categories, rating, credits, imageFileName, runtime);
     }
@@ -145,15 +149,15 @@ public final class Database {
     private static Episode[] fetchEpisodes(Series series, Season season, int episodeAmount) {
         ArrayList<Episode> episodes = new ArrayList<>();
         for(int i = 1; i < episodeAmount; i++) {
-            String id = FakeDataGenerator.generateFakeId();
+            String id = FakeDataHelper.generateFakeId();
             String name = season.getName() + "E" + i;
-            String description = FakeDataGenerator.getLoremIpsum(200);
+            String description = FakeDataHelper.getLoremIpsum(200);
             Date releaseDate = season.getReleaseDate();
             String[] categories = season.getCategories();
-            double rating = FakeDataGenerator.generateFakeRating();
+            double rating = FakeDataHelper.generateFakeRating();
             Credits[] credits = season.getCredits();
             String imageFileName = season.getImageFileName();
-            int runtime = FakeDataGenerator.generateFakeRuntime();
+            int runtime = FakeDataHelper.generateFakeRuntime();
 
             episodes.add(new Episode(id, name, description, releaseDate, categories, rating, credits, imageFileName, runtime, season, series));
         }
@@ -174,9 +178,9 @@ public final class Database {
         for(String s : seasonsString) {
             int seasonNumber = Integer.parseInt(s.split("-")[0]);
             int episodeAmount = Integer.parseInt(s.split("-")[1]);
-            String id = FakeDataGenerator.generateFakeId();
+            String id = FakeDataHelper.generateFakeId();
             String name = series.getName() + " S" + seasonNumber;
-            String description = FakeDataGenerator.getLoremIpsum(150);
+            String description = FakeDataHelper.getLoremIpsum(150);
 
             Date firstSeasonDate = series.getReleaseDate();
             Calendar c = Calendar.getInstance();
@@ -185,7 +189,7 @@ public final class Database {
             Date currentSeasonDate = c.getTime();
 
             String[] categories = series.getCategories();
-            double rating = FakeDataGenerator.generateFakeRating();
+            double rating = FakeDataHelper.generateFakeRating();
             Credits[] credits = series.getCredits();
             String imageFileName = series.getImageFileName();
 
@@ -234,8 +238,8 @@ public final class Database {
         String[] categories = properties[3].split(",");
         double rating = Double.parseDouble(properties[4]);
 
-        String description = FakeDataGenerator.getLoremIpsum(175);
-        Credits[] credits = FakeDataGenerator.generateFakeCredits();
+        String description = FakeDataHelper.getLoremIpsum(175);
+        Credits[] credits = FakeDataHelper.generateFakeCredits();
         String imageFileName = name + ".png";
 
         Series series = new Series(id, name, description, releaseDate, endDate, categories, rating, credits, imageFileName);
@@ -251,14 +255,14 @@ public final class Database {
      */
     private static Series[] fetchSeries() {
         Scanner s = new Scanner("series.txt");
-        ArrayList<Series> series = new ArrayList<>();
+        ArrayList<Series> seriesList = new ArrayList<>();
         while(s.hasNext()) {
             String line = s.nextLine();
-            Series serie = lineToSeries(line);
-            series.add(serie);
+            Series series = lineToSeries(line);
+            seriesList.add(series);
         }
-        Series[] seriesArray = new Series[series.size()];
-        return series.toArray(seriesArray);
+        Series[] seriesArray = new Series[seriesList.size()];
+        return seriesList.toArray(seriesArray);
     }
 
 

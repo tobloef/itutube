@@ -2,6 +2,9 @@ package netflix.models;
 
 import java.util.ArrayList;
 
+/**
+ * A user for the logged in account
+ */
 public class User {
     private String name;
     private UserType type;
