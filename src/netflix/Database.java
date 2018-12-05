@@ -6,8 +6,14 @@ import netflix.models.User;
 import netflix.models.media.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public final class Database {
@@ -71,8 +77,50 @@ public final class Database {
      * Save the database to the disk.
      */
     public static void save() {
-        // TODO
-        throw new NotImplementedException();
+        // TODO - save user database
+        // TODO - save without knowing the type of media
+
+        HashMap<String, ArrayList<Media>> mediaToStore = new HashMap<>();
+        for(Media m : getMediaList()) {
+            String typeName = m.getClass().getSimpleName();
+            if(!mediaToStore.containsKey(typeName)) {
+                mediaToStore.put(typeName, new ArrayList<>());
+            }
+            ArrayList<Media> mediaList = mediaToStore.get(typeName);
+            mediaList.add(m);
+            mediaToStore.put(typeName, mediaList);
+        }
+
+        for(Map.Entry<String, ArrayList<Media>> entry : mediaToStore.entrySet()) {
+            Path mediaStorage = Paths.get("./src/" + entry.getKey() + "-saved.txt");
+            //PrintWriter mediaStorage = new PrintWriter("./src/" + entry.getKey() + ".txt");
+            ArrayList<String> lines = new ArrayList<>();
+            for(Media m : entry.getValue()) {
+                String str = "";
+                if(m instanceof  Movie) {
+                    str = m.getId() + ";" + m.getName() + ";" + m.getReleaseDate().getYear() + ";" + m.getRating() + ";";
+                }
+                else if(m instanceof Series) {
+                    StringBuilder seasonString = new StringBuilder();
+                    for(int i = 1; i < ((Series) m).getSeasons().length; i++) {
+                        seasonString.append(i).append("-").append(((Series) m).getSeasons()[i].getEpisodes().length).append(" ");
+                    }
+                    str = m.getId() + ";" + m.getName() + ";" + m.getReleaseDate().getYear();
+                    if(((Series) m).getEndDate() != null) {
+                        str += "-" + ((Series) m).getEndDate().getYear() + ";";
+                    }
+                    str += m.getRating() + ";" + seasonString + ";";
+                }
+                lines.add(str);
+            }
+            try {
+                Files.write(mediaStorage, lines);
+            }
+            catch (IOException e) {
+                System.out.println("Can't write to file:" + e.getMessage());
+            }
+        }
+
     }
 
     /**
@@ -80,6 +128,8 @@ public final class Database {
      */
     public static void load() {
         HashMap<String, Media> db = new HashMap<>();
+
+        // TODO - load user database
 
         Movie[] movies;
         Series[] series;

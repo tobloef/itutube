@@ -10,6 +10,7 @@ import netflix.views.pages.ContentPage;
 import netflix.views.creators.ViewCreator;
 
 import javax.xml.crypto.Data;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 public class Main extends Application {
@@ -34,6 +35,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Database.load();
+        Database.save();
         launch(args);
 
     }
