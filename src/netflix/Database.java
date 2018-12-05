@@ -45,7 +45,12 @@ public final class Database {
      */
     public static Media getMediaById(String id) {
         // TODO
-        throw new NotImplementedException();
+        for(Media m : getMediaList()) {
+            if(m.getId().equals(id)) {
+                return m;
+            }
+        }
+        return null;
     }
 
     /**
@@ -69,8 +74,7 @@ public final class Database {
      * @param user The user to add
      */
     public static void addUser(User user) {
-        // TODO
-        throw new NotImplementedException();
+        users.add(user);
     }
 
     /**
