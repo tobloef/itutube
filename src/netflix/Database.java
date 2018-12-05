@@ -2,6 +2,7 @@ package netflix;
 
 import netflix.helpers.FakeDataHelper;
 import netflix.models.Credits;
+import netflix.models.Saveable;
 import netflix.models.User;
 import netflix.models.media.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -84,38 +85,23 @@ public final class Database {
         // TODO - save user database
         // TODO - save without knowing the type of media
 
-        HashMap<String, ArrayList<Media>> mediaToStore = new HashMap<>();
+        HashMap<String, ArrayList<Saveable>> mediaToStore = new HashMap<>();
         for(Media m : getMediaList()) {
             String typeName = m.getClass().getSimpleName();
             if(!mediaToStore.containsKey(typeName)) {
                 mediaToStore.put(typeName, new ArrayList<>());
             }
-            ArrayList<Media> mediaList = mediaToStore.get(typeName);
-            mediaList.add(m);
+            ArrayList<Saveable> mediaList = mediaToStore.get(typeName);
+            mediaList.add((Saveable) m);
             mediaToStore.put(typeName, mediaList);
         }
 
-        for(Map.Entry<String, ArrayList<Media>> entry : mediaToStore.entrySet()) {
+        for(Map.Entry<String, ArrayList<Saveable>> entry : mediaToStore.entrySet()) {
             Path mediaStorage = Paths.get("./src/" + entry.getKey() + "-saved.txt");
             //PrintWriter mediaStorage = new PrintWriter("./src/" + entry.getKey() + ".txt");
             ArrayList<String> lines = new ArrayList<>();
-            for(Media m : entry.getValue()) {
-                String str = "";
-                if(m instanceof  Movie) {
-                    str = m.getId() + ";" + m.getName() + ";" + m.getReleaseDate().getYear() + ";" + m.getRating() + ";";
-                }
-                else if(m instanceof Series) {
-                    StringBuilder seasonString = new StringBuilder();
-                    for(int i = 1; i < ((Series) m).getSeasons().length; i++) {
-                        seasonString.append(i).append("-").append(((Series) m).getSeasons()[i].getEpisodes().length).append(" ");
-                    }
-                    str = m.getId() + ";" + m.getName() + ";" + m.getReleaseDate().getYear();
-                    if(((Series) m).getEndDate() != null) {
-                        str += "-" + ((Series) m).getEndDate().getYear() + ";";
-                    }
-                    str += m.getRating() + ";" + seasonString + ";";
-                }
-                lines.add(str);
+            for(Saveable m : entry.getValue()) {
+                lines.add(m.getSaveString());
             }
             try {
                 Files.write(mediaStorage, lines);
@@ -243,7 +229,7 @@ public final class Database {
      */
     private static Episode[] fetchEpisodes(Series series, Season season, int episodeAmount) {
         ArrayList<Episode> episodes = new ArrayList<>();
-        for(int i = 1; i < episodeAmount; i++) {
+        for(int i = 1; i <= episodeAmount; i++) {
             String id = FakeDataHelper.generateFakeId();
             String name = season.getName() + "E" + i;
             String description = FakeDataHelper.getLoremIpsum(200);

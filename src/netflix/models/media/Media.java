@@ -8,14 +8,14 @@ import java.util.Date;
  * Generic media class, for all types of media on the site
  */
 public abstract class Media {
-    private String id;
-    private String name;
-    private String description;
-    private Date releaseDate;
-    private String[] categories;
-    private double rating;
-    private Credits[] credits;
-    private String imageFileName;
+    protected String id;
+    protected String name;
+    protected String description;
+    protected Date releaseDate;
+    protected String[] categories;
+    protected double rating;
+    protected Credits[] credits;
+    protected String imageFileName;
 
     public Media(String id, String name, String description, Date releaseDate, String[] categories, double rating, Credits[] credits, String imageFileName) {
         this.id = id;
