@@ -8,7 +8,7 @@ public class DataGetterHelper{
 
     public  Media searchMedia(String name) {
         for (Media m : Database.getMediaList())
-            if (m.getName() == name) {
+            if (m.getName().equals(name)) {
                 return m;
             }
         return null;
