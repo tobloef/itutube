@@ -18,7 +18,7 @@ public class User {
     }
 
     public User(String name, UserType type) {
-        this(name, type, new ArrayList<Media>());
+        this(name, type, new ArrayList<>());
     }
 
     public String getName() {
