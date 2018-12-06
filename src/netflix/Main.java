@@ -5,12 +5,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import netflix.models.User;
+import netflix.models.UserType;
 import netflix.models.media.Media;
 import netflix.views.pages.ContentPage;
 import netflix.views.creators.ViewCreator;
 
 import javax.xml.crypto.Data;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main extends Application {
@@ -36,6 +39,10 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Database.load();
+        ArrayList<Media> favs = new ArrayList<>();
+        favs.add(Database.getMediaById("150"));
+        favs.add(Database.getMediaById("080"));
+        Database.addUser(new User("Vince Offer", UserType.Admin, favs));
         Database.save();
         launch(args);
 

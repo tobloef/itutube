@@ -4,6 +4,7 @@ import netflix.helpers.FakeDataHelper;
 import netflix.models.Credits;
 import netflix.models.Saveable;
 import netflix.models.User;
+import netflix.models.UserType;
 import netflix.models.media.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -12,6 +13,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -83,8 +85,17 @@ public final class Database {
      */
     public static void save() {
         // TODO - save user database
-        // TODO - save without knowing the type of media
 
+        saveMedia();
+        saveUsers();
+
+    }
+
+
+    /**
+     * Saves the list of media to the disk.
+     */
+    private static void saveMedia() {
         HashMap<String, ArrayList<Saveable>> mediaToStore = new HashMap<>();
         for(Media m : getMediaList()) {
             String typeName = m.getClass().getSimpleName();
@@ -98,7 +109,6 @@ public final class Database {
 
         for(Map.Entry<String, ArrayList<Saveable>> entry : mediaToStore.entrySet()) {
             Path mediaStorage = Paths.get("./src/" + entry.getKey() + "-saved.txt");
-            //PrintWriter mediaStorage = new PrintWriter("./src/" + entry.getKey() + ".txt");
             ArrayList<String> lines = new ArrayList<>();
             for(Saveable m : entry.getValue()) {
                 lines.add(m.getSaveString());
@@ -110,39 +120,84 @@ public final class Database {
                 System.out.println("Can't write to file:" + e.getMessage());
             }
         }
+    }
+
+
+    private static void saveUsers() {
+        Path userStorage = Paths.get("./src/users.txt");
+        ArrayList<String> lines = new ArrayList<>();
+        for(User u : users) {
+            ArrayList<Media> favoritesList = u.getFavoritesList();
+            String[] idArray = new String[favoritesList.size()];
+            for(int i = 0; i < favoritesList.size(); i++) {
+                idArray[i] = favoritesList.get(i).getId();
+            }
+            String idString = String.join(",", idArray);
+            lines.add(u.getName() + ";" + u.getType() + ";" + idString + ";");
+        }
+        try {
+            Files.write(userStorage, lines);
+        }
+        catch (IOException e) {
+            System.out.println("Can't write to file:" + e.getMessage());
+        }
 
     }
+
 
     /**
      * Load the database from the disk.
      */
     public static void load() {
-        HashMap<String, Media> db = new HashMap<>();
+        try {
+            loadMedia();
+            loadUsers();
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("File(s) not found: " + e.getMessage());
+        }
+    }
 
-        // TODO - load user database
+
+    private static void loadMedia() throws FileNotFoundException {
+        HashMap<String, Media> db = new HashMap<>();
 
         Movie[] movies;
         Series[] series;
 
-        try {
-            movies = fetchMovies();
-            series = fetchSeries();
-        }
-        catch (FileNotFoundException e) {
-            movies = new Movie[0];
-            series = new Series[0];
-            System.out.println(e.getMessage());
-        }
+        movies = fetchMovies();
+        series = fetchSeries();
 
         ArrayList<Media> allMedia = new ArrayList<>(Arrays.asList(movies));
         allMedia.addAll(Arrays.asList(series));
 
         for(Media m : allMedia) {
-               db.put(m.getId(), m);
+            db.put(m.getId(), m);
         }
         media = db;
     }
 
+
+    private static void loadUsers() throws FileNotFoundException {
+        ArrayList<User> db = new ArrayList<>();
+
+        File usersFile = new File("./src/users.txt");
+        Scanner s = new Scanner(usersFile);
+
+        while(s.hasNext()) {
+            String userLine = s.nextLine();
+            String[] properties = userLine.split(";");
+            String name = properties[0];
+            UserType type = UserType.valueOf(properties[1]);
+            ArrayList<Media> favoritesList = new ArrayList<>();
+            String[] favoriteIds = trimArray(properties[2].split(","));
+            for(String id : favoriteIds) {
+                favoritesList.add(getMediaById(id));
+            }
+            db.add(new User(name, type, favoritesList));
+        }
+        users = db;
+    }
 
     /**
      * Helper-function to trim white-space from strings inside an array.

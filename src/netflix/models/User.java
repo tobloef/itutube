@@ -1,5 +1,6 @@
 package netflix.models;
 
+import netflix.models.media.Media;
 import java.util.ArrayList;
 
 /**
@@ -8,16 +9,16 @@ import java.util.ArrayList;
 public class User {
     private String name;
     private UserType type;
-    private ArrayList<MediaList> mediaLists;
+    private ArrayList<Media> favoritesList;
 
-    public User(String name, UserType type, ArrayList<MediaList> mediaLists) {
+    public User(String name, UserType type, ArrayList<Media> favoritesList) {
         this.name = name;
         this.type = type;
-        this.mediaLists = mediaLists;
+        this.favoritesList = favoritesList;
     }
 
     public User(String name, UserType type) {
-        this(name, type, new ArrayList<MediaList>());
+        this(name, type, new ArrayList<Media>());
     }
 
     public String getName() {
@@ -28,7 +29,7 @@ public class User {
         return type;
     }
 
-    public ArrayList<MediaList> getMediaLists() {
-        return mediaLists;
+    public ArrayList<Media> getFavoritesList() {
+        return favoritesList;
     }
 }
