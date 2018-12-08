@@ -4,7 +4,10 @@ package netflix.helpers;
 import netflix.Database;
 import netflix.models.media.Media;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Locale;
 
 public class DataGetterHelper {
 
@@ -18,5 +21,16 @@ public class DataGetterHelper {
             }
         }
         //return results; remove comment after debug
+    }
+
+    public Media[] getMediaListByCategory(String category, Media[] list) {
+        ArrayList<Media> media = new ArrayList<>();
+        for(Media m : list) {
+            if(Arrays.asList(m.getCategories()).contains(category)) {
+                media.add(m);
+            }
+        }
+        Media[] mediaArray = new Media[media.size()];
+        return media.toArray(mediaArray);
     }
 }
