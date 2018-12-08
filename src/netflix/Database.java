@@ -79,7 +79,7 @@ public final class Database {
                     users.add(user);
                     userAdded = true;
             }}
-        if(userAdded == false){
+        if(!userAdded){
             System.out.println("User \"" + user.getName() + "\" already exists."); //DEBUG CODE
         }
     }

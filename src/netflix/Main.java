@@ -16,6 +16,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static netflix.Database.getUsers;
+
 public class Main extends Application {
 
     private Stage stage;
@@ -43,8 +45,8 @@ public class Main extends Application {
         favs.add(Database.getMediaById("150"));
         favs.add(Database.getMediaById("080"));
         Database.addUser(new User("Vince Offer", UserType.Admin, favs));
+        DataGetterHelper.searchInMedia("the go"); //DEBUG CODE
         Database.save();
         launch(args);
-        DataGetterHelper.searchInMedia("the go"); //DEBUG CODE
     }
 }
