@@ -78,7 +78,8 @@ public final class Database {
             if(!users.contains(m)){  //checks if user already exists before adding to list
                     users.add(user);
                     userAdded = true;
-            }}
+            }
+        }
         if(!userAdded){
             System.out.println("User \"" + user.getName() + "\" already exists."); //DEBUG CODE
         }
