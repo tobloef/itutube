@@ -41,11 +41,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Database.load();
-        ArrayList<Media> favs = new ArrayList<>();
-        favs.add(Database.getMediaById("150"));
-        favs.add(Database.getMediaById("080"));
-        Database.addUser(new User("Vince Offer", UserType.Admin, favs));
-        Database.addUser(new User("deez nuts", UserType.Admin, favs));
         DataGetterHelper.searchInMedia("the go"); //DEBUG CODE
         Database.save();
         launch(args);
