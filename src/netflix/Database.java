@@ -6,6 +6,7 @@ import netflix.models.Saveable;
 import netflix.models.User;
 import netflix.models.UserType;
 import netflix.models.media.*;
+import netflix.exceptions.UsernameTakenException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -73,16 +74,17 @@ public final class Database {
      * @param user The user to add
      */
     public static void addUser(User user) {
-        boolean userAdded = false;
         for (User m : users){
-            if(!users.contains(m)){  //checks if user already exists before adding to list
-                    users.add(user);
-                    userAdded = true;
+            if(m.getName().equals(user.getName())){  //checks if user already exists before adding to list
+                throw new UsernameTakenException(user.getName());
             }
         }
+        /*
         if(!userAdded){
             System.out.println("User \"" + user.getName() + "\" already exists."); //DEBUG CODE
         }
+        */
+        users.add(user);
     }
 
     /**
