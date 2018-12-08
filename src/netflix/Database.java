@@ -57,16 +57,19 @@ public final class Database {
      * Get all media in the database as a list
      * @return List of all media
      */
-    public static ArrayList<Media> getMediaList() {
-        return new ArrayList<>(media.values());
+    public static Media[] getMediaList() {
+        Media[] mediaArray = new Media[media.values().size()];
+        ArrayList<Media> mediaList = new ArrayList<>(media.values());
+        return mediaList.toArray(mediaArray);
     }
 
     /**
      * Get all users in the database;
      * @return List of all users
      */
-    public static ArrayList<User> getUsers() {
-        return users;
+    public static User[] getUsers() {
+        User[] userArray = new User[users.size()];
+        return users.toArray(userArray);
     }
 
     /**
