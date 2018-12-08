@@ -73,7 +73,15 @@ public final class Database {
      * @param user The user to add
      */
     public static void addUser(User user) {
-        users.add(user);
+        boolean userAdded = false;
+        for (User m : users){
+            if(!users.contains(m)){  //checks if user already exists before adding to list
+                    users.add(user);
+                    userAdded = true;
+            }}
+        if(userAdded == false){
+            System.out.println("User \"" + user.getName() + "\" already exists."); //DEBUG CODE
+        }
     }
 
     /**

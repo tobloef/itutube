@@ -5,12 +5,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import netflix.helpers.DataGetterHelper;
 import netflix.models.User;
 import netflix.models.UserType;
 import netflix.models.media.Media;
 import netflix.views.pages.ContentPage;
 import netflix.views.creators.ViewCreator;
-
 import javax.xml.crypto.Data;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -45,6 +45,6 @@ public class Main extends Application {
         Database.addUser(new User("Vince Offer", UserType.Admin, favs));
         Database.save();
         launch(args);
-
+        DataGetterHelper.searchInMedia("the go"); //DEBUG CODE
     }
 }
