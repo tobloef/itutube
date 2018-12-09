@@ -41,7 +41,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Database.load();
-        DataGetterHelper.searchInMedia("the go"); //DEBUG CODE
         Database.save();
         launch(args);
     }
