@@ -3,24 +3,30 @@ package netflix.helpers;
 
 import netflix.Database;
 import netflix.models.media.Media;
+import java.util.*;
 
-import javax.xml.crypto.Data;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
 
 public class DataGetterHelper {
 
-    public static void /*ArrayList<Media>*/ searchInMedia(String name) { //set as void for debugging
-        ArrayList<Media> results = new ArrayList<Media>();
+    public static Media[] searchInMedia(String name) { //set as void for debugging
+        ArrayList<Media> results = new ArrayList<>();
         for (Media m : Database.getMediaList()) {
-            if (m.getName().toLowerCase().startsWith(name.toLowerCase())) { //checks if it starts with search query. toLowercase so its not case sensitibe
-                //return m;
-                results.add(m);
-                System.out.println("picked movie: " + m.getName()); //for unit tests
+            int i = 0;
+            if (m.getName().toLowerCase().startsWith(name.toLowerCase())) { //checks if it starts with search query. toLowercase so its not case sensitive
+                results.add(0,m); //add onto index 0, so it will be the first ones that shows up in the result list. (This saves a whole nother loop which will generate same output)
+            }
+            if ((m.getName().toLowerCase().contains(name.toLowerCase()))) { //afterwards add all substring matches
+               if(!results.contains(m)){
+                   results.add(m);
+               }
             }
         }
-        //return results; remove comment after debug
+        for (Media result : results){
+            System.out.println(result.getName());
+        }
+
+        Media[] resultArray = new Media[results.size()]; //makes array
+        return results.toArray(resultArray);
     }
 
     public static Media[] getMediaListByCategory(String category, Media[] list) {
@@ -33,4 +39,13 @@ public class DataGetterHelper {
         Media[] mediaArray = new Media[media.size()];
         return media.toArray(mediaArray);
     }
+
+    public static Media[] sortByRating(Media[] list){
+        ArrayList<Media> ratingList = new ArrayList<>(Arrays.asList(list));
+        ratingList.sort(new SortByRating());
+        Media[] ratingArray = new Media[ratingList.size()];
+        return ratingList.toArray(ratingArray);
+    }
+
 }
+
