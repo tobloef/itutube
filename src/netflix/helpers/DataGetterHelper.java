@@ -23,7 +23,7 @@ public class DataGetterHelper {
         //return results; remove comment after debug
     }
 
-    public Media[] getMediaListByCategory(String category, Media[] list) {
+    public static Media[] getMediaListByCategory(String category, Media[] list) {
         ArrayList<Media> media = new ArrayList<>();
         for(Media m : list) {
             if(Arrays.asList(m.getCategories()).contains(category)) {
