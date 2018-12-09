@@ -3,24 +3,33 @@ package netflix.helpers;
 
 import netflix.Database;
 import netflix.models.media.Media;
-
-import javax.xml.crypto.Data;
 import java.util.*;
+
 
 public class DataGetterHelper {
 
-    public Media[] searchInMedia(String name) { //set as void for debugging
+    public static Media[] searchInMedia(String name) { //set as void for debugging
         ArrayList<Media> results = new ArrayList<>();
         for (Media m : Database.getMediaList()) {
+            int i = 0;
             if (m.getName().toLowerCase().startsWith(name.toLowerCase())) { //checks if it starts with search query. toLowercase so its not case sensitive
-                results.add(m);
+                results.add(0,m); //add onto index 0, so it will be the first ones that shows up in the result list. (This saves a whole nother loop which will generate same output)
+            }
+            if ((m.getName().toLowerCase().contains(name.toLowerCase()))) { //afterwards add all substring matches
+               if(!results.contains(m)){
+                   results.add(m);
+               }
             }
         }
-        Media[] resultArray = new Media[results.size()];
+        for (Media result : results){
+            System.out.println(result.getName());
+        }
+
+        Media[] resultArray = new Media[results.size()]; //makes array
         return results.toArray(resultArray);
     }
 
-    public Media[] getMediaListByCategory(String category, Media[] list) {
+    public static Media[] getMediaListByCategory(String category, Media[] list) {
         ArrayList<Media> media = new ArrayList<>();
         for(Media m : list) {
             if(Arrays.asList(m.getCategories()).contains(category)) {
