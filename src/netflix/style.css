@@ -1,0 +1,16 @@
+#MediaBTN {
+    -fx-background-color: rgb(25,25,25);
+    -fx-text-fill: white;
+    -fx-font-family: arial;
+    -fx-font-weight: bolder;
+    -fx-font-size: 16px;
+}
+
+#MediaBTN:hover {
+    -fx-background-color: rgb(150,150,150);
+    -fx-text-fill: black;
+    -fx-font-family: arial;
+    -fx-font-weight: bolder;
+    -fx-font-size: 16px;
+}
+

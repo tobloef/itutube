@@ -10,6 +10,7 @@ import netflix.models.User;
 import netflix.models.UserType;
 import netflix.models.media.Media;
 import netflix.views.components.MediaButton;
+import netflix.views.components.MediaButtonList;
 import netflix.views.pages.ContentPage;
 import netflix.views.creators.ViewCreator;
 import javax.xml.crypto.Data;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static netflix.Database.getUsers;
+import static netflix.views.components.MediaButtonList.getMediaButtonList;
 
 public class Main extends Application {
 
@@ -30,7 +32,10 @@ public class Main extends Application {
         stage.setTitle("ITU-tube");
         StackPane contentPage = new StackPane();
         //ContentPage contentPage = new ContentPage(this::setPage);
-        contentPage.getChildren().add(new MediaButton(Database.getMediaById("011")));
+        String style = getClass().getResource("style.css").toExternalForm();
+        contentPage.getStylesheets().add(style);
+        Media[] media = {Database.getMediaById("011"), Database.getMediaById("012"), Database.getMediaById("013"), Database.getMediaById("014")};
+        contentPage.getChildren().add(getMediaButtonList(media));
         stage.setScene(new Scene(contentPage, 600, 400));
         stage.show();
 

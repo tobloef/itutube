@@ -26,9 +26,18 @@ public class MediaButton extends Button {
         String className = media.getClass().getSimpleName();
         System.out.println(media.getName());
         this.setContentDisplay(ContentDisplay.TOP);
-        this.setTextFill(Paint.valueOf("WHITE"));
-        this.setFont(Font.font("Arial", FontWeight.BLACK, 16));
+        this.setId("MediaBTN");
+
+        /*
+        final String BUTTON_STYLING = "-fx-background-color: rgb(25,25,25); -fx-text-fill: white; innershadow: gaussian red 10 10 0 0;";
+        final String BUTTON_HOVER_STYLING = "dropshadow: gaussian blue 10 10 0 0;";
+        this.setStyle(BUTTON_STYLING);
+        this.setOnMouseEntered(e -> this.setStyle(BUTTON_HOVER_STYLING));
+        this.setOnMouseExited(e -> this.setStyle(BUTTON_STYLING));
+        //this.setTextFill(Paint.valueOf("WHITE"));
+        */
+        //this.setFont(Font.font("Arial", FontWeight.BLACK, 16));
         this.setGraphic(new ImageView(new Image("netflix/posters/" + className + "Posters/" + media.getName() + ".jpg")));
-        this.setBackground(new Background(new BackgroundFill(Paint.valueOf("GREY"), new CornerRadii(2), Insets.EMPTY)));
+        //this.setBackground(new Background(new BackgroundFill(Paint.valueOf("GREY"), new CornerRadii(2), Insets.EMPTY)));
     }
 }
