@@ -8,7 +8,7 @@ import java.util.*;
 
 public class DataGetterHelper {
 
-    public static Media[] searchInMedia(String name) { //set as void for debugging
+    public static Media[] searchInMedia(String name) {
         ArrayList<Media> results = new ArrayList<>();
         for (Media m : Database.getMediaList()) {
             int i = 0;

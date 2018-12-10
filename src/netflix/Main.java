@@ -9,6 +9,7 @@ import netflix.helpers.DataGetterHelper;
 import netflix.models.User;
 import netflix.models.UserType;
 import netflix.models.media.Media;
+import netflix.views.components.MediaButton;
 import netflix.views.pages.ContentPage;
 import netflix.views.creators.ViewCreator;
 import javax.xml.crypto.Data;
@@ -29,6 +30,7 @@ public class Main extends Application {
         stage.setTitle("ITU-tube");
         StackPane contentPage = new StackPane();
         //ContentPage contentPage = new ContentPage(this::setPage);
+        contentPage.getChildren().add(new MediaButton(Database.getMediaById("011")));
         stage.setScene(new Scene(contentPage, 600, 400));
         stage.show();
 
@@ -41,7 +43,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Database.load();
-        Database.save();
+
         launch(args);
     }
 }
