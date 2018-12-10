@@ -41,9 +41,7 @@ public class MediaButtonList extends VBox {
 
         content.setId("MediaListContent");
         sp.setContent(content);
-        sp.setFitToHeight(true);
         sp.setId("MediaScrollList");
-        sp.setStyle("-fx-background: rgb(25,25,25);");
         this.setId("MediaList");
         this.getChildren().add(sp);
     }

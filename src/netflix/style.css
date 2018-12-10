@@ -29,12 +29,12 @@
 
 #MediaScrollList {
     -fx-background-color: rgb(25,25,25);
-    -fx-padding: 0 0 10 0;
+    -fx-background: rgb(25,25,25);
+    -fx-pref-height: 260;
 }
 
 #MediaListContent {
     -fx-background-color: rgb(25,25,25);
-    -fx-padding: 0 0 10 0;
     -fx-max-width: 100%;
 }
 
