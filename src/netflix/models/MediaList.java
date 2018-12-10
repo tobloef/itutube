@@ -8,9 +8,9 @@ import java.util.ArrayList;
  */
 public class MediaList {
     private String name;
-    private ArrayList<Media> media;
+    private Media[] media;
 
-    public MediaList(String name, ArrayList<Media> media) {
+    public MediaList(String name, Media[] media) {
         this.name = name;
         this.media = media;
     }
@@ -19,7 +19,7 @@ public class MediaList {
         return name;
     }
 
-    public ArrayList<Media> getMedia() {
+    public Media[] getMedia() {
         return media;
     }
 }
