@@ -1,0 +1,59 @@
+#MediaBTN {
+    -fx-background-color: rgb(25,25,25);
+    -fx-text-fill: white;
+    -fx-font-family: arial;
+    -fx-font-weight: bolder;
+    -fx-font-size: 14px;
+}
+
+#MediaBTN:hover {
+    -fx-background-color: rgb(50,50,50);
+    -fx-text-fill: black;
+    -fx-font-family: arial;
+    -fx-font-weight: bolder;
+    -fx-font-size: 14px;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: rgb(50,50,50);
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: rgb(75,75,75);
+    -fx-background-radius: 5em;
+}
+
+#MediaList {
+    -fx-background-color: rgb(25,25,25);
+}
+
+#MediaScrollList {
+    -fx-background-color: rgb(25,25,25);
+    -fx-background: rgb(25,25,25);
+    -fx-pref-height: 260;
+}
+
+#MediaListContent {
+    -fx-background-color: rgb(25,25,25);
+    -fx-max-width: 100%;
+}
+
+#MediaListTitle {
+    -fx-background-color: rgb(25,25,25);
+    -fx-font-family: arial;
+    -fx-font-weight: bolder;
+    -fx-font-size: 40px;
+}
+
+.contentPage {
+    -fx-background-color: rgb(25,25,25);
+}
+
+#contentPage {
+    -fx-background-color: rgb(25,25,25);
+}
+
+#contentStack {
+    -fx-background-color: rgb(25,25,25);
+}
+}

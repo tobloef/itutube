@@ -11,7 +11,7 @@ import java.util.Date;
  * Generic video media
  */
 public abstract class VideoMedia extends Media implements Playable {
-    private int runtime;
+    protected int runtime;
 
     public VideoMedia(String id, String name, String description, Date releaseDate, String[] categories, double rating, Credits[] credits, String imageFileName, int runtime) {
         super(id, name, description, releaseDate, categories, rating, credits, imageFileName);
