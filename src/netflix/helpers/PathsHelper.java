@@ -8,7 +8,7 @@ public class PathsHelper {
         return "src/resources/" + dataType + ".txt";
     }
 
-    public static String getDefaultPosterPath() {
+    public static String getDefaultMediaImagePath() {
         return "src/resources/posters/default.jpg";
     }
 
@@ -31,5 +31,13 @@ public class PathsHelper {
 
     public static String getDefaultUserImagePath() {
         return "src/resources/usersImages/default.jpg";
+    }
+
+    public static String getCategoryImagePath(String category) {
+        return "src/resources/categoryImages/" + category + ".jpg";
+    }
+
+    public static String getDefaultCategoryImagePath() {
+        return "src/resources/categoryImages/default.jpg";
     }
 }

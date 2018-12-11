@@ -21,7 +21,7 @@ public class MediaButtonList extends ImageButtonList {
         List<ImageButtonInfo> infoList = new ArrayList<>();
         for (Media media : mediaList) {
             String text = media.getName();
-            Image image = ImageHelper.getMediaPoster(media);
+            Image image = ImageHelper.getMediaImage(media);
             EventHandler<ActionEvent> eventHandler = event -> handleAction.accept(media);
             infoList.add(new ImageButtonInfo(text, image, eventHandler));
         }
