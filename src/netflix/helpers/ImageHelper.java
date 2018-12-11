@@ -22,7 +22,7 @@ public class ImageHelper {
     public static Image getUserImage(User user) {
         String path = PathsHelper.getUserImagePath(user);
         Image image = getImage(path);
-        if (image == null) {
+        if (image == null || image.isError()) {
             return getDefaultUserImage();
         }
         return image;
