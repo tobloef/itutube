@@ -1,9 +1,11 @@
 package netflix.views;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import netflix.views.components.SearchBar;
 import netflix.views.creators.ViewCreator;
 
 import java.util.function.Consumer;
@@ -17,9 +19,9 @@ public class Header extends HBox {
     public Header(Consumer<ViewCreator> setPage, Consumer<ViewCreator> setContent) {
         // Header bar
         this.getStyleClass().add("header");
-
+        this.setAlignment(Pos.CENTER);
         // Logo
-        Label logo = new Label("ITU-Tube");
+        Label logo = new Label("ITÜ-TÜBE");
         logo.getStyleClass().add("header-logo");
         // Front page button
         Label frontPage = new Label("Forside");
