@@ -63,17 +63,17 @@
     -fx-background-color: rgba(255,255,255,0.2);
 }
 
-.media-list .title {
+.image-button-list .title {
     -fx-font-weight: bolder;
     -fx-font-size: 40px;
 }
 
-.image-button .empty-message {
+.image-button-list .empty-message {
     -fx-font-weight: bolder;
     -fx-font-size: 26px;
 }
 
-.image-button HBox {
+.image-button-list HBox {
     -fx-background-color: rgb(30, 30, 30);
 }
 
