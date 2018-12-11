@@ -65,6 +65,7 @@
 
 .image-button-list .title {
     -fx-font-weight: bolder;
+    -fx-padding: 0px 0px 10px 0px;
     -fx-font-size: 40px;
 }
 
