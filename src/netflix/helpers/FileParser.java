@@ -120,7 +120,7 @@ public class FileParser {
      * @param episodeAmount The amount of episodes there are to fetch from the season
      * @return An array of episodes from the provided season and series
      */
-    private static Episode[] fetchEpisodes(Series series, Season season, int episodeAmount) {
+    private static List<Episode> fetchEpisodes(Series series, Season season, int episodeAmount) {
         ArrayList<Episode> episodes = new ArrayList<>();
         for(int i = 1; i <= episodeAmount; i++) {
             String id = FakeDataHelper.generateFakeId();
@@ -135,8 +135,7 @@ public class FileParser {
 
             episodes.add(new Episode(id, name, description, releaseDate, categories, rating, credits, imageFileName, runtime, season, series));
         }
-        Episode[] episodeArray = new Episode[episodes.size()];
-        return episodes.toArray(episodeArray);
+        return episodes;
     }
 
 
@@ -170,7 +169,7 @@ public class FileParser {
             Season season = new Season(id, name, description, currentSeasonDate, categories, rating, credits, imageFileName, series);
 
 
-            Episode[] episodes = fetchEpisodes(series, season, episodeAmount);
+            List<Episode> episodes = fetchEpisodes(series, season, episodeAmount);
             season.setEpisodes(episodes);
             seasons.add(season);
         }

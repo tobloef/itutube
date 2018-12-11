@@ -12,8 +12,10 @@ import netflix.helpers.ImageHelper;
 import netflix.models.MediaList;
 import netflix.models.media.Media;
 
+import java.util.function.Consumer;
+
 public class MediaButtonList extends VBox {
-    public MediaButtonList(MediaList mediaList, EventHandler<ActionEvent> handleAction) {
+    public MediaButtonList(MediaList mediaList, Consumer<Media> handleAction) {
         super();
         this.getStyleClass().add("media-list");
         // Title
@@ -31,7 +33,7 @@ public class MediaButtonList extends VBox {
             HBox content = new HBox(20);
             for (Media media : mediaList.getMedia()) {
                 Image image = ImageHelper.getMediaPoster(media);
-                ImageButton button = new ImageButton(media.getName(), image, handleAction);
+                ImageButton button = new ImageButton(media.getName(), image, event -> handleAction.accept(media));
                 content.getChildren().add(button);
             }
             scrollPane.setContent(content);

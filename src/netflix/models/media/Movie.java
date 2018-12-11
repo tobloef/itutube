@@ -4,6 +4,9 @@ import javafx.scene.Parent;
 import netflix.models.Credits;
 import netflix.models.Saveable;
 import netflix.models.Viewable;
+import netflix.views.content.infoview.MovieInfoContent;
+import netflix.views.content.infoview.MusicInfoContent;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Date;
 
@@ -25,6 +28,6 @@ public class Movie extends VideoMedia implements Saveable, Viewable {
 
     @Override
     public Parent createInfoView() {
-        return null;
+        return new MovieInfoContent(this);
     }
 }

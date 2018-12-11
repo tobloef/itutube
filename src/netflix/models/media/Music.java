@@ -4,6 +4,7 @@ import javafx.scene.Parent;
 import netflix.models.Credits;
 import netflix.models.Playable;
 import netflix.models.Viewable;
+import netflix.views.content.infoview.MusicInfoContent;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.*;
@@ -37,11 +38,12 @@ public class Music extends Media implements Playable, Viewable {
 
     @Override
     public Parent createPlayView() {
-        return null;
+        // TODO
+        throw new NotImplementedException();
     }
 
     @Override
     public Parent createInfoView() {
-        return null;
+        return new MusicInfoContent(this);
     }
 }

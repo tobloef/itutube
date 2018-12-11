@@ -8,6 +8,8 @@ import netflix.views.components.MediaButtonList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static netflix.helpers.ActionHelper.setMediaInfoContent;
+
 /**
  * Content for the front page, with various media lists
  */
@@ -16,7 +18,9 @@ public class FrontPageContent extends VBox {
     public FrontPageContent(List<MediaList> featuredLists, Consumer<Parent> setContent) {
         this.setSpacing(20);
         for (MediaList list : featuredLists) {
-            MediaButtonList mediaButtonList = new MediaButtonList(list, null); // TODO
+            MediaButtonList mediaButtonList = new MediaButtonList(list, media -> {
+                setMediaInfoContent(media, setContent);
+            });
             this.getChildren().add(mediaButtonList);
         }
     }
