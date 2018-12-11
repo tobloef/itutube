@@ -1,7 +1,9 @@
 package netflix.models.media;
 
+import javafx.scene.Parent;
 import netflix.models.Credits;
 import netflix.models.Playable;
+import netflix.models.Viewable;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.*;
@@ -16,6 +18,10 @@ public abstract class VideoMedia extends Media implements Playable {
     public VideoMedia(String id, String name, String description, Date releaseDate, String[] categories, double rating, Credits[] credits, String imageFileName, int runtime) {
         super(id, name, description, releaseDate, categories, rating, credits, imageFileName);
         this.runtime = runtime;
+    }
+
+    public int getRuntime() {
+        return runtime;
     }
 
     @Override
@@ -36,8 +42,9 @@ public abstract class VideoMedia extends Media implements Playable {
         throw new NotImplementedException();
     }
 
-    public int getRuntime() {
+    @Override
+    public Parent createPlayView() {
         // TODO
-        return runtime;
+        throw new NotImplementedException();
     }
 }

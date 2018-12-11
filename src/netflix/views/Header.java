@@ -1,45 +1,43 @@
 package netflix.views;
 
-import javafx.scene.control.Label;
+import javafx.scene.Parent;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
-import netflix.views.creators.ViewCreator;
 
 import java.util.function.Consumer;
-
-// TODO
 
 /**
  * A top bar with navigation links
  */
 public class Header extends HBox {
-    public Header(Consumer<ViewCreator> setPage, Consumer<ViewCreator> setContent) {
+    public Header(Consumer<Parent> setPage, Consumer<Parent> setContent) {
         // Header bar
         this.getStyleClass().add("header");
 
         // Logo
-        Label logo = new Label("ITU-Tube");
+        Hyperlink logo = new Hyperlink("ITU-Tube");
         logo.getStyleClass().add("header-logo");
         // Front page button
-        Label frontPage = new Label("Forside");
+        Hyperlink frontPage = new Hyperlink("Forside");
         frontPage.getStyleClass().add("header-button");
         // Movies button
-        Label movies = new Label("Film");
+        Hyperlink movies = new Hyperlink("Film");
         movies.getStyleClass().add("header-button");
         // Series button
-        Label series = new Label("Serier");
+        Hyperlink series = new Hyperlink("Serier");
         series.getStyleClass().add("header-button");
         // Music button
-        Label music = new Label("Musik");
+        Hyperlink music = new Hyperlink("Musik");
         music.getStyleClass().add("header-button");
         // Search bar
         SearchBar searchBar = new SearchBar();
         // My list button
-        Label myList = new Label("Min Liste");
+        Hyperlink myList = new Hyperlink("Min Liste");
         myList.getStyleClass().add("header-button");
         // Change user button
-        Label changeUser = new Label("Skift Bruger");
+        Hyperlink changeUser = new Hyperlink("Skift Bruger");
         changeUser.getStyleClass().add("header-button");
         // Middle filler
         Region filler = new Region();

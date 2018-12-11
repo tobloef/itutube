@@ -1,5 +1,6 @@
 package netflix.helpers;
 
+import netflix.models.User;
 import netflix.models.media.Media;
 
 public class PathsHelper {
@@ -18,5 +19,17 @@ public class PathsHelper {
         String mediaType = media.getClass().getSimpleName();
         String mediaName = media.getName();
         return "src/resources/posters/" + mediaType + "Posters/" + mediaName + ".jpg";
+    }
+
+    public static String getUserImagePath(User user) {
+        if (user == null) {
+            return null;
+        }
+        String userName = user.getName();
+        return "src/resources/usersImages/" + userName + ".jpg";
+    }
+
+    public static String getDefaultUserImagePath() {
+        return "src/resources/usersImages/default.jpg";
     }
 }

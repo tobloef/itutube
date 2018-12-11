@@ -1,7 +1,9 @@
 package netflix.models;
 
+import javafx.scene.image.Image;
 import netflix.models.media.Media;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**

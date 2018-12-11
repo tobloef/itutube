@@ -7,8 +7,7 @@ import javafx.scene.layout.VBox;
 import netflix.Database;
 import netflix.models.MediaList;
 import netflix.views.Header;
-import netflix.views.creators.FrontPageCreator;
-import netflix.views.creators.ViewCreator;
+import netflix.views.content.FrontPageContent;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -19,7 +18,7 @@ import java.util.function.Consumer;
 public class ContentPage extends BorderPane {
     private VBox wrapper;
 
-    public ContentPage(Consumer<ViewCreator> setPage) {
+    public ContentPage(Consumer<Parent> setPage) {
         // Initialize header
         Header header = new Header(setPage, this::setContent);
         this.setTop(header);
@@ -33,16 +32,11 @@ public class ContentPage extends BorderPane {
 
         // Set default content
         List<MediaList> frontPageLists = Database.getFeaturedLists();
-        FrontPageCreator frontPageCreator = new FrontPageCreator(frontPageLists, this::setContent);
-        setContent(frontPageCreator);
+        FrontPageContent frontPageContent = new FrontPageContent(frontPageLists, this::setContent);
+        setContent(frontPageContent);
     }
 
-    /**
-     * Set the main content in the center of the view
-     * @param creator ViewCreator to create the content view with
-     */
-    private void setContent(ViewCreator creator) {
-        Parent view = creator.create();
+    private void setContent(Parent view) {
         wrapper.getChildren().clear();
         wrapper.getChildren().add(view);
     }

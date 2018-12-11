@@ -1,19 +1,19 @@
 package netflix.views.components;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import netflix.helpers.ImageHelper;
 import netflix.models.MediaList;
 import netflix.models.media.Media;
-import netflix.views.creators.ViewCreator;
-
-import java.util.function.Consumer;
-
 
 public class MediaButtonList extends VBox {
-    public MediaButtonList(MediaList mediaList, Consumer<ViewCreator> setContent) {
+    public MediaButtonList(MediaList mediaList, EventHandler<ActionEvent> handleAction) {
         super();
         this.getStyleClass().add("media-list");
         // Title
@@ -30,7 +30,8 @@ public class MediaButtonList extends VBox {
             scrollPane.setFitToHeight(true);
             HBox content = new HBox(20);
             for (Media media : mediaList.getMedia()) {
-                MediaButton button = new MediaButton(media);
+                Image image = ImageHelper.getMediaPoster(media);
+                ImageButton button = new ImageButton(media.getName(), image, handleAction);
                 content.getChildren().add(button);
             }
             scrollPane.setContent(content);

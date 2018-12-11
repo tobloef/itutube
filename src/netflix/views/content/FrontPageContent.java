@@ -1,9 +1,9 @@
 package netflix.views.content;
 
+import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
 import netflix.models.MediaList;
 import netflix.views.components.MediaButtonList;
-import netflix.views.creators.ViewCreator;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -13,10 +13,10 @@ import java.util.function.Consumer;
  */
 public class FrontPageContent extends VBox {
 
-    public FrontPageContent(List<MediaList> featuredLists, Consumer<ViewCreator> setContent) {
+    public FrontPageContent(List<MediaList> featuredLists, Consumer<Parent> setContent) {
         this.setSpacing(20);
         for (MediaList list : featuredLists) {
-            MediaButtonList mediaButtonList = new MediaButtonList(list, setContent);
+            MediaButtonList mediaButtonList = new MediaButtonList(list, null); // TODO
             this.getChildren().add(mediaButtonList);
         }
     }

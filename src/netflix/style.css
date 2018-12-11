@@ -11,6 +11,13 @@
     -fx-background-color: inherit;
 }
 
+.root .hyperlink {
+    -fx-border-color: null;
+    -fx-border-style: solid;
+    -fx-border-width: 0px;
+    -fx-underline: false;
+}
+
 .root Text {
     -fx-fill: white;
     -fx-text-fill: white;
@@ -51,17 +58,17 @@
     -fx-background-radius: 5em;
 }
 
-.media-list .title {
+.image-button .title {
     -fx-font-weight: bolder;
     -fx-font-size: 40px;
 }
 
-.media-list .empty-message {
+.image-button .empty-message {
     -fx-font-weight: bolder;
     -fx-font-size: 26px;
 }
 
-.media-list HBox {
+.image-button HBox {
     -fx-background-color: rgb(30, 30, 30);
 }
 

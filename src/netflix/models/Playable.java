@@ -1,5 +1,7 @@
 package netflix.models;
 
+import javafx.scene.Parent;
+
 import java.awt.*;
 
 /**
@@ -9,4 +11,5 @@ public interface Playable {
     public Color getMediaContent();
     public double getProgress();
     public String getProgressString();
+    public Parent createPlayView();
 }

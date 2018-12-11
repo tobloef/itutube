@@ -1,14 +1,17 @@
 package netflix.models.media;
 
+import javafx.scene.Parent;
 import netflix.models.Credits;
 import netflix.models.Saveable;
+import netflix.models.Viewable;
 
+import javax.swing.text.View;
 import java.util.Date;
 
 /**
  * A series
  */
-public class Series extends Media implements Saveable {
+public class Series extends Media implements Saveable, Viewable {
     private Date endDate;
     private Season[] seasons;
 
@@ -45,5 +48,10 @@ public class Series extends Media implements Saveable {
 
     public void setSeasons(Season[] seasons) {
         this.seasons = seasons;
+    }
+
+    @Override
+    public Parent createInfoView() {
+        return null;
     }
 }
