@@ -13,7 +13,7 @@ public class ImageHelper {
     public static Image getMediaPoster(Media media) {
         String path = PathsHelper.getMediaImagePath(media);
         Image image = getImage(path);
-        if (image == null) {
+        if (image == null || image.isError()) {
             return getDefaultPoster();
         }
         return image;
