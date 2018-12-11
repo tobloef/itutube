@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import netflix.views.creators.ViewCreator;
 import netflix.views.pages.ContentPage;
 
 public class Main extends Application {
@@ -14,6 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         Database.load();
+        this.stage = stage;
         stage.setTitle("ITU-tube");
         // Set default view
         ContentPage contentPage = new ContentPage(this::setPage);
@@ -24,14 +24,11 @@ public class Main extends Application {
         stage.show();
     }
 
-    private void setPage(ViewCreator creator) {
-        Parent page = creator.create();
+    private void setPage(Parent page) {
         stage.getScene().setRoot(page);
     }
 
     public static void main(String[] args) {
-        Database.load();
-
         launch(args);
     }
 }

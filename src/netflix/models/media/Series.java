@@ -1,14 +1,20 @@
 package netflix.models.media;
 
+import javafx.scene.Parent;
 import netflix.models.Credits;
 import netflix.models.Saveable;
+import netflix.models.Viewable;
+import netflix.views.content.infoview.MovieInfoContent;
+import netflix.views.content.infoview.SeriesInfoContent;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.swing.text.View;
 import java.util.Date;
 
 /**
  * A series
  */
-public class Series extends Media implements Saveable {
+public class Series extends Media implements Saveable, Viewable {
     private Date endDate;
     private Season[] seasons;
 
@@ -20,7 +26,7 @@ public class Series extends Media implements Saveable {
     public String getSaveString() {
         StringBuilder seasonString = new StringBuilder();
         for(int i = 1; i <= seasons.length; i++) {
-            seasonString.append(i).append("-").append(seasons[i-1].getEpisodes().length).append(" ");
+            seasonString.append(i).append("-").append(seasons[i-1].getEpisodes().size()).append(" ");
         }
         String categoryString = String.join(",", categories);
         String str = id + ";" + name + ";" + releaseDate.getYear();
@@ -45,5 +51,10 @@ public class Series extends Media implements Saveable {
 
     public void setSeasons(Season[] seasons) {
         this.seasons = seasons;
+    }
+
+    @Override
+    public Parent createInfoView() {
+        return new SeriesInfoContent(this);
     }
 }

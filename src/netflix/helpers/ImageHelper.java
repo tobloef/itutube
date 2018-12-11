@@ -1,6 +1,7 @@
 package netflix.helpers;
 
 import javafx.scene.image.Image;
+import netflix.models.User;
 import netflix.models.media.Media;
 
 import java.io.File;
@@ -9,20 +10,33 @@ import java.util.HashMap;
 public class ImageHelper {
     private static HashMap<String, Image> cache = new HashMap<>();
 
-    public static Image getMediaPoster(Media media, double width, double height) {
+    public static Image getMediaPoster(Media media) {
         String path = PathsHelper.getMediaImagePath(media);
-        Image image = getImage(path, width, height);
-        if (image == null) {
-            return getDefaultPoster(width, height);
+        Image image = getImage(path);
+        if (image == null || image.isError()) {
+            return getDefaultPoster();
         }
         return image;
     }
 
-    private static Image getDefaultPoster(double width, double height) {
-        return getImage(PathsHelper.getDefaultPosterPath(), width, height);
+    public static Image getUserImage(User user) {
+        String path = PathsHelper.getUserImagePath(user);
+        Image image = getImage(path);
+        if (image == null || image.isError()) {
+            return getDefaultUserImage();
+        }
+        return image;
     }
 
-    private static Image getImage(String path, double width, double height) {
+    private static Image getDefaultUserImage() {
+        return getImage(PathsHelper.getDefaultUserImagePath());
+    }
+
+    private static Image getDefaultPoster() {
+        return getImage(PathsHelper.getDefaultPosterPath());
+    }
+
+    private static Image getImage(String path) {
         if (path == null) {
             return null;
         }
@@ -30,7 +44,7 @@ public class ImageHelper {
             return cache.get(path);
         }
         File file = new File(path);
-        Image image = new Image(file.toURI().toString(), width, height, true, true, true);
+        Image image = new Image(file.toURI().toString());
         cache.put(path, image);
         return image;
     }
