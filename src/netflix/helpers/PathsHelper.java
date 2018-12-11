@@ -26,7 +26,7 @@ public class PathsHelper {
             return null;
         }
         String userName = user.getName();
-        return "src/resources/usersImages/" + userName + ".jpg";
+        return "src/resources/usersImages/" + userName + ".png";
     }
 
     public static String getDefaultUserImagePath() {

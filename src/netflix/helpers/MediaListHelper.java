@@ -24,7 +24,6 @@ public class MediaListHelper {
                 results.add(media);
             }
         }
-        // Convert results to array
         return results;
     }
 
