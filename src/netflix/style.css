@@ -103,3 +103,15 @@
     -fx-underline: true;
     -fx-cursor: hand;
 }
+
+.search-field {
+    -fx-background-color: rgb(255,255,255);
+    -fx-font-size: 16;
+}
+.search-button {
+    -fx-background-color: rgb(255,255,255);
+    -fx-font-size: 16;
+    -fx-background-insets: 0 0 0 0;
+    -fx-border-color: black;
+
+}

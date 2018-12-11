@@ -1,10 +1,12 @@
 package netflix.views;
 
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import netflix.views.components.SearchBar;
 
 import java.util.function.Consumer;
 
@@ -15,9 +17,9 @@ public class Header extends HBox {
     public Header(Consumer<Parent> setPage, Consumer<Parent> setContent) {
         // Header bar
         this.getStyleClass().add("header");
-
+        this.setAlignment(Pos.CENTER);
         // Logo
-        Hyperlink logo = new Hyperlink("ITU-Tube");
+        Hyperlink logo = new Hyperlink("ITÜ-TÜBE");
         logo.getStyleClass().add("header-logo");
         // Front page button
         Hyperlink frontPage = new Hyperlink("Forside");
