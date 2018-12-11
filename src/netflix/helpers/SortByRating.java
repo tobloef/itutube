@@ -1,6 +1,7 @@
 package netflix.helpers;
 
 import netflix.models.media.Media;
+
 import java.util.Comparator;
 
 public class SortByRating implements Comparator<Media> {

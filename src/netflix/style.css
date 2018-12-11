@@ -1,59 +1,93 @@
-#MediaBTN {
-    -fx-background-color: rgb(25,25,25);
+.root {
+    -fx-background: rgb(25, 25, 25);
+    -fx-background-color: rgb(25, 25, 25);
+    -fx-font-family: arial;
+    -fx-fill: white;
+    -fx-text-fill: white;
+}
+
+.root * {
+    -fx-background: inherit;
+    -fx-background-color: inherit;
+}
+
+.root Text {
+    -fx-fill: white;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.content-wrapper {
+    -fx-alignment: center;
+}
+
+.content-wrapper > * {
+    -fx-max-width: 1000px;
+    -fx-padding: 20px;
+}
+
+.image-button {
+    -fx-background-color: rgba(255, 255, 255, 0);
     -fx-text-fill: white;
     -fx-font-family: arial;
     -fx-font-weight: bolder;
     -fx-font-size: 14px;
 }
 
-#MediaBTN:hover {
-    -fx-background-color: rgb(50,50,50);
-    -fx-text-fill: black;
-    -fx-font-family: arial;
-    -fx-font-weight: bolder;
-    -fx-font-size: 14px;
+.image-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
 }
 
-.scroll-bar:horizontal {
-    -fx-background-color: rgb(50,50,50);
+.image-button:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
 }
 
-.scroll-bar:horizontal .thumb {
-    -fx-background-color: rgb(75,75,75);
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(255,255,255, 0.2);
     -fx-background-radius: 5em;
 }
 
-#MediaList {
-    -fx-background-color: rgb(25,25,25);
-}
-
-#MediaScrollList {
-    -fx-background-color: rgb(25,25,25);
-    -fx-background: rgb(25,25,25);
-    -fx-pref-height: 260;
-}
-
-#MediaListContent {
-    -fx-background-color: rgb(25,25,25);
-    -fx-max-width: 100%;
-}
-
-#MediaListTitle {
-    -fx-background-color: rgb(25,25,25);
-    -fx-font-family: arial;
+.media-list .title {
     -fx-font-weight: bolder;
     -fx-font-size: 40px;
 }
 
-.contentPage {
-    -fx-background-color: rgb(25,25,25);
+.media-list .empty-message {
+    -fx-font-weight: bolder;
+    -fx-font-size: 26px;
 }
 
-#contentPage {
-    -fx-background-color: rgb(25,25,25);
+.media-list HBox {
+    -fx-background-color: rgb(30, 30, 30);
 }
 
-#contentStack {
-    -fx-background-color: rgb(25,25,25);
+.header {
+    -fx-background-color: rgb(17, 17, 17);
+    -fx-padding: 10px
 }
+
+.header .header-logo {
+    -fx-font-size: 24pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: orange;
+    -fx-padding: 0px 20px 0px 10px;
+    -fx-cursor: hand;
+    -fx-text-alignment: center;
+    -fx-height: 100%;
+}
+
+.header .header-button {
+    -fx-font-size: 16pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10px 10px;
+}
+
+.header .header-button:hover {
+    -fx-underline: true;
+    -fx-cursor: hand;
 }

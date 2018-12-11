@@ -1,48 +1,48 @@
 package netflix.views.components;
 
-import com.sun.javafx.geom.BaseBounds;
-import com.sun.javafx.geom.transform.BaseTransform;
-import com.sun.javafx.jmx.MXNodeAlgorithm;
-import com.sun.javafx.jmx.MXNodeAlgorithmContext;
-import com.sun.javafx.sg.prism.NGNode;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.ScrollEvent;
-import javafx.scene.layout.*;
-import javafx.scene.media.MediaBuilder;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import netflix.models.MediaList;
 import netflix.models.media.Media;
+import netflix.views.creators.ViewCreator;
+
+import java.util.function.Consumer;
 
 
 public class MediaButtonList extends VBox {
-    public MediaButtonList(String name, Media[] mediaList) {
+    public MediaButtonList(MediaList mediaList, Consumer<ViewCreator> setContent) {
         super();
-
+        this.getStyleClass().add("media-list");
+        // Title
         Text title = new Text();
-        title.setText(name);
-        title.setFill(Color.WHITE);
-        title.setId("MediaListTitle");
+        title.setText(mediaList.getName());
+        title.getStyleClass().add("title");
         this.getChildren().add(title);
-        ScrollPane sp = new ScrollPane();
-        sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        HBox content = new HBox(20);
-
-        for(Media m : mediaList) {
-            MediaButton button = new MediaButton(m);
-            content.getChildren().add(button);
+        // The list's content
+        HBox wrapper = new HBox();
+        if (mediaList.getMedia() != null && mediaList.getMedia().size() > 0) {
+            // Scrollable content
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+            scrollPane.setFitToHeight(true);
+            HBox content = new HBox(20);
+            for (Media media : mediaList.getMedia()) {
+                MediaButton button = new MediaButton(media);
+                content.getChildren().add(button);
+            }
+            scrollPane.setContent(content);
+            scrollPane.setFitToHeight(true);
+            wrapper.getChildren().add(scrollPane);
+        } else {
+            // Empty list message
+            wrapper.setAlignment(Pos.CENTER);
+            Text text = new Text("This list is empty");
+            text.getStyleClass().add("empty-message");
+            wrapper.getChildren().add(text);
         }
-
-        content.setId("MediaListContent");
-        sp.setContent(content);
-        sp.setId("MediaScrollList");
-        this.setId("MediaList");
-        this.getChildren().add(sp);
+        this.getChildren().add(wrapper);
     }
 }

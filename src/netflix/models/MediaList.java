@@ -1,16 +1,17 @@
 package netflix.models;
 
 import netflix.models.media.Media;
-import java.util.ArrayList;
+
+import java.util.List;
 
 /**
  * A list of media
  */
 public class MediaList {
     private String name;
-    private Media[] media;
+    private List<Media> media;
 
-    public MediaList(String name, Media[] media) {
+    public MediaList(String name, List<Media> media) {
         this.name = name;
         this.media = media;
     }
@@ -19,7 +20,7 @@ public class MediaList {
         return name;
     }
 
-    public Media[] getMedia() {
+    public List<Media> getMedia() {
         return media;
     }
 }

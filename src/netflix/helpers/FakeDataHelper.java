@@ -1,9 +1,12 @@
 package netflix.helpers;
 
 import netflix.models.Credits;
+import netflix.models.MediaList;
+import netflix.models.media.Media;
 
-import java.util.Random;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class FakeDataHelper {
@@ -46,5 +49,36 @@ public class FakeDataHelper {
     public static int generateFakeRuntime() {
         Random r = new Random();
         return r.nextInt(10800);
+    }
+
+    public static List<Media> generateRandomListOfMedia(List<Media> media, int min, int max) {
+        List<Media> listOfMedia = new ArrayList<>();
+        Random rand = new Random();
+        int amount = min + new Random().nextInt(max-min+1);
+        for (int i = 0; i < amount; i++) {
+            if (media.size() == 0) {
+                continue;
+            }
+            int randomIndex = rand.nextInt(media.size());
+            listOfMedia.add(media.get(randomIndex));
+        }
+        return listOfMedia;
+    }
+
+    public static List<MediaList> generateFakeFeaturedLists(List<Media> media) {
+        List<MediaList> mediaLists = new ArrayList<>();
+        mediaLists.add(new MediaList(
+                "Tobias' Top Picks",
+                generateRandomListOfMedia(media, 5, 15)
+        ));
+        mediaLists.add(new MediaList(
+                "Nicolai's Special List",
+                generateRandomListOfMedia(media, 5, 15)
+        ));
+        mediaLists.add(new MediaList(
+                "Julian's Favorites",
+                generateRandomListOfMedia(media, 5, 15)
+        ));
+        return mediaLists;
     }
 }

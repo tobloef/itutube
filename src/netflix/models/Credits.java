@@ -1,7 +1,5 @@
 package netflix.models;
 
-import java.util.ArrayList;
-
 /**
  * A segment of credits for a specific role
  */

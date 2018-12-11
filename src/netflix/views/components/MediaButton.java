@@ -14,6 +14,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import netflix.Main;
+import netflix.helpers.ImageHelper;
 import netflix.models.media.Media;
 
 import java.util.Objects;
@@ -22,10 +23,19 @@ public class MediaButton extends Button {
 
     public MediaButton(Media media) {
         super();
-        this.setText(media.getName());
-        String className = media.getClass().getSimpleName();
+        // TODO: This should be done in CSS
+        this.setPrefSize(150, 250);
+        if (media != null) {
+            this.setText(media.getName());
+        }
         this.setContentDisplay(ContentDisplay.TOP);
-        this.setId("MediaBTN");
-        this.setGraphic(new ImageView(new Image("netflix/posters/" + className + "Posters/" + media.getName() + ".jpg")));
+        this.getStyleClass().add("image-button");
+        double imgWidth = this.getPrefWidth();
+        double imgHeight = this.getPrefHeight() - 60;
+        Image image = ImageHelper.getMediaPoster(media, imgWidth, imgHeight);
+        if (image != null) {
+            this.setGraphic(new ImageView(image));
+            this.setGraphicTextGap(15);
+        }
     }
 }

@@ -1,16 +1,22 @@
 package netflix.views.content;
 
-import javafx.scene.Parent;
+import javafx.scene.layout.VBox;
 import netflix.models.MediaList;
 import netflix.views.components.MediaButtonList;
+import netflix.views.creators.ViewCreator;
 
-// TODO
+import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Content for the front page, with various media lists
  */
-public class FrontPageContent extends Parent {
+public class FrontPageContent extends VBox {
 
-    public FrontPageContent(MediaList[] mediaLists) {
+    public FrontPageContent(List<MediaList> featuredLists, Consumer<ViewCreator> setContent) {
+        for (MediaList list : featuredLists) {
+            MediaButtonList mediaButtonList = new MediaButtonList(list, setContent);
+            this.getChildren().add(mediaButtonList);
+        }
     }
 }

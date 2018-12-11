@@ -1,12 +1,13 @@
 package netflix.models;
 
 import netflix.models.media.Media;
+
 import java.util.ArrayList;
 
 /**
  * A user for the logged in account
  */
-public class User {
+public class User implements Saveable {
     private String name;
     private UserType type;
     private ArrayList<Media> favoritesList;
@@ -31,5 +32,15 @@ public class User {
 
     public ArrayList<Media> getFavoritesList() {
         return favoritesList;
+    }
+
+    @Override
+    public String getSaveString() {
+        String[] idArray = new String[favoritesList.size()];
+        for(int i = 0; i < favoritesList.size(); i++) {
+            idArray[i] = favoritesList.get(i).getId();
+        }
+        String idString = String.join(",", idArray);
+        return name + ";" + type + ";" + idString + ";";
     }
 }
