@@ -16,7 +16,7 @@ public class Main extends Application {
         this.stage = stage;
         stage.setTitle("ITU-tube");
         ContentPage contentPage = new ContentPage(this::setPage);
-        stage.setScene(new Scene(contentPage, 600, 400));
+        stage.setScene(new Scene(contentPage, 800, 450));
         stage.show();
     }
 

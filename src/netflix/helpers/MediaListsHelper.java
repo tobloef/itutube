@@ -13,6 +13,6 @@ public class MediaListsHelper {
      */
     public static MediaList[] getFrontPageLists() {
         // TODO
-        throw new NotImplementedException();
+        return new MediaList[]{};
     }
 }

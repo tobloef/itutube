@@ -1,0 +1,10 @@
+.header {
+    -fx-background-color: #111111;
+    -fx-padding: 10px
+}
+
+.header .headerButton {
+    -fx-font-size: 16pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
