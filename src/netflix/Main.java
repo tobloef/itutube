@@ -3,17 +3,9 @@ package netflix;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import netflix.models.MediaList;
-import netflix.models.media.Media;
-import netflix.views.components.MediaButtonList;
 import netflix.views.creators.ViewCreator;
 import netflix.views.pages.ContentPage;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main extends Application {
 

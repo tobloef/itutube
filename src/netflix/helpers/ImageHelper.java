@@ -3,10 +3,7 @@ package netflix.helpers;
 import javafx.scene.image.Image;
 import netflix.models.media.Media;
 
-import javax.imageio.ImageIO;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.HashMap;
 
 public class ImageHelper {

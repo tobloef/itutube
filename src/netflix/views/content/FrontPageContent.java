@@ -14,6 +14,7 @@ import java.util.function.Consumer;
 public class FrontPageContent extends VBox {
 
     public FrontPageContent(List<MediaList> featuredLists, Consumer<ViewCreator> setContent) {
+        this.setSpacing(20);
         for (MediaList list : featuredLists) {
             MediaButtonList mediaButtonList = new MediaButtonList(list, setContent);
             this.getChildren().add(mediaButtonList);

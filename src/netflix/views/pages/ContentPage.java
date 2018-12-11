@@ -7,14 +7,11 @@ import javafx.scene.layout.VBox;
 import netflix.Database;
 import netflix.models.MediaList;
 import netflix.views.Header;
-import netflix.views.components.MediaButtonList;
 import netflix.views.creators.FrontPageCreator;
 import netflix.views.creators.ViewCreator;
 
 import java.util.List;
 import java.util.function.Consumer;
-
-// TODO
 
 /**
  * A page with a header and some main content
