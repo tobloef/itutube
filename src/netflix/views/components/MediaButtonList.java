@@ -1,5 +1,7 @@
 package netflix.views.components;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import netflix.helpers.ImageHelper;
 import netflix.models.ImageButtonInfo;
@@ -18,8 +20,10 @@ public class MediaButtonList extends ImageButtonList {
     private static List<ImageButtonInfo> mediaListToImageButtonInfoList(List<Media> mediaList, Consumer<Media> handleAction) {
         List<ImageButtonInfo> infoList = new ArrayList<>();
         for (Media media : mediaList) {
+            String text = media.getName();
             Image image = ImageHelper.getMediaPoster(media);
-            infoList.add(new ImageButtonInfo(media.getName(), image, event -> handleAction.accept(media)));
+            EventHandler<ActionEvent> eventHandler = event -> handleAction.accept(media);
+            infoList.add(new ImageButtonInfo(text, image, eventHandler));
         }
         return infoList;
     }
