@@ -15,12 +15,10 @@ import static netflix.helpers.ActionHelper.setMediaInfoContent;
  */
 public class FrontPageContent extends VBox {
 
-    public FrontPageContent(List<MediaList> featuredLists, Consumer<Parent> setContent) {
+    public FrontPageContent(List<MediaList> featuredLists) {
         this.setSpacing(20);
         for (MediaList list : featuredLists) {
-            MediaButtonList mediaButtonList = new MediaButtonList(list, media -> {
-                setMediaInfoContent(media, setContent);
-            });
+            MediaButtonList mediaButtonList = new MediaButtonList(list);
             this.getChildren().add(mediaButtonList);
         }
     }

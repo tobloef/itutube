@@ -1,9 +1,15 @@
 package netflix.helpers;
 
+import netflix.Database;
+import netflix.Main;
+import netflix.models.ImageButtonInfo;
+import netflix.models.Viewable;
 import netflix.models.media.Media;
+import netflix.views.pages.ImageButtonGrid;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -24,6 +30,7 @@ public class MediaListHelper {
                 results.add(media);
             }
         }
+        // Convert results to array
         return results;
     }
 
@@ -42,5 +49,25 @@ public class MediaListHelper {
         results.sort(new SortByRating());
         return results;
     }
-}
 
+    public static List<Media> findByType(String type, List<Media> list) {
+        List<Media> results = new ArrayList<>();
+        for(Media m : list) {
+            if(m.getClass().getSimpleName().equals(type)) {
+                results.add(m);
+            }
+        }
+        return results;
+    }
+
+    public static List<ImageButtonInfo> getListAsImageButtonInfoList(List<Media> list) {
+        List<ImageButtonInfo> buttonInfos = new ArrayList<>();
+        for(Media m : list) {
+            if(m instanceof Viewable) {
+                Viewable viewable = (Viewable) m;
+                buttonInfos.add(new ImageButtonInfo(m.getName(), ImageHelper.getMediaPoster(m), e -> Main.setPage(viewable.createInfoView())));
+            }
+        }
+        return buttonInfos;
+    }
+}

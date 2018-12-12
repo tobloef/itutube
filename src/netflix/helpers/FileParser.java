@@ -69,7 +69,7 @@ public class FileParser {
         String id = properties[0];
         String name = properties[1];
         Date releaseDate = new Date(Integer.parseInt(properties[2]), 1, 1);
-        String[] categories = properties[3].split(", ");
+        String[] categories = trimArray(properties[3].split(","));
         double rating = Double.parseDouble(formatRating(properties[4]));
 
         String description = FakeDataHelper.getLoremIpsum(100);
@@ -146,7 +146,7 @@ public class FileParser {
      */
     private static Season[] fetchSeasons(Series series, String line) {
         ArrayList<Season> seasons = new ArrayList<>();
-        String[] seasonsString = trimArray(line.split(","));
+        String[] seasonsString = trimArray(line.split(" "));
 
         for(String s : seasonsString) {
             int seasonNumber = Integer.parseInt(s.split("-")[0]);
@@ -208,7 +208,7 @@ public class FileParser {
         Date releaseDate = dates[0];
         Date endDate = dates[1];
 
-        String[] categories = properties[3].split(",");
+        String[] categories = trimArray(properties[3].split(","));
         double rating = Double.parseDouble(formatRating(properties[4]));
 
         String description = FakeDataHelper.getLoremIpsum(175);

@@ -2,11 +2,10 @@ package netflix.models.media;
 
 import javafx.scene.Parent;
 import netflix.models.Credits;
+import netflix.models.Playable;
 import netflix.models.Saveable;
 import netflix.models.Viewable;
 import netflix.views.content.infoview.MovieInfoContent;
-import netflix.views.content.infoview.MusicInfoContent;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Date;
 

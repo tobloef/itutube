@@ -43,7 +43,7 @@ public class FakeDataHelper {
 
     public static double generateFakeRating() {
         Random r = new Random();
-        return (double) Math.round(r.nextDouble() * 10) / 10;
+        return (double) Math.round(r.nextDouble() * 100)/10;
     }
 
     public static int generateFakeRuntime() {

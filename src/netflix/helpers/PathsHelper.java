@@ -8,7 +8,7 @@ public class PathsHelper {
         return "src/resources/" + dataType + ".txt";
     }
 
-    public static String getDefaultMediaImagePath() {
+    public static String getDefaultPosterPath() {
         return "src/resources/posters/default.jpg";
     }
 
@@ -26,18 +26,10 @@ public class PathsHelper {
             return null;
         }
         String userName = user.getName();
-        return "src/resources/usersImages/" + userName + ".png";
+        return "src/resources/usersImages/" + userName + ".jpg";
     }
 
     public static String getDefaultUserImagePath() {
-        return "src/resources/usersImages/default.jpg";
-    }
-
-    public static String getCategoryImagePath(String category) {
-        return "src/resources/categoryImages/" + category + ".jpg";
-    }
-
-    public static String getDefaultCategoryImagePath() {
-        return "src/resources/categoryImages/default.jpg";
+        return "src/resources/userimages/ProfilePicture.png";
     }
 }

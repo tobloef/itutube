@@ -1,8 +1,12 @@
 package netflix.models;
 
+import netflix.Main;
+import netflix.helpers.ImageHelper;
 import netflix.models.media.Media;
 
+import javax.swing.text.View;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A user for the logged in account
@@ -33,6 +37,17 @@ public class User implements Saveable {
     public ArrayList<Media> getFavoritesList() {
         return favoritesList;
     }
+
+    public void addMediaToFavorites(Media media) {
+        favoritesList.add(media);
+    }
+
+    public void removeMediaFromFavorites(Media media) {
+        if (this.favoritesList.contains(media)) {
+            favoritesList.remove(media);
+        }
+    }
+
 
     @Override
     public String getSaveString() {

@@ -1,13 +1,16 @@
 package netflix.models.media;
 
 import javafx.scene.Parent;
+import netflix.Main;
 import netflix.models.Credits;
 import netflix.models.Playable;
 import netflix.models.Viewable;
+import netflix.views.pages.PlayerPage;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.*;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Generic video media
@@ -25,9 +28,10 @@ public abstract class VideoMedia extends Media implements Playable {
     }
 
     @Override
-    public Color getMediaContent() {
-        // TODO
-        throw new NotImplementedException();
+    public String getMediaContent() {
+        Random r = new Random();
+        int rand = r.nextInt(0xffffff + 1);
+        return String.format("#%06x", rand);
     }
 
     @Override
@@ -44,7 +48,6 @@ public abstract class VideoMedia extends Media implements Playable {
 
     @Override
     public Parent createPlayView() {
-        // TODO
-        throw new NotImplementedException();
+        return new PlayerPage(this);
     }
 }

@@ -39,6 +39,7 @@
     -fx-font-family: arial;
     -fx-font-weight: bolder;
     -fx-font-size: 14px;
+    -fx-pref-width: 175px;
 }
 
 .image-button:hover {
@@ -65,7 +66,6 @@
 
 .image-button-list .title {
     -fx-font-weight: bolder;
-    -fx-padding: 0px 0px 10px 0px;
     -fx-font-size: 40px;
 }
 
@@ -114,5 +114,84 @@
     -fx-font-size: 16;
     -fx-background-insets: 0 0 0 0;
     -fx-border-color: black;
+}
 
+.info-wrapper {
+    -fx-padding: 50px 100px 100px 100px;
+}
+
+.info-main-layout {
+    -fx-padding: 50px 100px 100px 100px;
+}
+
+.info-main-info {
+    -fx-padding: 0px 50px 0px 50px;
+}
+
+.info-rating {
+    -fx-text-fill: gold;
+    -fx-font-size: 20px;
+}
+
+.info-description {
+    -fx-font-family: arial;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.info-title {
+    -fx-font-family: arial;
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+    -fx-font-size: 30px;
+}
+
+.info-categories {
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+}
+
+.seasons-box {
+    -fx-padding: 100px 0 0 0;
+}
+
+.front-page-wrapper {
+    -fx-padding: 0 100px 0 100px;
+    
+}
+
+.action-button {
+    -fx-pref-width: 150px;
+    -fx-pref-height: 50px;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-width: 3 3 3 3;
+    -fx-background-insets: 0 0 0 0;
+}
+
+.playing-text {
+    -fx-font-size: 30px;
+}
+
+.playing-text-container {
+    -fx-border-width: 5px 5px 5px 5px;
+    -fx-border-color: white;
+    -fx-max-width: 400px;
+}
+
+.padded-title {
+    -fx-padding: 100px 100px 100px 100px;
+}
+
+.flow-pane-grid {
+    -fx-min-width: 1200px;
+}
+
+.grid-title {
+    -fx-font-family: arial;
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+    -fx-font-size: 50px;
+    -fx-padding: 0px 100px 0px 0px;
 }

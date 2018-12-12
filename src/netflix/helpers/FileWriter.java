@@ -20,7 +20,7 @@ public class FileWriter {
         List<Saveable> data = new ArrayList<>();
         for (Media m : media) {
             if (m instanceof Saveable) {
-                data.add((Saveable) media);
+                    data.add((Saveable) m);
             } else {
                 String className = m.getClass().getSimpleName();
                 System.err.println("Attempted to save media type " + className +  "which isn't saveable.");

@@ -1,13 +1,19 @@
 package netflix.models.media;
 
+import javafx.scene.Parent;
+import netflix.Database;
 import netflix.models.Credits;
+import netflix.models.Viewable;
+import netflix.views.content.infoview.EpisodeInfoContent;
+import netflix.views.content.infoview.MovieInfoContent;
 
+import javax.xml.crypto.Data;
 import java.util.Date;
 
 /**
  * An episode of a series
  */
-public class Episode extends VideoMedia {
+public class Episode extends VideoMedia implements Viewable {
     private Season season;
     private Series series;
 
@@ -15,6 +21,11 @@ public class Episode extends VideoMedia {
         super(id, name, description, releaseDate, categories, rating, credits, imageFileName, runtime);
         this.season = season;
         this.series = series;
+    }
+
+    @Override
+    public Parent createInfoView() {
+        return new EpisodeInfoContent(this);
     }
 
     public Season getSeason() {

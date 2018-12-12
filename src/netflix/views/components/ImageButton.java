@@ -2,13 +2,24 @@ package netflix.views.components;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import netflix.Main;
 import netflix.helpers.ImageHelper;
 import netflix.models.ImageButtonInfo;
+import netflix.models.Viewable;
 import netflix.models.media.Media;
+import netflix.models.media.Movie;
+import netflix.views.content.infoview.MediaInfoContent;
+import netflix.views.content.infoview.MovieInfoContent;
+import netflix.views.pages.ContentPage;
+
+import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class ImageButton extends Button {
 
@@ -18,7 +29,7 @@ public class ImageButton extends Button {
         this.setPrefSize(200, 250);
         this.setContentDisplay(ContentDisplay.TOP);
         this.getStyleClass().add("image-button");
-        this.setOnAction(info.getHandleAction());
+        this.setOnAction(info.getEventHandler());
         this.setText(info.getText());
         if (info.getImage() != null) {
             ImageView imageView = new ImageView(info.getImage());

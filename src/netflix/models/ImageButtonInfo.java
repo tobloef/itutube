@@ -7,12 +7,12 @@ import javafx.scene.image.Image;
 public class ImageButtonInfo {
     private String text;
     private Image image;
-    private EventHandler<ActionEvent> handleAction;
+    private EventHandler<ActionEvent> eventHandler;
 
-    public ImageButtonInfo(String text, Image image, EventHandler<ActionEvent> handleAction) {
+    public ImageButtonInfo(String text, Image image, EventHandler<ActionEvent> eventHandler) {
         this.text = text;
         this.image = image;
-        this.handleAction = handleAction;
+        this.eventHandler = eventHandler;
     }
 
 
@@ -24,7 +24,7 @@ public class ImageButtonInfo {
         return image;
     }
 
-    public EventHandler<ActionEvent> getHandleAction() {
-        return handleAction;
+    public EventHandler<ActionEvent> getEventHandler() {
+        return eventHandler;
     }
 }

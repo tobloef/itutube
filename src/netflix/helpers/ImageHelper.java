@@ -10,11 +10,11 @@ import java.util.HashMap;
 public class ImageHelper {
     private static HashMap<String, Image> cache = new HashMap<>();
 
-    public static Image getMediaImage(Media media) {
+    public static Image getMediaPoster(Media media) {
         String path = PathsHelper.getMediaImagePath(media);
         Image image = getImage(path);
         if (image == null || image.isError()) {
-            return getDefaultImage();
+            return getDefaultPoster();
         }
         return image;
     }
@@ -28,25 +28,12 @@ public class ImageHelper {
         return image;
     }
 
-    public static Image getCategoryImage(String category) {
-        String path = PathsHelper.getCategoryImagePath(category);
-        Image image = getImage(path);
-        if (image == null || image.isError()) {
-            return getDefaultCategoryImage();
-        }
-        return image;
-    }
-
-    private static Image getDefaultCategoryImage() {
-        return getImage(PathsHelper.getDefaultCategoryImagePath());
-    }
-
     private static Image getDefaultUserImage() {
         return getImage(PathsHelper.getDefaultUserImagePath());
     }
 
-    private static Image getDefaultImage() {
-        return getImage(PathsHelper.getDefaultMediaImagePath());
+    private static Image getDefaultPoster() {
+        return getImage(PathsHelper.getDefaultPosterPath());
     }
 
     private static Image getImage(String path) {
