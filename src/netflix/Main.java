@@ -20,7 +20,7 @@ public class Main extends Application {
         stage.setTitle("ITU-tube");
         // Set default view
         //ContentPage contentPage = new ContentPage(this::setPage);
-        UserSelectPage contentPage = new UserSelectPage(this::setPage, this::setActiveUser);
+        UserSelectPage contentPage = new UserSelectPage(this::setActiveUser);
         // Create scene with styles
         stage.setScene(new Scene(contentPage, 1280, 720));
         String style = getClass().getResource("style.css").toExternalForm();
@@ -35,7 +35,14 @@ public class Main extends Application {
 
     private void setActiveUser(User user) {
         this.activeUser = user;
-        // System.out.println("Active user: " + activeUser.getName()); debug code
+        changeToContent();
+    }
+
+    private void changeToContent(){
+        ContentPage contentPage = new ContentPage(this::setPage);
+        stage.setScene(new Scene(contentPage, 1280, 720));
+        String style = getClass().getResource("style.css").toExternalForm();
+        stage.getScene().getStylesheets().add(style);
     }
 
     public static void main(String[] args) {

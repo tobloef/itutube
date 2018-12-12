@@ -29,7 +29,7 @@ public class UserSelectPage extends BorderPane {
 
     private VBox wrapper;
 
-    public UserSelectPage(Consumer<Parent> setPage, Consumer<User> handleAction) {
+    public UserSelectPage(Consumer<User> handleAction) {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setFitToWidth(true);
