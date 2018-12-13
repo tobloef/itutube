@@ -7,6 +7,7 @@ import netflix.Database;
 import netflix.Main;
 import netflix.helpers.Images;
 import netflix.models.ImageButtonInfo;
+import netflix.models.User;
 import netflix.views.components.DialogBox;
 import netflix.views.components.ImageButtonGrid;
 
@@ -23,7 +24,10 @@ public class UserSelectPage extends ScrollPane {
         // User list
         List<ImageButtonInfo> imageButtonInfos = usersToImageButtonInfos(Database.getUsers());
         imageButtonInfos.add(new ImageButtonInfo("Add User", Images.getAddUserImage(), e -> {
-            Database.addUser(DialogBox.display());
+            User newUser = DialogBox.display();
+            if(!newUser.getName().equals("") && newUser.getType() != null) {
+                Database.addUser(newUser);
+            }
             Main.setPage(new UserSelectPage());
         }));
         Parent usersView = new ImageButtonGrid("Select User", imageButtonInfos);

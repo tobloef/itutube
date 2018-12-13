@@ -113,7 +113,6 @@ public abstract class MediaInfoContent extends ContentPage {
         mainInfo.getStyleClass().add("info-main-info");
         title.getStyleClass().add("info-title");
         rating.getStyleClass().add("info-rating");
-        rating.getStyleClass().add("info-categories");
         description.getStyleClass().add("info-description");
 
         return mainLayout;
