@@ -1,6 +1,6 @@
 package netflix.views.pages;
 
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -11,10 +11,14 @@ import netflix.Main;
 import netflix.helpers.ImageHelper;
 import netflix.models.ImageButtonInfo;
 import netflix.models.User;
+import netflix.views.components.ActionButton;
+import netflix.views.components.DialogBox;
 import netflix.views.components.ImageButtonList;
 
+import javax.naming.Context;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 // TODO
 
@@ -26,12 +30,12 @@ public class UserSelectPage extends BorderPane {
     public UserSelectPage() {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        VBox stack = new VBox();
         scrollPane.setFitToWidth(true);
-        StackPane centering = new StackPane();
-        this.setCenter(centering);
+        this.setCenter(stack);
         ImageButtonList imageButtonList = new ImageButtonList("Select User:", userListToImageButtonInfoList(Database.getUsers()));
         scrollPane.setContent(imageButtonList);
-        centering.getChildren().add(scrollPane);
+        stack.getChildren().add(scrollPane);
     }
 
     private static List<ImageButtonInfo> userListToImageButtonInfoList(List<User> userList) {
@@ -44,6 +48,10 @@ public class UserSelectPage extends BorderPane {
                 Main.setPage(new FrontPage());
             }));
         }
+        infoList.add(new ImageButtonInfo("add", ImageHelper.getMediaPoster(null), e -> {
+            Database.addUser(DialogBox.display());
+            Main.setPage(new UserSelectPage());
+        }));
         return infoList;
     }
 }
