@@ -29,7 +29,7 @@ public class HeaderController {
 
     public static void handleMyListClick() {
         List<Media> mediaInList = Main.getActiveUser().getFavoritesList();
-        String name = nameToPossessiveForm(Main.getActiveUser().getName());
+        String name = nameToPossessiveForm(Main.getActiveUser().getName()) + " List";
         Main.setPage(new MediaGridPage(name, mediaInList, Actions::setMediaInfoContent, true));
     }
 
