@@ -18,10 +18,10 @@ public class FileParser {
         // Try to read the file
         String className = User.class.getSimpleName();
         Path path = java.nio.file.Paths.get(Paths.getDataFilePath(className));
-        Scanner s = new Scanner(path);
+        Scanner scanner = new Scanner(path);
         // Parse the lines in the file
-        while (s.hasNext()) {
-            String userLine = s.nextLine();
+        while (scanner.hasNext()) {
+            String userLine = scanner.nextLine();
             String[] properties = userLine.split(";");
             String name = properties[0];
             UserType type = UserType.valueOf(properties[1]);

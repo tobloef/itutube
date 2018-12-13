@@ -35,13 +35,13 @@ public class User implements Saveable {
     }
 
     public void addMediaToFavorites(Media media) {
-        favoritesList.add(media);
+        if (favoritesList.stream().noneMatch(m -> m.getId().equals(media.getId()))) {
+            favoritesList.add(media);
+        }
     }
 
     public void removeMediaFromFavorites(Media media) {
-        if (this.favoritesList.contains(media)) {
-            favoritesList.remove(media);
-        }
+        favoritesList.removeIf(m -> m.getId().equals(media.getId()));
     }
 
 

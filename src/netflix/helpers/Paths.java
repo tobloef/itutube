@@ -4,12 +4,12 @@ import netflix.models.User;
 import netflix.models.media.Media;
 
 public class Paths {
+    public static final String DefaultMediaImage = "src/resources/posters/default.jpg";
+    public static final String DefaultUserImage = "src/resources/userImages/ProfilePicture.png";
+    public static final String AddUserImage = "src/resources/AddUser.png";
+
     public static String getDataFilePath(String dataType) {
         return "src/resources/" + dataType + ".txt";
-    }
-
-    public static String getDefaultMediaImagePath() {
-        return "src/resources/posters/default.jpg";
     }
 
     public static String getMediaImagePath(Media media) {
@@ -27,14 +27,6 @@ public class Paths {
         }
         String userName = user.getName();
         return "src/resources/userImages/" + userName + ".png";
-    }
-
-    public static String getDefaultUserImagePath() {
-        return "src/resources/userImages/ProfilePicture.png";
-    }
-
-    public static String getAddUserImagePath() {
-        return "src/resources/userImages/add-user-male.png";
     }
 
     public static String getCategoryImagePath(String category) {

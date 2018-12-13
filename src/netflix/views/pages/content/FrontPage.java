@@ -2,7 +2,7 @@ package netflix.views.pages.content;
 
 import javafx.scene.layout.VBox;
 import netflix.Database;
-import netflix.helpers.Actions;
+import netflix.helpers.MediaActions;
 import netflix.models.MediaList;
 import netflix.views.components.MediaButtonList;
 import netflix.views.pages.ContentPage;
@@ -21,7 +21,7 @@ public class FrontPage extends ContentPage {
             MediaButtonList mediaButtonList = new MediaButtonList(
                 list.getName(),
                 list.getMedia(),
-                Actions::setMediaInfoContent
+                MediaActions::setMediaInfoContent
             );
             content.getChildren().add(mediaButtonList);
         }

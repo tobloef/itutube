@@ -32,17 +32,17 @@ public class MediaSorting {
         return results;
     }
 
-    public static List<Media> findByCategory(String category, List<Media> list) {
+    public static List<Media> findByCategory(String category, List<Media> mediaList) {
         ArrayList<Media> results = new ArrayList<>();
-        for(Media m : list) {
-            if(Arrays.asList(m.getCategories()).contains(category)) {
-                results.add(m);
+        for (Media media : mediaList) {
+            if (Arrays.asList(media.getCategories()).contains(category)) {
+                results.add(media);
             }
         }
         return results;
     }
 
-    public static List<Media> sortByRating(List<Media> list){
+    public static List<Media> sortByRating(List<Media> list) {
         List<Media> results = new ArrayList<>(list);
         results.sort(new SortByRating());
         return results;
@@ -50,23 +50,12 @@ public class MediaSorting {
 
     public static List<Media> findByType(Class<? extends Media> type, List<Media> list) {
         List<Media> results = new ArrayList<>();
-        for(Media m : list) {
-            if(m.getClass() == type) {
+        for (Media m : list) {
+            if (m.getClass() == type) {
                 results.add(m);
             }
         }
         return results;
-    }
-
-    public static List<ImageButtonInfo> getListAsImageButtonInfoList(List<Media> list) {
-        List<ImageButtonInfo> buttonInfos = new ArrayList<>();
-        for(Media m : list) {
-            if(m instanceof Viewable) {
-                Viewable viewable = (Viewable) m;
-                buttonInfos.add(new ImageButtonInfo(m.getName(), Images.getMediaImage(m), e -> Main.setPage(viewable.createInfoView())));
-            }
-        }
-        return buttonInfos;
     }
 
     static class SortByRating implements Comparator<Media> {

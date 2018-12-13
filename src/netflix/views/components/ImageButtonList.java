@@ -1,6 +1,7 @@
 package netflix.views.components;
 
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,25 +22,29 @@ public class ImageButtonList extends VBox {
         // The list's content
         HBox wrapper = new HBox();
         if (items != null && items.size() > 0) {
-            // Scrollable content
-            ScrollPane scrollPane = new ScrollPane();
-            scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-            scrollPane.setFitToHeight(true);
-            HBox content = new HBox(20);
-            for (ImageButtonInfo item : items) {
-                ImageButton button = new ImageButton(item);
-                content.getChildren().add(button);
-            }
-            scrollPane.setContent(content);
-            scrollPane.setFitToHeight(true);
-            wrapper.getChildren().add(scrollPane);
+            wrapper.getChildren().add(createScrollList(items));
         } else {
             // Empty list message
-            wrapper.setAlignment(Pos.CENTER);
             Text text = new Text("This list is empty");
             text.getStyleClass().add("empty-message");
+            wrapper.setAlignment(Pos.CENTER);
             wrapper.getChildren().add(text);
         }
         this.getChildren().add(wrapper);
+    }
+
+    private Parent createScrollList(List<ImageButtonInfo> items) {
+        // Scrollable content
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setFitToHeight(true);
+        HBox content = new HBox(20);
+        for (ImageButtonInfo item : items) {
+            ImageButton button = new ImageButton(item);
+            content.getChildren().add(button);
+        }
+        scrollPane.setContent(content);
+        scrollPane.setFitToHeight(true);
+        return scrollPane;
     }
 }
