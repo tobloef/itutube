@@ -6,13 +6,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import netflix.Database;
 import netflix.Main;
-import netflix.helpers.MediaListHelper;
-import netflix.models.ImageButtonInfo;
+import netflix.helpers.Actions;
+import netflix.helpers.MediaSorting;
 import netflix.models.media.Media;
-import netflix.views.pages.ImageButtonGrid;
-import sun.plugin.dom.stylesheets.MediaList;
+import netflix.views.pages.content.MediaGridPage;
 
-import javax.naming.directory.SearchControls;
 import java.util.List;
 
 public class SearchBar extends HBox {
@@ -34,8 +32,9 @@ public class SearchBar extends HBox {
 
         button.setOnAction(e -> {
             String query = textField.getText();
-            List<Media> searchResults = MediaListHelper.findBySearch(query, Database.getAllMedia());
-            Main.setPage(new ImageButtonGrid(searchResults.size() + " results for: \"" + query + "\"", MediaListHelper.getListAsImageButtonInfoList(searchResults)));
+            List<Media> results = MediaSorting.findBySearch(query, Database.getAllMedia());
+            String title = results.size() + " results for: \"" + query + "\"";
+            Main.setPage(new MediaGridPage(title, results, Actions::setMediaInfoContent, false));
         });
     }
 }

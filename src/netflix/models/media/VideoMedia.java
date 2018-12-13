@@ -1,14 +1,11 @@
 package netflix.models.media;
 
 import javafx.scene.Parent;
-import netflix.Main;
 import netflix.models.Credits;
 import netflix.models.Playable;
-import netflix.models.Viewable;
 import netflix.views.pages.PlayerPage;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.awt.*;
 import java.util.Date;
 import java.util.Random;
 

@@ -3,12 +3,12 @@ package netflix.helpers;
 import netflix.models.User;
 import netflix.models.media.Media;
 
-public class PathsHelper {
+public class Paths {
     public static String getDataFilePath(String dataType) {
         return "src/resources/" + dataType + ".txt";
     }
 
-    public static String getDefaultPosterPath() {
+    public static String getDefaultMediaImagePath() {
         return "src/resources/posters/default.jpg";
     }
 
@@ -30,6 +30,10 @@ public class PathsHelper {
     }
 
     public static String getDefaultUserImagePath() {
-        return "src/resources/userimages/ProfilePicture.png";
+        return "src/resources/userImages/ProfilePicture.png";
+    }
+
+    public static String getCategoryImagePath(String category) {
+        return "src/resources/categoryImages/" + category + ".jpg";
     }
 }

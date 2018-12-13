@@ -7,6 +7,7 @@ import netflix.Main;
 import netflix.models.Playable;
 import netflix.models.media.Media;
 import netflix.views.components.ActionButton;
+import netflix.views.pages.content.FrontPage;
 
 public class PlayerPage extends StackPane {
 

@@ -6,9 +6,12 @@
     -fx-text-fill: white;
 }
 
-.root * {
-    -fx-background: inherit;
-    -fx-background-color: inherit;
+.root VBox,
+.root HBox,
+.root BorderPane,
+.root ScrollPane {
+    -fx-background: rgb(25, 25, 25);
+    -fx-background-color: rgb(25, 25, 25);
 }
 
 .root .hyperlink {
@@ -24,12 +27,17 @@
     -fx-font-size: 14px;
 }
 
-.content-wrapper {
+.center {
     -fx-alignment: center;
 }
 
+.title {
+    -fx-font-weight: bolder;
+    -fx-font-size: 40px;
+}
+
 .content-wrapper > * {
-    -fx-max-width: 1000px;
+    -fx-max-width: 1120px;
     -fx-padding: 20px;
 }
 
@@ -64,11 +72,6 @@
     -fx-background-color: rgba(255,255,255,0.2);
 }
 
-.image-button-list .title {
-    -fx-font-weight: bolder;
-    -fx-font-size: 40px;
-}
-
 .image-button-list .empty-message {
     -fx-font-weight: bolder;
     -fx-font-size: 26px;
@@ -93,11 +96,14 @@
     -fx-height: 100%;
 }
 
+.header > * {
+    -fx-padding: 10px 10px;
+}
+
 .header .header-button {
     -fx-font-size: 16pt;
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
-    -fx-padding: 10px 10px;
 }
 
 .header .header-button:hover {
@@ -155,14 +161,9 @@
     -fx-padding: 100px 0 0 0;
 }
 
-.front-page-wrapper {
-    -fx-padding: 0 100px 0 100px;
-    
-}
-
 .action-button {
-    -fx-pref-width: 150px;
-    -fx-pref-height: 50px;
+    -fx-min-width: 150px;
+    -fx-min-height: 50px;
     -fx-font-size: 20px;
     -fx-text-fill: white;
     -fx-border-color: white;
@@ -180,18 +181,34 @@
     -fx-max-width: 400px;
 }
 
-.padded-title {
-    -fx-padding: 100px 100px 100px 100px;
+.image-button-grid {
+
 }
 
-.flow-pane-grid {
-    -fx-min-width: 1200px;
+.image-button-grid.center FlowPane {
+    -fx-alignment: center;
 }
 
-.grid-title {
-    -fx-font-family: arial;
-    -fx-font-weight: bolder;
-    -fx-text-fill: white;
-    -fx-font-size: 50px;
-    -fx-padding: 0px 100px 0px 0px;
+.title-wrapper {
+    -fx-padding: 0px 0px 20px 0px;
+}
+
+.image-button-grid.center .title-wrapper {
+    -fx-alignment: center;
+}
+
+.user-select-wrapper {
+    -fx-padding: 100px;
+}
+
+.user-select-wrapper > * {
+    -fx-max-width: 1000px;
+}
+
+.user-select-wrapper .image-button-grid FlowPane {
+    -fx-padding: 30px 0px 0px 0px;
+}
+
+.front-page-content {
+    -fx-padding: 50px 0px 50px 0px;
 }

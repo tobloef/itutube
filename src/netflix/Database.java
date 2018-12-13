@@ -1,7 +1,7 @@
 package netflix;
 
 import netflix.exceptions.UsernameTakenException;
-import netflix.helpers.FakeDataHelper;
+import netflix.helpers.FakeData;
 import netflix.helpers.FileParser;
 import netflix.helpers.FileWriter;
 import netflix.models.MediaList;
@@ -54,7 +54,7 @@ public final class Database {
 
     public static List<MediaList> getFeaturedLists() {
         // TODO: Load this from a file
-        return FakeDataHelper.generateFakeFeaturedLists(getAllMedia());
+        return FakeData.generateFakeFeaturedLists(getAllMedia());
     }
 
     /**

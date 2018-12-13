@@ -1,57 +1,41 @@
 package netflix.views.pages;
 
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.Parent;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import netflix.Database;
 import netflix.Main;
-import netflix.helpers.ImageHelper;
+import netflix.helpers.Images;
 import netflix.models.ImageButtonInfo;
-import netflix.models.User;
-import netflix.views.components.ActionButton;
 import netflix.views.components.DialogBox;
-import netflix.views.components.ImageButtonList;
+import netflix.views.components.ImageButtonGrid;
 
-import javax.naming.Context;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-// TODO
+import static netflix.helpers.ImageButtonInfoHelper.usersToImageButtonInfos;
 
 /**
  * Page for selecting with user to use
  */
-public class UserSelectPage extends BorderPane {
+public class UserSelectPage extends ScrollPane {
 
     public UserSelectPage() {
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        VBox stack = new VBox();
-        scrollPane.setFitToWidth(true);
-        this.setCenter(stack);
-        ImageButtonList imageButtonList = new ImageButtonList("Select User:", userListToImageButtonInfoList(Database.getUsers()));
-        scrollPane.setContent(imageButtonList);
-        stack.getChildren().add(scrollPane);
-    }
-
-    private static List<ImageButtonInfo> userListToImageButtonInfoList(List<User> userList) {
-        List<ImageButtonInfo> infoList = new ArrayList<>();
-        for (User user : userList) {
-            String text = user.getName();
-            Image image = ImageHelper.getUserImage(user);
-            infoList.add(new ImageButtonInfo(text, image, e -> {
-                Main.setActiveUser(user);
-                Main.setPage(new FrontPage());
-            }));
-        }
-        infoList.add(new ImageButtonInfo("add", ImageHelper.getMediaPoster(null), e -> {
+        // User list
+        List<ImageButtonInfo> imageButtonInfos = usersToImageButtonInfos(Database.getUsers());
+        imageButtonInfos.add(new ImageButtonInfo("Add User", Images.getMediaImage(null), e -> {
             Database.addUser(DialogBox.display());
             Main.setPage(new UserSelectPage());
         }));
-        return infoList;
+        Parent usersView = new ImageButtonGrid("Select User", imageButtonInfos);
+        usersView.getStyleClass().add("center");
+        // Wrapper
+        VBox wrapper = new VBox();
+        wrapper.getStyleClass().add("user-select-wrapper");
+        wrapper.getStyleClass().add("center");
+        wrapper.getChildren().add(usersView);
+        wrapper.setFillWidth(true);
+
+        this.setFitToWidth(true);
+        this.setContent(wrapper);
     }
 }

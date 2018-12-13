@@ -1,24 +1,19 @@
-package netflix.views.content.infoview;
+package netflix.views.pages.content;
 
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import netflix.helpers.ImageHelper;
-import netflix.models.ImageButtonInfo;
-import netflix.models.MediaList;
-import netflix.models.media.*;
-import netflix.views.components.ImageButton;
+import netflix.helpers.Actions;
+import netflix.models.media.Media;
+import netflix.models.media.Season;
+import netflix.models.media.Series;
 import netflix.views.components.MediaButtonList;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SeriesInfoContent extends MediaInfoContent {
 
     public SeriesInfoContent(Series series) {
         super(series, getSeasonsPreview(series));
-
-
     }
 
     private static VBox getSeasonsPreview(Series series) {
@@ -27,7 +22,7 @@ public class SeriesInfoContent extends MediaInfoContent {
 
         for(Season s : series.getSeasons()) {
             List<Media> episodes = new ArrayList<>(s.getEpisodes());
-            MediaButtonList buttonList = new MediaButtonList(new MediaList(s.getName(), episodes));
+            MediaButtonList buttonList = new MediaButtonList(s.getName(), episodes, Actions::setMediaInfoContent);
             seasons.getChildren().add(buttonList);
         }
 

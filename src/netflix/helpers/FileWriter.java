@@ -7,7 +7,6 @@ import netflix.models.media.Media;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -51,7 +50,7 @@ public class FileWriter {
             dataMap.get(className).add(saveable.getSaveString());
         }
         for (HashMap.Entry<String, List<String>> entry : dataMap.entrySet()) {
-            Path path = Paths.get(PathsHelper.getDataFilePath(entry.getKey()));
+            Path path = java.nio.file.Paths.get(Paths.getDataFilePath(entry.getKey()));
             Files.write(path, entry.getValue());
         }
     }

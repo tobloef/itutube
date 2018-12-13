@@ -3,25 +3,33 @@ package netflix.views.pages;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import netflix.Database;
-import netflix.models.MediaList;
 import netflix.views.Header;
-import netflix.views.content.FrontPageContent;
-
-import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * A page with a header and some main content
  */
 public class ContentPage extends BorderPane {
 
+    private VBox wrapper;
+
     public ContentPage() {
         // Initialize header
         Header header = new Header();
         this.setTop(header);
+        // Wrapper
+        wrapper = new VBox();
+        wrapper.getStyleClass().add("content-wrapper");
+        wrapper.getStyleClass().add("center");
+        // Scroll pane
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToWidth(true);
+        scrollPane.setContent(wrapper);
+        this.setCenter(scrollPane);
     }
 
+    protected void setContent(Parent content) {
+        wrapper.getChildren().clear();
+        wrapper.getChildren().add(content);
+    }
 }
