@@ -32,16 +32,6 @@ public class MediaSorting {
         return results;
     }
 
-    public static List<Media> findByCategory(String category, List<Media> mediaList) {
-        ArrayList<Media> results = new ArrayList<>();
-        for (Media media : mediaList) {
-            if (Arrays.asList(media.getCategories()).contains(category)) {
-                results.add(media);
-            }
-        }
-        return results;
-    }
-
     public static List<Media> sortByRating(List<Media> list) {
         List<Media> results = new ArrayList<>(list);
         results.sort(new SortByRating());

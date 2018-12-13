@@ -1,13 +1,15 @@
 package netflix.views.pages;
 
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import netflix.Database;
 import netflix.Main;
 import netflix.helpers.Images;
 import netflix.models.ImageButtonInfo;
-import netflix.views.components.AddUserDialog;
+import netflix.models.User;
+import netflix.views.components.CreateUserDialog;
 import netflix.views.components.ImageButtonGrid;
 
 import java.util.List;
@@ -23,7 +25,15 @@ public class UserSelectPage extends ScrollPane {
         // User list
         List<ImageButtonInfo> imageButtonInfos = usersToImageButtonInfos(Database.getUsers());
         imageButtonInfos.add(new ImageButtonInfo("Add User", Images.getAddUserImage(), e -> {
-            Database.addUser(AddUserDialog.display());
+            User newUser = CreateUserDialog.display();
+            if (!newUser.getName().equals("") && newUser.getType() != null) {
+                Database.addUser(newUser);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Can't create user");
+                alert.setContentText("The user couldn't be added. Please try again with the correct info.");
+                alert.showAndWait();
+            }
             Main.setPage(new UserSelectPage());
         }));
         Parent usersView = new ImageButtonGrid("Select User", imageButtonInfos);

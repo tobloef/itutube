@@ -14,7 +14,7 @@ import netflix.models.User;
 import netflix.models.UserType;
 
 
-public class AddUserDialog {
+public class CreateUserDialog {
 
     public static User display() {
         Stage window = new Stage();
