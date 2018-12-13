@@ -40,11 +40,11 @@ public class Season extends Media {
         return episodes;
     }
 
-    public Series getSeries() {
-        return series;
-    }
-
     public void setEpisodes(List<Episode> episodes) {
         this.episodes = episodes;
+    }
+
+    public Series getSeries() {
+        return series;
     }
 }

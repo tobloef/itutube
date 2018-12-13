@@ -61,12 +61,12 @@ public class Series extends Media implements Saveable, Viewable {
         return seasons;
     }
 
-    public Date getEndDate() {
-        return endDate;
-    }
-
     public void setSeasons(Season[] seasons) {
         this.seasons = seasons;
+    }
+
+    public Date getEndDate() {
+        return endDate;
     }
 
     @Override
