@@ -1,9 +1,15 @@
 package netflix.helpers;
 
 import javafx.scene.image.Image;
+import netflix.Database;
+import netflix.Main;
 import netflix.models.ImageButtonInfo;
 import netflix.models.MediaList;
+import netflix.models.User;
 import netflix.models.media.Media;
+import netflix.views.components.DialogBox;
+import netflix.views.pages.UserSelectPage;
+import netflix.views.pages.content.FrontPage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,5 +54,18 @@ public class ImageButtonInfoHelper {
             categories.add(category);
         }
         return categories;
+    }
+
+    public static List<ImageButtonInfo> usersToImageButtonInfos(List<User> users) {
+        List<ImageButtonInfo> infos = new ArrayList<>();
+        for (User user : users) {
+            String text = user.getName();
+            Image image = Images.getUserImage(user);
+            infos.add(new ImageButtonInfo(text, image, e -> {
+                Main.setActiveUser(user);
+                Main.setPage(new FrontPage());
+            }));
+        }
+        return infos;
     }
 }
