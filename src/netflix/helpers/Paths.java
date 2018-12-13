@@ -26,11 +26,15 @@ public class Paths {
             return null;
         }
         String userName = user.getName();
-        return "src/resources/usersImages/" + userName + ".jpg";
+        return "src/resources/userImages/" + userName + ".png";
     }
 
     public static String getDefaultUserImagePath() {
         return "src/resources/userImages/ProfilePicture.png";
+    }
+
+    public static String getAddUserImagePath() {
+        return "src/resources/userImages/add-user-male.png";
     }
 
     public static String getCategoryImagePath(String category) {

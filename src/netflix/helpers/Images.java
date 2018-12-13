@@ -41,6 +41,10 @@ public class Images {
         return getImage(Paths.getDefaultUserImagePath());
     }
 
+    public static Image getAddUserImage(){
+        return getImage(Paths.getAddUserImagePath());
+    }
+
     private static Image getDefaultMediaImage() {
         return getImage(Paths.getDefaultMediaImagePath());
     }
