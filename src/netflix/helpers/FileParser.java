@@ -26,12 +26,10 @@ public class FileParser {
             String name = properties[0];
             UserType type = UserType.valueOf(properties[1]);
             ArrayList<Media> favoritesList = new ArrayList<>();
-            if(properties[2] != null) {
-                String[] favoriteIds = trimArray(properties[2].split(","));
-                for (String id : favoriteIds) {
-                    if (mediaMap.containsKey(id)) {
-                        favoritesList.add(mediaMap.get(id));
-                    }
+            String[] favoriteIds = trimArray(properties[2].split(","));
+            for (String id : favoriteIds) {
+                if (mediaMap.containsKey(id)) {
+                    favoritesList.add(mediaMap.get(id));
                 }
             }
             newUsers.add(new User(name, type, favoritesList));
