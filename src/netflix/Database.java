@@ -1,6 +1,7 @@
 package netflix;
 
 import netflix.exceptions.UsernameTakenException;
+import netflix.exceptions.NoSuchIDException;
 import netflix.helpers.FakeData;
 import netflix.helpers.FileParser;
 import netflix.helpers.FileWriter;
@@ -30,7 +31,7 @@ public final class Database {
         if (mediaMap.containsKey(id)) {
             return mediaMap.get(id);
         }
-        return null;
+        throw new NoSuchIDException(id);
     }
 
     /**
