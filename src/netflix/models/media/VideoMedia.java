@@ -28,6 +28,9 @@ public abstract class VideoMedia extends Media implements Playable {
     public String getMediaContent() {
         Random r = new Random();
         int rand = r.nextInt(0xffffff + 1);
+
+        // Text formatting: Generates random 6-digit hex-number, starting with a '#', using 6 random numbers from
+        // 0 to f, inserting leading zeros if the number is below 6 digits.
         return String.format("#%06x", rand);
     }
 
