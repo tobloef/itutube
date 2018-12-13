@@ -28,7 +28,7 @@ public class FileWriter {
         try {
             saveData(data);
         } catch (Exception exception) {
-            System.err.println("Error saving media:" + exception.getMessage());
+            System.err.println("Error saving media: " + exception.getMessage());
         }
     }
 
@@ -36,7 +36,7 @@ public class FileWriter {
         try {
             saveData(users);
         } catch (Exception exception) {
-            System.err.println("Error saving users:" + exception.getMessage());
+            System.err.println("Error saving users: " + exception.getMessage());
         }
     }
 

@@ -24,9 +24,9 @@ public class CreateUserDialog {
         window.setHeight(175);
         window.initStyle(StageStyle.UTILITY);
 
-        Label title = new Label("Add User:");
+        Label title = new Label("Add User: ");
         Label name = new Label("Name: ");
-        Label type = new Label("Type:");
+        Label type = new Label("Type: ");
 
         TextField nameField = new TextField();
 
