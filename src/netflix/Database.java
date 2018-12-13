@@ -1,5 +1,6 @@
 package netflix;
 
+import netflix.exceptions.NoSuchIDException;
 import netflix.exceptions.UsernameTakenException;
 import netflix.helpers.FakeData;
 import netflix.helpers.FileParser;
@@ -20,9 +21,9 @@ public final class Database {
     private static List<User> users = new ArrayList<>();
 
 
-
     /**
      * Get a netflix.media.Media by its ID.
+     *
      * @param id Id of the media
      * @return netflix.media.Media with the ID, otherwise null
      */
@@ -30,11 +31,12 @@ public final class Database {
         if (mediaMap.containsKey(id)) {
             return mediaMap.get(id);
         }
-        return null;
+        throw new NoSuchIDException(id);
     }
 
     /**
      * Get all media in the database as a list
+     *
      * @return List of all media
      */
     public static List<Media> getAllMedia() {
@@ -46,6 +48,7 @@ public final class Database {
 
     /**
      * Get all users in the database;
+     *
      * @return List of all users
      */
     public static List<User> getUsers() {
@@ -59,10 +62,11 @@ public final class Database {
 
     /**
      * Add a new user to the database
+     *
      * @param user The user to add
      */
     public static void addUser(User user) {
-        for (User existingUser : users){
+        for (User existingUser : users) {
             // Checks if user already exists before adding to list
             if (existingUser.getName().equals(user.getName())) {
                 throw new UsernameTakenException(user.getName());
@@ -108,7 +112,7 @@ public final class Database {
         }
         // Return Id/Media map
         HashMap<String, Media> newMediaMap = new HashMap<>();
-        for(Media m : allMedia) {
+        for (Media m : allMedia) {
             newMediaMap.put(m.getId(), m);
         }
         return newMediaMap;

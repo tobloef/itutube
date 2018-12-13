@@ -14,7 +14,7 @@ import netflix.models.User;
 import netflix.models.UserType;
 
 
-public class DialogBox {
+public class CreateUserDialog {
 
     public static User display() {
         Stage window = new Stage();
@@ -24,9 +24,9 @@ public class DialogBox {
         window.setHeight(175);
         window.initStyle(StageStyle.UTILITY);
 
-        Label title = new Label("Add User:");
+        Label title = new Label("Add User: ");
         Label name = new Label("Name: ");
-        Label type = new Label("Type:");
+        Label type = new Label("Type: ");
 
         TextField nameField = new TextField();
 

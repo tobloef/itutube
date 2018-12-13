@@ -38,7 +38,7 @@ public class MediaGridPage extends ImageGridPage {
             // Add category button
             HBox titleWrapper = this.grid.getTitleWrapper();
             if (titleWrapper == null) {
-                System.err.println("Error finding title wrapper.");
+                System.err.println("Error finding title wrapper, can't add category filter button.");
             } else {
                 Region filler = new Region();
                 HBox.setHgrow(filler, Priority.ALWAYS);

@@ -19,16 +19,16 @@ public class FileWriter {
         List<Saveable> data = new ArrayList<>();
         for (Media m : media) {
             if (m instanceof Saveable) {
-                    data.add((Saveable) m);
+                data.add((Saveable) m);
             } else {
                 String className = m.getClass().getSimpleName();
-                System.err.println("Attempted to save media type " + className +  "which isn't saveable.");
+                System.err.println("Attempted to save media type " + className + "which isn't saveable.");
             }
         }
         try {
             saveData(data);
         } catch (Exception exception) {
-            System.err.println("Error saving media:" + exception.getMessage());
+            System.err.println("Error saving media: " + exception.getMessage());
         }
     }
 
@@ -36,7 +36,7 @@ public class FileWriter {
         try {
             saveData(users);
         } catch (Exception exception) {
-            System.err.println("Error saving users:" + exception.getMessage());
+            System.err.println("Error saving users: " + exception.getMessage());
         }
     }
 

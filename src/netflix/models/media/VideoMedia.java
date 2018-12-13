@@ -15,8 +15,27 @@ import java.util.Random;
 public abstract class VideoMedia extends Media implements Playable {
     protected int runtime;
 
-    public VideoMedia(String id, String name, String description, Date releaseDate, String[] categories, double rating, Credits[] credits, String imageFileName, int runtime) {
-        super(id, name, description, releaseDate, categories, rating, credits, imageFileName);
+    public VideoMedia(
+            String id,
+            String name,
+            String description,
+            Date releaseDate,
+            String[] categories,
+            double rating,
+            Credits[] credits,
+            String imageFileName,
+            int runtime
+    ) {
+        super(
+                id,
+                name,
+                description,
+                releaseDate,
+                categories,
+                rating,
+                credits,
+                imageFileName
+        );
         this.runtime = runtime;
     }
 

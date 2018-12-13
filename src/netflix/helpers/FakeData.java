@@ -19,7 +19,7 @@ public class FakeData {
 
     public static Credits[] generateFakeCredits() {
         ArrayList<Credits> creditsList = new ArrayList<>();
-        for(String s : fakeRoles) {
+        for (String s : fakeRoles) {
             ArrayList<String> people = new ArrayList<>();
             Random r = new Random();
             for (String p : fakeNames) {
@@ -59,7 +59,7 @@ public class FakeData {
      */
     public static double generateFakeRating() {
         Random r = new Random();
-        return (double) Math.round(r.nextDouble() * 100)/10;
+        return (double) Math.round(r.nextDouble() * 100) / 10;
     }
 
     /**
@@ -81,7 +81,7 @@ public class FakeData {
     public static List<Media> generateRandomListOfMedia(List<Media> media, int min, int max) {
         List<Media> listOfMedia = new ArrayList<>();
         Random rand = new Random();
-        int amount = min + new Random().nextInt(max-min+1);
+        int amount = min + new Random().nextInt(max - min + 1);
         for (int i = 0; i < amount; i++) {
             if (media.size() == 0) {
                 continue;

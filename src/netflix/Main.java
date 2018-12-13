@@ -48,5 +48,7 @@ public class Main extends Application {
         return activeUser;
     }
 
-    public static void setActiveUser(User user) {Main.activeUser = user;}
+    public static void setActiveUser(User user) {
+        Main.activeUser = user;
+    }
 }

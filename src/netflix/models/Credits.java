@@ -14,6 +14,7 @@ public class Credits {
 
     /**
      * Get the title of the credited people's role
+     *
      * @return Title of the job position
      */
     public String getTitle() {
@@ -22,6 +23,7 @@ public class Credits {
 
     /**
      * Get the names of the credited people
+     *
      * @return Names of credited people
      */
     public String[] getPeople() {

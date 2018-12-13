@@ -1,5 +1,4 @@
 package netflix.exceptions;
-
 /**
  * Exception thrown when a username already exists in the database.
  */

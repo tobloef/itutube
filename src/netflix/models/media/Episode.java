@@ -14,8 +14,30 @@ public class Episode extends VideoMedia implements Viewable {
     private Season season;
     private Series series;
 
-    public Episode(String id, String name, String description, Date releaseDate, String[] categories, double rating, Credits[] credits, String imageFileName, int runtime, Season season, Series series) {
-        super(id, name, description, releaseDate, categories, rating, credits, imageFileName, runtime);
+    public Episode(
+            String id,
+            String name,
+            String description,
+            Date releaseDate,
+            String[] categories,
+            double rating,
+            Credits[] credits,
+            String imageFileName,
+            int runtime,
+            Season season,
+            Series series
+    ) {
+        super(
+                id,
+                name,
+                description,
+                releaseDate,
+                categories,
+                rating,
+                credits,
+                imageFileName,
+                runtime
+        );
         this.season = season;
         this.series = series;
     }

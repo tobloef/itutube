@@ -35,20 +35,20 @@ public class User implements Saveable {
     }
 
     public void addMediaToFavorites(Media media) {
-        favoritesList.add(media);
+        if (favoritesList.stream().noneMatch(m -> m.getId().equals(media.getId()))) {
+            favoritesList.add(media);
+        }
     }
 
     public void removeMediaFromFavorites(Media media) {
-        if (this.favoritesList.contains(media)) {
-            favoritesList.remove(media);
-        }
+        favoritesList.removeIf(m -> m.getId().equals(media.getId()));
     }
 
 
     @Override
     public String getSaveString() {
         String[] idArray = new String[favoritesList.size()];
-        for(int i = 0; i < favoritesList.size(); i++) {
+        for (int i = 0; i < favoritesList.size(); i++) {
             idArray[i] = favoritesList.get(i).getId();
         }
         String idString = String.join(",", idArray);

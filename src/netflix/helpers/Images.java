@@ -37,19 +37,19 @@ public class Images {
         return image;
     }
 
-    private static Image getDefaultUserImage() {
-        return getImage(Paths.getDefaultUserImagePath());
+    public static Image getDefaultUserImage() {
+        return getImage(Paths.DefaultUserImage);
     }
 
-    public static Image getAddUserImage(){
-        return getImage(Paths.getAddUserImagePath());
+    public static Image getAddUserImage() {
+        return getImage(Paths.AddUserImage);
     }
 
-    private static Image getDefaultMediaImage() {
-        return getImage(Paths.getDefaultMediaImagePath());
+    public static Image getDefaultMediaImage() {
+        return getImage(Paths.DefaultMediaImage);
     }
 
-    private static Image getImage(String path) {
+    public static Image getImage(String path) {
         if (path == null) {
             return null;
         }
