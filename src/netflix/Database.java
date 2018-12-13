@@ -1,7 +1,7 @@
 package netflix;
 
-import netflix.exceptions.UsernameTakenException;
 import netflix.exceptions.NoSuchIDException;
+import netflix.exceptions.UsernameTakenException;
 import netflix.helpers.FakeData;
 import netflix.helpers.FileParser;
 import netflix.helpers.FileWriter;

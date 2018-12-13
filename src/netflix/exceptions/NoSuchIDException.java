@@ -1,6 +1,6 @@
 package netflix.exceptions;
 
-public class NoSuchIDException extends RuntimeException{
+public class NoSuchIDException extends RuntimeException {
     private String id;
 
     public NoSuchIDException(String id) {

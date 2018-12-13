@@ -4,16 +4,11 @@ import netflix.exceptions.NoSuchIDException;
 import netflix.exceptions.UsernameTakenException;
 import netflix.models.User;
 import netflix.models.UserType;
-import netflix.models.media.Media;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DatabaseTest {
 
