@@ -144,7 +144,7 @@ public class FileParser {
 
     /**
      * @param series The series the season is part of
-     * @param line The line of seasons and episodes
+     * @param line   The line of seasons and episodes
      * @return An array of all seasons in the given series
      */
     private static Season[] fetchSeasons(Series series, String line) {
