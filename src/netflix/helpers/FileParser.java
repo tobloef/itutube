@@ -26,7 +26,7 @@ public class FileParser {
             String name = properties[0];
             UserType type = UserType.valueOf(properties[1]);
             ArrayList<Media> favoritesList = new ArrayList<>();
-            if(properties.length == 3) {
+            if (properties.length == 3) {
                 String[] favoriteIds = trimArray(properties[2].split(","));
                 for (String id : favoriteIds) {
                     if (mediaMap.containsKey(id)) {
@@ -41,11 +41,12 @@ public class FileParser {
 
     /**
      * Helper-function to trim white-space from strings inside an array.
+     *
      * @param toTrim An array of strings
      * @return array of trimmed strings
      */
     private static String[] trimArray(String[] toTrim) {
-        for(int i = 0; i < toTrim.length; i++) {
+        for (int i = 0; i < toTrim.length; i++) {
             toTrim[i] = toTrim[i].trim();
         }
         return toTrim;
@@ -53,6 +54,7 @@ public class FileParser {
 
     /**
      * Helper-function to format ratings from using commas to using dots (for parsing doubles directly from strings)
+     *
      * @param rating rating string loaded from file, containing a "," (comma)
      * @return The same string, where the comma is replaced with a period.
      */
@@ -90,7 +92,7 @@ public class FileParser {
         File moviesFile = new File(path);
         Scanner s = new Scanner(moviesFile);
         ArrayList<Movie> movies = new ArrayList<>();
-        while(s.hasNext()) {
+        while (s.hasNext()) {
             String line = s.nextLine();
             movies.add(lineToMovie(line));
         }
@@ -106,7 +108,7 @@ public class FileParser {
         File seriesFile = new File(path);
         Scanner s = new Scanner(seriesFile);
         ArrayList<Series> seriesList = new ArrayList<>();
-        while(s.hasNext()) {
+        while (s.hasNext()) {
             String line = s.nextLine();
             Series series = lineToSeries(line);
             seriesList.add(series);
@@ -116,14 +118,14 @@ public class FileParser {
 
 
     /**
-     * @param series The series the episodes are part of
-     * @param season The season the episodes are part of
+     * @param series        The series the episodes are part of
+     * @param season        The season the episodes are part of
      * @param episodeAmount The amount of episodes there are to fetch from the season
      * @return An array of episodes from the provided season and series
      */
     private static List<Episode> fetchEpisodes(Series series, Season season, int episodeAmount) {
         ArrayList<Episode> episodes = new ArrayList<>();
-        for(int i = 1; i <= episodeAmount; i++) {
+        for (int i = 1; i <= episodeAmount; i++) {
             String id = FakeData.generateFakeId();
             String name = season.getName() + "E" + i;
             String description = FakeData.getLoremIpsum(200);
@@ -149,7 +151,7 @@ public class FileParser {
         ArrayList<Season> seasons = new ArrayList<>();
         String[] seasonsString = trimArray(line.split(" "));
 
-        for(String s : seasonsString) {
+        for (String s : seasonsString) {
             int seasonNumber = Integer.parseInt(s.split("-")[0]);
             int episodeAmount = Integer.parseInt(s.split("-")[1]);
             String id = FakeData.generateFakeId();
@@ -159,7 +161,7 @@ public class FileParser {
             Date firstSeasonDate = series.getReleaseDate();
             Calendar c = Calendar.getInstance();
             c.setTime(firstSeasonDate);
-            c.add(Calendar.YEAR, seasonNumber-1);
+            c.add(Calendar.YEAR, seasonNumber - 1);
             Date currentSeasonDate = c.getTime();
 
             String[] categories = series.getCategories();
@@ -184,12 +186,11 @@ public class FileParser {
      * @return An array of the start-date and end-date as Date-objects. If there is no '-' after the first date, the end-date will be the same. Else, the end date will be null (if the show is ongoing).
      */
     private static Date[] getSeriesDates(String line) {
-        Date releaseDate = new Date(Integer.parseInt(line.substring(0,4)), 1, 1);
+        Date releaseDate = new Date(Integer.parseInt(line.substring(0, 4)), 1, 1);
         Date endDate = releaseDate;
-        if(line.length() == 9) {
+        if (line.length() == 9) {
             endDate = new Date(Integer.parseInt(line.substring(5, 9)), 1, 1);
-        }
-        else if(line.length() > 4) {
+        } else if (line.length() > 4) {
             endDate = null;
         }
         return new Date[]{releaseDate, endDate};

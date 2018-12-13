@@ -21,7 +21,7 @@ public class SeriesInfoContent extends MediaInfoContent {
         VBox seasons = new VBox();
         seasons.getStyleClass().add("seasons-box");
 
-        for(Season s : series.getSeasons()) {
+        for (Season s : series.getSeasons()) {
             List<Media> episodes = new ArrayList<>(s.getEpisodes());
             MediaButtonList buttonList = new MediaButtonList(s.getName(), episodes, MediaActions::setMediaInfoContent);
             seasons.getChildren().add(buttonList);

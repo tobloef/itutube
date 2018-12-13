@@ -1,6 +1,6 @@
 package netflix.exceptions;
 
-public class UsernameTakenException extends RuntimeException{
+public class UsernameTakenException extends RuntimeException {
     private String username;
 
     public UsernameTakenException(String username) {

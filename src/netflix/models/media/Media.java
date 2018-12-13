@@ -18,14 +18,14 @@ public abstract class Media {
     protected String imageFileName;
 
     public Media(
-        String id,
-        String name,
-        String description,
-        Date releaseDate,
-        String[] categories,
-        double rating,
-        Credits[] credits,
-        String imageFileName
+            String id,
+            String name,
+            String description,
+            Date releaseDate,
+            String[] categories,
+            double rating,
+            Credits[] credits,
+            String imageFileName
     ) {
         this.id = id;
         this.name = name;

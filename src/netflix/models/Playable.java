@@ -8,7 +8,10 @@ import javafx.scene.Parent;
  */
 public interface Playable {
     public String getMediaContent();
+
     public double getProgress();
+
     public String getProgressString();
+
     public Parent createPlayView();
 }

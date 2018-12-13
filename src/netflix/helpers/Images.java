@@ -41,7 +41,7 @@ public class Images {
         return getImage(Paths.DefaultUserImage);
     }
 
-    public static Image getAddUserImage(){
+    public static Image getAddUserImage() {
         return getImage(Paths.AddUserImage);
     }
 

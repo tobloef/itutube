@@ -48,7 +48,7 @@ public class User implements Saveable {
     @Override
     public String getSaveString() {
         String[] idArray = new String[favoritesList.size()];
-        for(int i = 0; i < favoritesList.size(); i++) {
+        for (int i = 0; i < favoritesList.size(); i++) {
             idArray[i] = favoritesList.get(i).getId();
         }
         String idString = String.join(",", idArray);

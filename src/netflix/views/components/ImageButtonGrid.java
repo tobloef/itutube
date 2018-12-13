@@ -26,7 +26,7 @@ public class ImageButtonGrid extends VBox {
         FlowPane grid = new FlowPane();
         grid.setHgap(5);
         grid.setVgap(5);
-        for(ImageButtonInfo imageButtonInfo : items) {
+        for (ImageButtonInfo imageButtonInfo : items) {
             ImageButton button = new ImageButton(imageButtonInfo);
             grid.getChildren().add(button);
         }

@@ -19,9 +19,9 @@ public class FrontPage extends ContentPage {
         content.getStyleClass().add("front-page-content");
         for (MediaList list : featuredLists) {
             MediaButtonList mediaButtonList = new MediaButtonList(
-                list.getName(),
-                list.getMedia(),
-                MediaActions::setMediaInfoContent
+                    list.getName(),
+                    list.getMedia(),
+                    MediaActions::setMediaInfoContent
             );
             content.getChildren().add(mediaButtonList);
         }

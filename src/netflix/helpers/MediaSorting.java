@@ -1,12 +1,8 @@
 package netflix.helpers;
 
-import netflix.Main;
-import netflix.models.ImageButtonInfo;
-import netflix.models.Viewable;
 import netflix.models.media.Media;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
