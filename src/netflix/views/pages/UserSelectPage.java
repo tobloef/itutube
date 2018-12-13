@@ -22,7 +22,7 @@ public class UserSelectPage extends ScrollPane {
     public UserSelectPage() {
         // User list
         List<ImageButtonInfo> imageButtonInfos = usersToImageButtonInfos(Database.getUsers());
-        imageButtonInfos.add(new ImageButtonInfo("Add User", Images.getMediaImage(null), e -> {
+        imageButtonInfos.add(new ImageButtonInfo("Add User", Images.getAddUserImage(), e -> {
             Database.addUser(DialogBox.display());
             Main.setPage(new UserSelectPage());
         }));

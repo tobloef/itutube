@@ -1,7 +1,8 @@
 package netflix.views.pages.content;
 
-import javafx.geometry.Pos;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import netflix.Main;
 import netflix.helpers.ImageButtonInfoHelper;
 import netflix.models.ImageButtonInfo;

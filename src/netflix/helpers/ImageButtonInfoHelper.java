@@ -1,14 +1,11 @@
 package netflix.helpers;
 
 import javafx.scene.image.Image;
-import netflix.Database;
 import netflix.Main;
 import netflix.models.ImageButtonInfo;
 import netflix.models.MediaList;
 import netflix.models.User;
 import netflix.models.media.Media;
-import netflix.views.components.DialogBox;
-import netflix.views.pages.UserSelectPage;
 import netflix.views.pages.content.FrontPage;
 
 import java.util.ArrayList;

@@ -1,6 +1,8 @@
 package netflix.views.components;
 
-import javafx.scene.layout.*;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import netflix.models.ImageButtonInfo;
 
