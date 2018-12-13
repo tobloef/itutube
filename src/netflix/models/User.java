@@ -1,12 +1,8 @@
 package netflix.models;
 
-import netflix.Main;
-import netflix.helpers.ImageHelper;
 import netflix.models.media.Media;
 
-import javax.swing.text.View;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A user for the logged in account

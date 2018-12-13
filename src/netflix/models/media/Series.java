@@ -4,11 +4,8 @@ import javafx.scene.Parent;
 import netflix.models.Credits;
 import netflix.models.Saveable;
 import netflix.models.Viewable;
-import netflix.views.content.infoview.MovieInfoContent;
-import netflix.views.content.infoview.SeriesInfoContent;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import netflix.views.pages.content.SeriesInfoContent;
 
-import javax.swing.text.View;
 import java.util.Date;
 
 /**

@@ -7,20 +7,20 @@ import netflix.models.media.Media;
 import java.io.File;
 import java.util.HashMap;
 
-public class ImageHelper {
+public class Images {
     private static HashMap<String, Image> cache = new HashMap<>();
 
-    public static Image getMediaPoster(Media media) {
-        String path = PathsHelper.getMediaImagePath(media);
+    public static Image getMediaImage(Media media) {
+        String path = Paths.getMediaImagePath(media);
         Image image = getImage(path);
         if (image == null || image.isError()) {
-            return getDefaultPoster();
+            return getDefaultMediaImage();
         }
         return image;
     }
 
     public static Image getUserImage(User user) {
-        String path = PathsHelper.getUserImagePath(user);
+        String path = Paths.getUserImagePath(user);
         Image image = getImage(path);
         if (image == null || image.isError()) {
             return getDefaultUserImage();
@@ -28,12 +28,21 @@ public class ImageHelper {
         return image;
     }
 
-    private static Image getDefaultUserImage() {
-        return getImage(PathsHelper.getDefaultUserImagePath());
+    public static Image getCategoryImage(String category) {
+        String path = Paths.getCategoryImagePath(category);
+        Image image = getImage(path);
+        if (image == null || image.isError()) {
+            return getDefaultMediaImage();
+        }
+        return image;
     }
 
-    private static Image getDefaultPoster() {
-        return getImage(PathsHelper.getDefaultPosterPath());
+    private static Image getDefaultUserImage() {
+        return getImage(Paths.getDefaultUserImagePath());
+    }
+
+    private static Image getDefaultMediaImage() {
+        return getImage(Paths.getDefaultMediaImagePath());
     }
 
     private static Image getImage(String path) {

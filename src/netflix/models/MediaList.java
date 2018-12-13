@@ -1,9 +1,8 @@
 package netflix.models;
 
-import javafx.scene.image.Image;
 import netflix.models.media.Media;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +15,10 @@ public class MediaList {
     public MediaList(String name, List<Media> media) {
         this.name = name;
         this.media = media;
+    }
+
+    public MediaList(String name) {
+        this(name, new ArrayList<>());
     }
 
     public String getName() {

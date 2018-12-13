@@ -3,40 +3,29 @@ package netflix;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import netflix.models.User;
-import netflix.models.media.Media;
-import netflix.views.components.ImageButton;
-import netflix.views.pages.ContentPage;
-import netflix.views.pages.FrontPage;
-
-import javax.xml.crypto.Data;
-import java.util.List;
+import netflix.views.pages.UserSelectPage;
 
 public class Main extends Application {
 
     private static Stage stage;
     private static User activeUser;
-    private static List<Media> activeMedia;
 
     @Override
     public void start(Stage stage) {
         Database.load();
-        activeUser = Database.getUsers().get(0);
+        // Setup stage
         Main.stage = stage;
-        activeMedia = Database.getAllMedia();
-
+        stage.setTitle("ITU-tube");
         stage.setOnCloseRequest(e -> {
             e.consume();
             saveAndClose();
         });
-
-        stage.setTitle("ITU-tube");
         // Set default view
-        FrontPage frontPage = new FrontPage();
+        Parent defaultPage = new UserSelectPage();
         // Create scene with styles
-        stage.setScene(new Scene(frontPage, 1280, 720));
+        stage.setScene(new Scene(defaultPage, 1280, 720));
         String style = getClass().getResource("style.css").toExternalForm();
         stage.getScene().getStylesheets().add(style);
         stage.show();
@@ -57,14 +46,6 @@ public class Main extends Application {
 
     public static User getActiveUser() {
         return activeUser;
-    }
-
-    public static List<Media> getActiveMedia() {
-        return activeMedia;
-    }
-
-    public static void setActiveMedia(List<Media> activeMedia) {
-        Main.activeMedia = activeMedia;
     }
 
     public static void setActiveUser(User user) {Main.activeUser = user;}

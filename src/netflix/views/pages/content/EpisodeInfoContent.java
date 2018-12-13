@@ -1,4 +1,4 @@
-package netflix.views.content.infoview;
+package netflix.views.pages.content;
 
 import netflix.models.media.Episode;
 

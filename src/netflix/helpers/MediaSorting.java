@@ -1,19 +1,17 @@
 package netflix.helpers;
 
-import netflix.Database;
 import netflix.Main;
 import netflix.models.ImageButtonInfo;
 import netflix.models.Viewable;
 import netflix.models.media.Media;
-import netflix.views.pages.ImageButtonGrid;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Comparator;
 import java.util.List;
 
 
-public class MediaListHelper {
+public class MediaSorting {
 
     public static List<Media> findBySearch(String query, List<Media> list) {
         // Change to lower case for later comparision
@@ -50,10 +48,10 @@ public class MediaListHelper {
         return results;
     }
 
-    public static List<Media> findByType(String type, List<Media> list) {
+    public static List<Media> findByType(Class<? extends Media> type, List<Media> list) {
         List<Media> results = new ArrayList<>();
         for(Media m : list) {
-            if(m.getClass().getSimpleName().equals(type)) {
+            if(m.getClass() == type) {
                 results.add(m);
             }
         }
@@ -65,9 +63,15 @@ public class MediaListHelper {
         for(Media m : list) {
             if(m instanceof Viewable) {
                 Viewable viewable = (Viewable) m;
-                buttonInfos.add(new ImageButtonInfo(m.getName(), ImageHelper.getMediaPoster(m), e -> Main.setPage(viewable.createInfoView())));
+                buttonInfos.add(new ImageButtonInfo(m.getName(), Images.getMediaImage(m), e -> Main.setPage(viewable.createInfoView())));
             }
         }
         return buttonInfos;
+    }
+
+    static class SortByRating implements Comparator<Media> {
+        public int compare(Media a, Media b) {
+            return Double.compare(b.getRating(), a.getRating());
+        }
     }
 }

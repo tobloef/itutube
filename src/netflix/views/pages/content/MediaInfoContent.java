@@ -1,27 +1,19 @@
-package netflix.views.content.infoview;
+package netflix.views.pages.content;
 
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import netflix.Database;
 import netflix.Main;
-import netflix.helpers.ImageHelper;
-import netflix.models.ImageButtonInfo;
+import netflix.helpers.Images;
 import netflix.models.Playable;
 import netflix.models.Saveable;
 import netflix.models.media.Media;
-import netflix.models.media.Movie;
 import netflix.views.components.ActionButton;
-import netflix.views.components.ImageButton;
 import netflix.views.pages.ContentPage;
-
-import java.util.Arrays;
 
 public abstract class MediaInfoContent extends ContentPage {
 
@@ -62,7 +54,7 @@ public abstract class MediaInfoContent extends ContentPage {
     private Parent getMainContent(Media media) {
         HBox mainLayout = new HBox();
 
-        mainLayout.getChildren().add(new ImageView(ImageHelper.getMediaPoster(media)));
+        mainLayout.getChildren().add(new ImageView(Images.getMediaImage(media)));
 
         VBox mainInfo = new VBox(20);
 

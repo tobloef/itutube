@@ -1,91 +1,46 @@
 package netflix;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import netflix.helpers.ImageHelper;
-import netflix.helpers.MediaListHelper;
-import netflix.models.ImageButtonInfo;
-import netflix.models.Viewable;
+import netflix.helpers.Actions;
+import netflix.helpers.MediaSorting;
 import netflix.models.media.Media;
-import netflix.views.pages.FrontPage;
-import netflix.views.pages.ImageButtonGrid;
+import netflix.models.media.Movie;
+import netflix.models.media.Series;
 import netflix.views.pages.UserSelectPage;
+import netflix.views.pages.content.FrontPage;
+import netflix.views.pages.content.MediaGridPage;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class HeaderController implements EventHandler {
+public class HeaderController {
 
-    @Override
-    public void handle(Event event) {
-
-    }
-
-    public static void handleFrontPageClick(ActionEvent event) {
-        List<Media> mediaList = Database.getAllMedia();
-        Main.setActiveMedia(mediaList);
+    public static void handleFrontPageClick() {
         Main.setPage(new FrontPage());
     }
 
-    public static void handleMovieClick(ActionEvent event) {
-        List<Media> movieList = MediaListHelper.findByType("Movie", Database.getAllMedia());
-        List<ImageButtonInfo> movieButtonInfoList = MediaListHelper.getListAsImageButtonInfoList(movieList);
-        Main.setActiveMedia(movieList);
-        Main.setPage(new ImageButtonGrid("Movies", movieButtonInfoList));
+    public static void handleMovieClick() {
+        List<Media> movieList = MediaSorting.findByType(Movie.class, Database.getAllMedia());
+        Main.setPage(new MediaGridPage("Movies", movieList, Actions::setMediaInfoContent, true));
     }
 
-    public static void handleSeriesClick(ActionEvent event) {
-        List<Media> seriesList = MediaListHelper.findByType("Series", Database.getAllMedia());
-        List<ImageButtonInfo> seriesButtonInfoList = MediaListHelper.getListAsImageButtonInfoList(seriesList);
-        Main.setActiveMedia(seriesList);
-        Main.setPage(new ImageButtonGrid("Series", seriesButtonInfoList));
+    public static void handleSeriesClick() {
+        List<Media> seriesList = MediaSorting.findByType(Series.class, Database.getAllMedia());
+        Main.setPage(new MediaGridPage("Series", seriesList, Actions::setMediaInfoContent, true));
     }
 
-    public static void handleCategoriesClick(ActionEvent event) {
-        List<ImageButtonInfo> categoryButtonInfoList = getCategoriesAsImageButtonInfoList(Main.getActiveMedia());
-        Main.setPage(new ImageButtonGrid("Categories", categoryButtonInfoList));
+    public static void handleMyListClick() {
+        List<Media> mediaInList = Main.getActiveUser().getFavoritesList();
+        String name = nameToPossessiveForm(Main.getActiveUser().getName());
+        Main.setPage(new MediaGridPage(name, mediaInList, Actions::setMediaInfoContent, true));
     }
 
-    public static void handleMyListClick(ActionEvent event) {
-        List<ImageButtonInfo> myListButtonInfoList = MediaListHelper.getListAsImageButtonInfoList(Main.getActiveUser().getFavoritesList());
-        Main.setPage(new ImageButtonGrid(Main.getActiveUser().getName() + "'s List", myListButtonInfoList));
-    }
-
-    public static void handleChangeUserClick(ActionEvent event) {
+    public static void handleChangeUserClick() {
         Main.setPage(new UserSelectPage());
     }
 
-
-    private static List<ImageButtonInfo> getCategoriesAsImageButtonInfoList(List<Media> mediaList) {
-        List<ImageButtonInfo> categoryList = new ArrayList<>();
-        for(String s : getAllCategories(mediaList)) {
-            List<ImageButtonInfo> mediaButtonList = new ArrayList<>();
-            for(Media m : mediaList) {
-                if(m instanceof Viewable) {
-                    Viewable viewable = (Viewable) m;
-                    if (Arrays.asList(m.getCategories()).contains(s)) {
-                        mediaButtonList.add(new ImageButtonInfo(m.getName(), ImageHelper.getMediaPoster(m), e -> Main.setPage(viewable.createInfoView())));
-                    }
-                }
-            }
-            categoryList.add(new ImageButtonInfo(s, null, e -> Main.setPage(new ImageButtonGrid(s, mediaButtonList))));
+    private static String nameToPossessiveForm(String name) {
+        if (name.endsWith("s") || name.endsWith("x") || name.endsWith("z")) {
+            return name + "'";
         }
-        return categoryList;
+        return name + "'s";
     }
-
-    private static List<String> getAllCategories(List<Media> mediaList) {
-        List<String> categories = new ArrayList<>();
-        for(Media m : mediaList) {
-            for(String s : m.getCategories()) {
-                if(!categories.contains(s)) {
-                    categories.add(s);
-                }
-            }
-        }
-        return categories;
-    }
-
 }

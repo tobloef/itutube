@@ -1,13 +1,10 @@
 package netflix.models.media;
 
 import javafx.scene.Parent;
-import netflix.Database;
 import netflix.models.Credits;
 import netflix.models.Viewable;
-import netflix.views.content.infoview.EpisodeInfoContent;
-import netflix.views.content.infoview.MovieInfoContent;
+import netflix.views.pages.content.EpisodeInfoContent;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 /**

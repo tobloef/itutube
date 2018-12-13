@@ -2,10 +2,9 @@ package netflix.models.media;
 
 import javafx.scene.Parent;
 import netflix.models.Credits;
-import netflix.models.Playable;
 import netflix.models.Saveable;
 import netflix.models.Viewable;
-import netflix.views.content.infoview.MovieInfoContent;
+import netflix.views.pages.content.MovieInfoContent;
 
 import java.util.Date;
 
