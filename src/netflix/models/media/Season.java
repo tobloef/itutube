@@ -12,6 +12,17 @@ public class Season extends Media {
     private Series series;
     private List<Episode> episodes;
 
+    /**
+     * @param id Id associated with the season.
+     * @param name Name of the season.
+     * @param description Description of the season.
+     * @param releaseDate Release date of the season.
+     * @param categories Categories held by the season.
+     * @param rating Rating of the season.
+     * @param credits Credits for the season.
+     * @param imageFileName Name of season image file.
+     * @param series The series that the season is part of.
+     */
     public Season(
             String id,
             String name,

@@ -8,7 +8,16 @@ import netflix.models.media.Media;
 
 // TODO: JavaDoc
 // TODO: Move more methods to here?
+
+/**
+ * General handlers for creating info views for media.
+ */
 public class MediaActions {
+
+    /**
+     * Sets page to info page for given media.
+     * @param media Media to generate info page for.
+     */
     public static void setMediaInfoContent(Media media) {
         if (media instanceof Viewable) {
             Viewable viewable = (Viewable) media;
@@ -21,6 +30,10 @@ public class MediaActions {
         }
     }
 
+    /**
+     * Sets page to player page for given media.
+     * @param media Media to generate player page for.
+     */
     public static void setMediaPlayContent(Media media) {
         if (media instanceof Playable) {
             Playable playable = (Playable) media;

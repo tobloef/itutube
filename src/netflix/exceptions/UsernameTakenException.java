@@ -5,6 +5,9 @@ package netflix.exceptions;
 public class UsernameTakenException extends RuntimeException{
     private String username;
 
+    /**
+     * @param username Inputted username that does not exist
+     */
     public UsernameTakenException(String username) {
         super("Username " + username + " already taken.");
         this.username = username;

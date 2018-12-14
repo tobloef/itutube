@@ -7,25 +7,19 @@ public class Credits {
     private String title;
     private String[] people;
 
+    /**
+     * @param title Title of the credits role.
+     * @param people People that holds this role.
+     */
     public Credits(String title, String[] people) {
         this.title = title;
         this.people = people;
     }
 
-    /**
-     * Get the title of the credited people's role
-     *
-     * @return Title of the job position
-     */
     public String getTitle() {
         return title;
     }
 
-    /**
-     * Get the names of the credited people
-     *
-     * @return Names of credited people
-     */
     public String[] getPeople() {
         return people;
     }

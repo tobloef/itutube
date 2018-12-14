@@ -14,6 +14,17 @@ import java.util.Random;
 public abstract class VideoMedia extends Media implements Playable {
     protected int runtime;
 
+    /**
+     * @param id Id associated with the video media.
+     * @param name Name of the video media.
+     * @param description Description of the video media.
+     * @param releaseDate Release date of the video media.
+     * @param categories Categories held by the video media.
+     * @param rating Rating of the video media.
+     * @param credits Credits for the video media.
+     * @param imageFileName Name of video media image file.
+     * @param runtime Number of seconds the video media lasts for.
+     */
     public VideoMedia(
             String id,
             String name,

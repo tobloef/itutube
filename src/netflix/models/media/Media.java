@@ -17,6 +17,16 @@ public abstract class Media {
     protected Credits[] credits;
     protected String imageFileName;
 
+    /**
+     * @param id Id associated with the media.
+     * @param name Name of the media.
+     * @param description Description of the media.
+     * @param releaseDate Release date of the media.
+     * @param categories Categories held by the media.
+     * @param rating Rating of the media.
+     * @param credits Credits for the media.
+     * @param imageFileName Name of media image file.
+     */
     public Media(
             String id,
             String name,
