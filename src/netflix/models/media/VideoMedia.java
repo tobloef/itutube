@@ -4,7 +4,6 @@ import javafx.scene.Parent;
 import netflix.models.Credits;
 import netflix.models.Playable;
 import netflix.views.pages.PlayerPage;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Date;
 import java.util.Random;
@@ -39,12 +38,16 @@ public abstract class VideoMedia extends Media implements Playable {
         this.runtime = runtime;
     }
 
-    public int getRuntime() {
+    /**
+     * @return The runtime in minutes seconds.
+     */
+    public int getRuntimeSeconds() {
         return runtime;
     }
 
     @Override
     public String getMediaContent() {
+        // TODO: This is where we would load the media data from the disk.
         Random r = new Random();
         int rand = r.nextInt(0xffffff + 1);
 
@@ -55,14 +58,30 @@ public abstract class VideoMedia extends Media implements Playable {
 
     @Override
     public double getProgress() {
-        // TODO
-        throw new NotImplementedException();
+        // TODO: This could be loaded from a file or something.
+        return new Random().nextDouble();
     }
 
     @Override
     public String getProgressString() {
-        // TODO
-        throw new NotImplementedException();
+        double progress = getProgress();
+        int progressSeconds = (int) Math.round(getRuntimeSeconds() * progress);
+        return secondsToHHMMSS(progressSeconds);
+    }
+
+    /**
+     * Format an amount of seconds in HH:MM:SS format.
+     * @param totalSeconds The amount of seconds to convert.
+     * @return Formatted time string.
+     */
+    private String secondsToHHMMSS(int totalSeconds) {
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        int seconds = (totalSeconds % 3600) % 60;
+        String hoursStr = (hours < 10 ? "0" : "") + hours;
+        String minutesStr = (minutes < 10 ? "0" : "") + minutes;
+        String secondsStr = (seconds < 10 ? "0" : "")+ seconds;
+        return hoursStr + ":" + minutesStr + ":" + secondsStr;
     }
 
     @Override

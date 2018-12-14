@@ -6,9 +6,9 @@ import netflix.models.Playable;
 import netflix.models.Viewable;
 import netflix.models.media.Media;
 
-// TODO: java-doc
-public class Actions {
-
+// TODO: JavaDoc
+// TODO: Move more methods to here?
+public class MediaActions {
     public static void setMediaInfoContent(Media media) {
         if (media instanceof Viewable) {
             Viewable viewable = (Viewable) media;
