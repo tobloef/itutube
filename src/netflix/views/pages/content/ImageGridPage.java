@@ -11,15 +11,12 @@ import java.util.List;
  */
 public class ImageGridPage extends ContentPage {
 
-    ImageButtonGrid grid;
-
     /**
      * @param title Title of the grid
      * @param infos List of items for the grid
      */
     public ImageGridPage(String title, List<ImageButtonInfo> infos) {
         super();
-        grid = new ImageButtonGrid(title, infos);
-        this.setContent(grid);
+        this.setContent(new ImageButtonGrid(title, infos));
     }
 }

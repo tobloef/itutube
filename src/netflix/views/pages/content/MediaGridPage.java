@@ -1,10 +1,12 @@
 package netflix.views.pages.content;
 
+import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import netflix.Main;
 import netflix.helpers.ImageButtonInfoHelper;
+import netflix.helpers.NodeLookup;
 import netflix.models.ImageButtonInfo;
 import netflix.models.MediaList;
 import netflix.models.media.Media;
@@ -45,14 +47,14 @@ public class MediaGridPage extends ImageGridPage {
                     e -> Main.setPage(categoryGridPage)
             );
             // Add category button
-            HBox titleWrapper = this.grid.getTitleWrapper();
-            if (titleWrapper == null) {
+            Node titleWrapper = NodeLookup.findFirstByClass(this, "title-wrapper");
+            if (!(titleWrapper instanceof HBox)) {
                 System.err.println("Error finding title wrapper, can't add category filter button.");
             } else {
                 Region filler = new Region();
                 HBox.setHgrow(filler, Priority.ALWAYS);
-                titleWrapper.getChildren().add(filler);
-                titleWrapper.getChildren().add(categoriesButton);
+                ((HBox) titleWrapper).getChildren().add(filler);
+                ((HBox) titleWrapper).getChildren().add(categoriesButton);
             }
         }
     }

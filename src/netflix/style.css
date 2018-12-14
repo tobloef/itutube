@@ -137,6 +137,11 @@
 
 .info-rating {
     -fx-text-fill: gold;
+    -fx-fill: gold;
+    -fx-font-size: 20px;
+}
+
+.info-date {
     -fx-font-size: 20px;
 }
 

@@ -13,8 +13,6 @@ import java.util.List;
  */
 public class ImageButtonGrid extends VBox {
 
-    private HBox titleWrapper;
-
     /**
      * @param title Title to display above the grid
      * @param items Info objects for the items in the grid
@@ -26,7 +24,7 @@ public class ImageButtonGrid extends VBox {
         titleText.setText(title);
         titleText.getStyleClass().add("title");
 
-        titleWrapper = new HBox();
+        HBox titleWrapper = new HBox();
         titleWrapper.getStyleClass().add("title-wrapper");
         titleWrapper.getChildren().add(titleText);
 
@@ -41,14 +39,5 @@ public class ImageButtonGrid extends VBox {
         this.getChildren().add(titleWrapper);
         this.getChildren().add(grid);
         this.getStyleClass().add("image-button-grid");
-    }
-
-    /**
-     * Get the wrapper that contains the title.
-     * Used for adding stuff to the top of the grid.
-     * @return The title wrapper
-     */
-    public HBox getTitleWrapper() {
-        return titleWrapper;
     }
 }

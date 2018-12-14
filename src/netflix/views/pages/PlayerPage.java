@@ -20,9 +20,9 @@ public class PlayerPage extends StackPane {
      * @param media The media to play
      */
     public PlayerPage(Media media) {
-        Text text = new Text();
-        text.setText("Now Playing: " + media.getName());
-        text.getStyleClass().add("playing-text");
+        Text nowPlayingText = new Text();
+        nowPlayingText.setText("Now Playing: " + media.getName());
+        nowPlayingText.getStyleClass().add("playing-text");
 
         VBox textContainer = new VBox();
         if (!(media instanceof Playable)) {
@@ -36,7 +36,7 @@ public class PlayerPage extends StackPane {
             textContainer.setStyle("-fx-background-color: " + playable.getMediaContent() + ";");
         }
         textContainer.getStyleClass().add("playing-text-container");
-        textContainer.getChildren().add(text);
+        textContainer.getChildren().add(nowPlayingText);
 
         ActionButton goBackButton = new ActionButton(
                 "Go Back",

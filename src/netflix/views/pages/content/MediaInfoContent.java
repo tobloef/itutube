@@ -77,8 +77,9 @@ public abstract class MediaInfoContent extends ContentPage {
         title.setWrappingWidth(600);
         title.getStyleClass().add("info-title");
         // Release date
-        Text releaseDate = new Text(String.valueOf(media.getReleaseDate().getYear()));
-        releaseDate.getStyleClass().add("release-date");
+        String yearString = String.valueOf(media.getReleaseDate().getYear());
+        Text releaseDate = new Text("Released in: " + yearString);
+        releaseDate.getStyleClass().add("info-date");
         // Rating
         Text rating = new Text(media.getRating() + "/10");
         rating.getStyleClass().add("info-rating");
@@ -94,12 +95,7 @@ public abstract class MediaInfoContent extends ContentPage {
         Parent buttons = createActionButtons(media);
         // Create main media info
         VBox mediaInfo = new VBox(20);
-        mediaInfo.getChildren().add(title);
-        mediaInfo.getChildren().add(releaseDate);
-        mediaInfo.getChildren().add(rating);
-        mediaInfo.getChildren().add(categories);
-        mediaInfo.getChildren().add(description);
-        mediaInfo.getChildren().add(buttons);
+        mediaInfo.getChildren().addAll(title, releaseDate, rating, categories, description, buttons);
         mediaInfo.getStyleClass().add("info-main-info");
 
         return mediaInfo;

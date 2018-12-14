@@ -1,6 +1,8 @@
 package netflix.views.pages.content;
 
+import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import netflix.helpers.MediaActions;
 import netflix.models.media.Media;
 import netflix.models.media.Season;
@@ -9,6 +11,9 @@ import netflix.views.components.MediaButtonList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import static netflix.helpers.NodeLookup.findFirstByClass;
 
 /**
  * Page for displaying information about a series.
@@ -21,6 +26,7 @@ public class SeriesInfoContent extends MediaInfoContent {
     public SeriesInfoContent(Series series) {
         super(series);
         this.addContent(getSeasonsPreview(series));
+        this.setDateInfo(series);
     }
 
     /**
@@ -31,7 +37,6 @@ public class SeriesInfoContent extends MediaInfoContent {
     private static VBox getSeasonsPreview(Series series) {
         VBox seasons = new VBox();
         seasons.getStyleClass().add("seasons-box");
-
         for (Season s : series.getSeasons()) {
             List<Media> episodes = new ArrayList<>(s.getEpisodes());
             MediaButtonList buttonList = new MediaButtonList(s.getName(), episodes, MediaActions::setMediaInfoContent);
@@ -39,5 +44,22 @@ public class SeriesInfoContent extends MediaInfoContent {
         }
 
         return seasons;
+    }
+
+    private void setDateInfo(Series series) {
+        Node dateInfo = findFirstByClass(this, "info-date");
+        if (dateInfo instanceof Text) {
+            Text text = (Text) dateInfo;
+            if (series.getEndDate() != series.getReleaseDate()) {
+                String startYear = String.valueOf(series.getReleaseDate().getYear());
+                String newStr = "Release years: " + startYear + " - ";
+                if (series.getEndDate() != null) {
+                    newStr += String.valueOf(series.getEndDate().getYear());
+                } else {
+                    newStr += "Present";
+                }
+                text.setText(newStr);
+            }
+        }
     }
 }

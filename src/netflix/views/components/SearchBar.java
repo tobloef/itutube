@@ -11,6 +11,7 @@ import netflix.helpers.MediaSorting;
 import netflix.models.media.Media;
 import netflix.views.pages.content.MediaGridPage;
 
+import java.beans.EventHandler;
 import java.util.List;
 
 /**
@@ -24,18 +25,24 @@ public class SearchBar extends HBox {
         TextField textField = new TextField();
         textField.getStyleClass().add("search-field");
         textField.setPromptText("Search");
+        textField.setOnAction(e -> searchAction(textField.getText()));
 
         Button button = new Button("Search");
         button.getStyleClass().add("search-button");
-        button.setOnAction(e -> {
-            String query = textField.getText();
-            List<Media> results = MediaSorting.findBySearch(query, Database.getAllMedia(Main.getActiveUser().getType()));
-            String title = results.size() + " results for: \"" + query + "\"";
-            Main.setPage(new MediaGridPage(title, results, MediaActions::setMediaInfoContent, false));
-        });
+        button.setOnAction(e -> searchAction(textField.getText()));
 
         this.setAlignment(Pos.CENTER);
         this.getChildren().add(textField);
         this.getChildren().add(button);
+    }
+
+    private void searchAction(String query) {
+        List<Media> results = MediaSorting.findBySearch(query, Database.getAllMedia(Main.getActiveUser().getType()));
+        String title = results.size() + " result";
+        if (results.size() > 1) {
+            title += "s";
+        }
+        title += " for: \"" + query + "\"";
+        Main.setPage(new MediaGridPage(title, results, MediaActions::setMediaInfoContent, false));
     }
 }
