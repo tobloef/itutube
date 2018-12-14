@@ -7,11 +7,11 @@ import javafx.scene.Parent;
  * Interface specifying that a media is somehow playable
  */
 public interface Playable {
-    public String getMediaContent();
+    String getMediaContent();
 
-    public double getProgress();
+    double getProgress();
 
-    public String getProgressString();
+    String getProgressString();
 
-    public Parent createPlayView();
+    Parent createPlayView();
 }

@@ -1,7 +1,7 @@
 package netflix.models;
 
 /**
- * User types
+ * User types.
  */
 public enum UserType {
     Admin,
