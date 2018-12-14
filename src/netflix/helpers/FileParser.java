@@ -80,11 +80,11 @@ public class FileParser {
         String id = properties[0];
         String name = properties[1];
         Date releaseDate = new Date(Integer.parseInt(properties[2]), 1, 1);
-        String[] categories = trimArray(properties[3].split(","));
+        List<String> categories = Arrays.asList(trimArray(properties[3].split(",")));
         double rating = Double.parseDouble(formatRating(properties[4]));
 
         String description = FakeData.getLoremIpsum(100);
-        Credits[] credits = FakeData.generateFakeCredits();
+        List<Credits> credits = FakeData.generateFakeCredits();
         String imageFileName = name + ".jpg";
         int runtime = FakeData.generateFakeRuntime();
 
@@ -142,9 +142,9 @@ public class FileParser {
             String name = season.getName() + "E" + i;
             String description = FakeData.getLoremIpsum(200);
             Date releaseDate = season.getReleaseDate();
-            String[] categories = season.getCategories();
+            List<String> categories = season.getCategories();
             double rating = FakeData.generateFakeRating();
-            Credits[] credits = season.getCredits();
+            List<Credits> credits = season.getCredits();
             String imageFileName = season.getImageFileName();
             int runtime = FakeData.generateFakeRuntime();
 
@@ -176,9 +176,9 @@ public class FileParser {
             c.add(Calendar.YEAR, seasonNumber - 1);
             Date currentSeasonDate = c.getTime();
 
-            String[] categories = series.getCategories();
+            List<String> categories = series.getCategories();
             double rating = FakeData.generateFakeRating();
-            Credits[] credits = series.getCredits();
+            List<Credits> credits = series.getCredits();
             String imageFileName = series.getImageFileName();
 
             Season season = new Season(id, name, description, currentSeasonDate, categories, rating, credits, imageFileName, series);
@@ -222,11 +222,11 @@ public class FileParser {
         Date releaseDate = dates[0];
         Date endDate = dates[1];
 
-        String[] categories = trimArray(properties[3].split(","));
+        List<String> categories = Arrays.asList(trimArray(properties[3].split(",")));
         double rating = Double.parseDouble(formatRating(properties[4]));
 
         String description = FakeData.getLoremIpsum(175);
-        Credits[] credits = FakeData.generateFakeCredits();
+        List<Credits> credits = FakeData.generateFakeCredits();
         String imageFileName = name + ".jpg";
 
         Series series = new Series(id, name, description, releaseDate, endDate, categories, rating, credits, imageFileName);

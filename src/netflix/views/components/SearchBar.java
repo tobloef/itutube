@@ -29,7 +29,7 @@ public class SearchBar extends HBox {
         button.getStyleClass().add("search-button");
         button.setOnAction(e -> {
             String query = textField.getText();
-            List<Media> results = MediaSorting.findBySearch(query, Database.getAllMedia());
+            List<Media> results = MediaSorting.findBySearch(query, Database.getAllMedia(Main.getActiveUser().getType()));
             String title = results.size() + " results for: \"" + query + "\"";
             Main.setPage(new MediaGridPage(title, results, MediaActions::setMediaInfoContent, false));
         });

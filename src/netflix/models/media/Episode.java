@@ -6,6 +6,7 @@ import netflix.models.Viewable;
 import netflix.views.pages.content.EpisodeInfoContent;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * An episode of a series
@@ -32,9 +33,9 @@ public class Episode extends VideoMedia implements Viewable {
             String name,
             String description,
             Date releaseDate,
-            String[] categories,
+            List<String> categories,
             double rating,
-            Credits[] credits,
+            List<Credits> credits,
             String imageFileName,
             int runtime,
             Season season,

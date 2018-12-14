@@ -6,6 +6,7 @@ import netflix.models.Playable;
 import netflix.views.pages.PlayerPage;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -30,9 +31,9 @@ public abstract class VideoMedia extends Media implements Playable {
             String name,
             String description,
             Date releaseDate,
-            String[] categories,
+            List<String> categories,
             double rating,
-            Credits[] credits,
+            List<Credits> credits,
             String imageFileName,
             int runtime
     ) {

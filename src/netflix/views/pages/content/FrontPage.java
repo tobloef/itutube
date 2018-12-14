@@ -2,6 +2,7 @@ package netflix.views.pages.content;
 
 import javafx.scene.layout.VBox;
 import netflix.Database;
+import netflix.Main;
 import netflix.helpers.MediaActions;
 import netflix.models.MediaList;
 import netflix.views.components.MediaButtonList;
@@ -16,7 +17,7 @@ import java.util.List;
 public class FrontPage extends ContentPage {
     public FrontPage() {
         super();
-        List<MediaList> featuredLists = Database.getFeaturedLists();
+        List<MediaList> featuredLists = Database.getFeaturedLists(Main.getActiveUser().getType());
         VBox content = new VBox();
         content.setSpacing(20);
         content.getStyleClass().add("front-page-content");

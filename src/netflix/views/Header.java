@@ -85,7 +85,7 @@ public class Header extends HBox {
      * Go to the movies page
      */
     private static void handleMovieClick() {
-        List<Media> movieList = MediaSorting.findByType(Movie.class, Database.getAllMedia());
+        List<Media> movieList = MediaSorting.findByType(Movie.class, Database.getAllMedia(Main.getActiveUser().getType()));
         Main.setPage(new MediaGridPage("Movies", movieList, MediaActions::setMediaInfoContent, true));
     }
 
@@ -93,7 +93,7 @@ public class Header extends HBox {
      * Go to the series page
      */
     private static void handleSeriesClick() {
-        List<Media> seriesList = MediaSorting.findByType(Series.class, Database.getAllMedia());
+        List<Media> seriesList = MediaSorting.findByType(Series.class, Database.getAllMedia(Main.getActiveUser().getType()));
         Main.setPage(new MediaGridPage("Series", seriesList, MediaActions::setMediaInfoContent, true));
     }
 

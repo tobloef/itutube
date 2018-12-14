@@ -7,6 +7,7 @@ import netflix.models.Viewable;
 import netflix.views.pages.content.MovieInfoContent;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * A movie
@@ -29,9 +30,9 @@ public class Movie extends VideoMedia implements Saveable, Viewable {
             String name,
             String description,
             Date releaseDate,
-            String[] categories,
+            List<String> categories,
             double rating,
-            Credits[] credits,
+            List<Credits> credits,
             String imageFileName,
             int runtime
     ) {

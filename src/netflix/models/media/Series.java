@@ -7,6 +7,7 @@ import netflix.models.Viewable;
 import netflix.views.pages.content.SeriesInfoContent;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * A series
@@ -32,9 +33,9 @@ public class Series extends Media implements Saveable, Viewable {
             String description,
             Date releaseDate,
             Date endDate,
-            String[] categories,
+            List<String> categories,
             double rating,
-            Credits[] credits,
+            List<Credits> credits,
             String imageFileName
     ) {
         super(

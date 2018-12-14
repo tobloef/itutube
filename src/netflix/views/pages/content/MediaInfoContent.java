@@ -16,6 +16,8 @@ import netflix.models.media.Media;
 import netflix.views.components.ActionButton;
 import netflix.views.pages.ContentPage;
 
+import java.text.SimpleDateFormat;
+
 import static netflix.helpers.MediaActions.setMediaPlayContent;
 
 /**
@@ -74,8 +76,11 @@ public abstract class MediaInfoContent extends ContentPage {
         Text title = new Text(media.getName());
         title.setWrappingWidth(600);
         title.getStyleClass().add("info-title");
+        // Release date
+        Text releaseDate = new Text(String.valueOf(media.getReleaseDate().getYear()));
+        releaseDate.getStyleClass().add("release-date");
         // Rating
-        Text rating = new Text(String.valueOf(media.getRating()) + "/10");
+        Text rating = new Text(media.getRating() + "/10");
         rating.getStyleClass().add("info-rating");
         // Categories
         Text categories = new Text();
@@ -90,6 +95,7 @@ public abstract class MediaInfoContent extends ContentPage {
         // Create main media info
         VBox mediaInfo = new VBox(20);
         mediaInfo.getChildren().add(title);
+        mediaInfo.getChildren().add(releaseDate);
         mediaInfo.getChildren().add(rating);
         mediaInfo.getChildren().add(categories);
         mediaInfo.getChildren().add(description);

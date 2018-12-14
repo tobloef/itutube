@@ -5,6 +5,7 @@ import netflix.Main;
 import netflix.models.ImageButtonInfo;
 import netflix.models.MediaList;
 import netflix.models.User;
+import netflix.models.UserType;
 import netflix.models.media.Media;
 import netflix.views.pages.content.FrontPage;
 
@@ -83,6 +84,9 @@ public class ImageButtonInfoHelper {
         List<ImageButtonInfo> infos = new ArrayList<>();
         for (User user : users) {
             String text = user.getName();
+            if (user.getType() == UserType.Admin) {
+                text += " (Admin)";
+            }
             Image image = Images.getUserImage(user);
             infos.add(new ImageButtonInfo(text, image, e -> {
                 Main.setActiveUser(user);

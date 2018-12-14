@@ -7,6 +7,7 @@ import netflix.helpers.FileParser;
 import netflix.helpers.FileWriter;
 import netflix.models.MediaList;
 import netflix.models.User;
+import netflix.models.UserType;
 import netflix.models.media.Media;
 import netflix.models.media.Movie;
 import netflix.models.media.Series;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Database object for the entire application.
@@ -37,11 +39,25 @@ public final class Database {
     }
 
     /**
-     * Get all media in the database as a list
+     * Get a list of all media in the database appropriate to the given user type.
      *
+     * @param userType Type of user to get media for, used for filtering.
+     * @return List of user-appropriate media
+     */
+    public static List<Media> getAllMedia(UserType userType) {
+        if (userType == UserType.Child) {
+            return getAllMedia().stream()
+                    .filter(m -> m.getCategories().contains("Family"))
+                    .collect(Collectors.toList());
+        }
+        return getAllMedia();
+    }
+
+    /**
+     * Get all media in the database as a list
      * @return List of all media
      */
-    public static List<Media> getAllMedia() {
+    private static List<Media> getAllMedia() {
         if (mediaMap == null) {
             return new ArrayList<>();
         }
@@ -59,11 +75,12 @@ public final class Database {
 
     /**
      * Get a list of the featured lists for the front page
+     *
      * @return List of featured media lists
      */
-    public static List<MediaList> getFeaturedLists() {
+    public static List<MediaList> getFeaturedLists(UserType userType) {
         // TODO: Load this from a file
-        return FakeData.generateFakeFeaturedLists(getAllMedia());
+        return FakeData.generateFakeFeaturedLists(getAllMedia(userType));
     }
 
     /**
@@ -103,6 +120,7 @@ public final class Database {
 
     /**
      * Get a list of all media in the database
+     *
      * @return List of all media
      */
     private static HashMap<String, Media> fetchMedia() {

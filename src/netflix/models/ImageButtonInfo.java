@@ -16,7 +16,7 @@ public class ImageButtonInfo {
      *
      * @param text Text to display
      * @param image Image to display
-     * @param eventHandler Eventhandler to determine what happens on click // TODO: check if this is correct lol
+     * @param eventHandler Event handler to determine what happens on click
      */
     public ImageButtonInfo(String text, Image image, EventHandler<ActionEvent> eventHandler) {
         this.text = text;

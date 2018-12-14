@@ -172,6 +172,14 @@
     -fx-background-insets: 0 0 0 0;
 }
 
+.action-button:hover {
+    -fx-opacity: 0.8;
+}
+
+.action-button:pressed {
+    -fx-opacity: 0.7;
+}
+
 .playing-text {
     -fx-font-size: 30px;
 }

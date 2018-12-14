@@ -3,6 +3,7 @@ package netflix.models.media;
 import netflix.models.Credits;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Generic media class, for all types of media on the site
@@ -12,9 +13,9 @@ public abstract class Media {
     protected String name;
     protected String description;
     protected Date releaseDate;
-    protected String[] categories;
+    protected List<String> categories;
     protected double rating;
-    protected Credits[] credits;
+    protected List<Credits> credits;
     protected String imageFileName;
 
     /**
@@ -32,9 +33,9 @@ public abstract class Media {
             String name,
             String description,
             Date releaseDate,
-            String[] categories,
+            List<String> categories,
             double rating,
-            Credits[] credits,
+            List<Credits> credits,
             String imageFileName
     ) {
         this.id = id;
@@ -63,7 +64,7 @@ public abstract class Media {
         return releaseDate;
     }
 
-    public String[] getCategories() {
+    public List<String> getCategories() {
         return categories;
     }
 
@@ -71,7 +72,7 @@ public abstract class Media {
         return rating;
     }
 
-    public Credits[] getCredits() {
+    public List<Credits> getCredits() {
         return credits;
     }
 

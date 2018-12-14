@@ -28,9 +28,9 @@ public class Season extends Media {
             String name,
             String description,
             Date releaseDate,
-            String[] categories,
+            List<String> categories,
             double rating,
-            Credits[] credits,
+            List<Credits> credits,
             String imageFileName,
             Series series
     ) {
