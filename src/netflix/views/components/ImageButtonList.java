@@ -10,7 +10,15 @@ import netflix.models.ImageButtonInfo;
 
 import java.util.List;
 
+/**
+ * A scrollable list of the image buttons
+ */
 public class ImageButtonList extends VBox {
+
+    /**
+     * @param name Name of the list
+     * @param items Info objects of the items in the list
+     */
     public ImageButtonList(String name, List<ImageButtonInfo> items) {
         super();
         this.getStyleClass().add("image-button-list");
@@ -33,6 +41,11 @@ public class ImageButtonList extends VBox {
         this.getChildren().add(wrapper);
     }
 
+    /**
+     * Create the scrollable list of image buttons
+     * @param items Items for the image buttons
+     * @return List of image buttons
+     */
     private Parent createScrollList(List<ImageButtonInfo> items) {
         // Scrollable content
         ScrollPane scrollPane = new ScrollPane();

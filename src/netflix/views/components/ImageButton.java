@@ -5,8 +5,14 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.ImageView;
 import netflix.models.ImageButtonInfo;
 
+/**
+ * Button with an image and a title
+ */
 public class ImageButton extends Button {
 
+    /**
+     * @param info Info object for the image button.
+     */
     public ImageButton(ImageButtonInfo info) {
         super();
         // TODO: This line should be done in CSS

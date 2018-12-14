@@ -18,10 +18,16 @@ import netflix.views.pages.ContentPage;
 
 import static netflix.helpers.MediaActions.setMediaPlayContent;
 
+/**
+ * Page for displaying info about a piece of media
+ */
 public abstract class MediaInfoContent extends ContentPage {
 
     private VBox wrapper;
 
+    /**
+     * @param media Media to display info for.
+     */
     public MediaInfoContent(Media media) {
         super();
         wrapper = new VBox();
@@ -33,10 +39,19 @@ public abstract class MediaInfoContent extends ContentPage {
         this.setCenter(scrollPane);
     }
 
+    /**
+     * Add some content to the media info
+     * @param content Element to add to the info
+     */
     void addContent(Parent content) {
         wrapper.getChildren().add(content);
     }
 
+    /**
+     * Create the main element for the page
+     * @param media Media to create info for
+     * @return Main content
+     */
     private Parent createMainContent(Media media) {
         // Create elements
         ImageView image = new ImageView(Images.getMediaImage(media));
@@ -49,6 +64,11 @@ public abstract class MediaInfoContent extends ContentPage {
         return mainContent;
     }
 
+    /**
+     * Create element with media info
+     * @param media Media to create info element for
+     * @return Media info element
+     */
     private Parent createMediaInfo(Media media) {
         // Title
         Text title = new Text(media.getName());
@@ -79,6 +99,11 @@ public abstract class MediaInfoContent extends ContentPage {
         return mediaInfo;
     }
 
+    /**
+     * Create the buttons for the various media action
+     * @param media Media to use with the actions
+     * @return Element with action buttons
+     */
     private Parent createActionButtons(Media media) {
         HBox buttons = new HBox(20);
 
@@ -100,6 +125,13 @@ public abstract class MediaInfoContent extends ContentPage {
         return buttons;
     }
 
+    /**
+     * Create a button for adding the media to the user's list
+     * @param media Media to add
+     * @param buttons Element with all the buttons, for replacing the button.
+     * @param buttonIndex Index of this button, for replacing the button.
+     * @return Button to add media to the user's list
+     */
     private ActionButton createAddToListButton(Media media, Pane buttons, int buttonIndex) {
         return new ActionButton("+ My List", "#aa8372", e -> {
             Main.getActiveUser().addMediaToFavorites(media);
@@ -112,6 +144,13 @@ public abstract class MediaInfoContent extends ContentPage {
         });
     }
 
+    /**
+     * Create a button for removing the media from the user's list
+     * @param media Media to remove
+     * @param buttons Element with all the buttons, for replacing the button.
+     * @param buttonIndex Index of this button, for replacing the button.
+     * @return Button to removing media from the user's list
+     */
     private ActionButton createRemoveFromListButton(Media media, Pane buttons, int buttonIndex) {
         return new ActionButton("- My List", "#aaaaaa", e -> {
             Main.getActiveUser().removeMediaFromFavorites(media);

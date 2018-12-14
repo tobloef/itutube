@@ -9,8 +9,11 @@ import netflix.views.pages.ContentPage;
 
 import java.util.List;
 
+/**
+ * Front page of the application, after the user has logged in.
+ * Displays a number of featured media lists.
+ */
 public class FrontPage extends ContentPage {
-
     public FrontPage() {
         super();
         List<MediaList> featuredLists = Database.getFeaturedLists();

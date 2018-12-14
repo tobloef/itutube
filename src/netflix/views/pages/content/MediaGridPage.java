@@ -16,7 +16,16 @@ import java.util.function.Consumer;
 import static netflix.helpers.ImageButtonInfoHelper.categoriesToImageButtonInfos;
 import static netflix.helpers.ImageButtonInfoHelper.mediasToCategories;
 
+/**
+ * Page for displaying a grid of medias, using image buttons.
+ */
 public class MediaGridPage extends ImageGridPage {
+    /**
+     * @param title Title of the grid
+     * @param medias List of medias to display
+     * @param handleAction Handler for what to do when a media is clicked
+     * @param showCategoriesButton Whether to show the category filter button
+     */
     public MediaGridPage(String title, List<Media> medias, Consumer<Media> handleAction, boolean showCategoriesButton) {
         super(title, ImageButtonInfoHelper.mediasToImageButtonInfos(medias, handleAction));
 

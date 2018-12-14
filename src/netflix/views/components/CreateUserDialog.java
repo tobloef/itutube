@@ -13,9 +13,15 @@ import javafx.stage.StageStyle;
 import netflix.models.User;
 import netflix.models.UserType;
 
-
+/**
+ * Pop-up dialog for creating a new user.
+ */
 public class CreateUserDialog {
 
+    /**
+     * Display's the pop-up.
+     * @return The new user.
+     */
     public static User display() {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);

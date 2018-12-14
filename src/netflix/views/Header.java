@@ -74,30 +74,50 @@ public class Header extends HBox {
         this.getChildren().add(changeUser);
     }
 
+    /**
+     * Go to the front page
+     */
     private static void handleFrontPageClick() {
         Main.setPage(new FrontPage());
     }
 
+    /**
+     * Go to the movies page
+     */
     private static void handleMovieClick() {
         List<Media> movieList = MediaSorting.findByType(Movie.class, Database.getAllMedia());
         Main.setPage(new MediaGridPage("Movies", movieList, MediaActions::setMediaInfoContent, true));
     }
 
+    /**
+     * Go to the series page
+     */
     private static void handleSeriesClick() {
         List<Media> seriesList = MediaSorting.findByType(Series.class, Database.getAllMedia());
         Main.setPage(new MediaGridPage("Series", seriesList, MediaActions::setMediaInfoContent, true));
     }
 
+    /**
+     * Go to the user's favorites list page
+     */
     private static void handleMyListClick() {
         List<Media> mediaInList = Main.getActiveUser().getFavoritesList();
         String name = nameToPossessiveForm(Main.getActiveUser().getName()) + " List";
         Main.setPage(new MediaGridPage(name, mediaInList, MediaActions::setMediaInfoContent, false));
     }
 
+    /**
+     * Go to the change user page
+     */
     private static void handleChangeUserClick() {
         Main.setPage(new UserSelectPage());
     }
 
+    /**
+     * Convert a name to the possessive form, with a 's or ' suffix.
+     * @param name The name to convert
+     * @return The name in possessive form
+     */
     private static String nameToPossessiveForm(String name) {
         if (name.endsWith("s") || name.endsWith("x") || name.endsWith("z")) {
             return name + "'";

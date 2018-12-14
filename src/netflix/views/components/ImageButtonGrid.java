@@ -8,10 +8,17 @@ import netflix.models.ImageButtonInfo;
 
 import java.util.List;
 
+/**
+ * Grid of image buttons
+ */
 public class ImageButtonGrid extends VBox {
 
     private HBox titleWrapper;
 
+    /**
+     * @param title Title to display above the grid
+     * @param items Info objects for the items in the grid
+     */
     public ImageButtonGrid(String title, List<ImageButtonInfo> items) {
         super();
 
@@ -36,6 +43,11 @@ public class ImageButtonGrid extends VBox {
         this.getStyleClass().add("image-button-grid");
     }
 
+    /**
+     * Get the wrapper that contains the title.
+     * Used for adding stuff to the top of the grid.
+     * @return The title wrapper
+     */
     public HBox getTitleWrapper() {
         return titleWrapper;
     }

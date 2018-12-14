@@ -16,10 +16,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Database object for the entire application.
+ */
 public final class Database {
     private static HashMap<String, Media> mediaMap = new HashMap<>();
     private static List<User> users = new ArrayList<>();
-
 
     /**
      * Get a netflix.media.Media by its ID.
@@ -55,6 +57,10 @@ public final class Database {
         return users;
     }
 
+    /**
+     * Get a list of the featured lists for the front page
+     * @return List of featured media lists
+     */
     public static List<MediaList> getFeaturedLists() {
         // TODO: Load this from a file
         return FakeData.generateFakeFeaturedLists(getAllMedia());
@@ -95,6 +101,10 @@ public final class Database {
         }
     }
 
+    /**
+     * Get a list of all media in the database
+     * @return List of all media
+     */
     private static HashMap<String, Media> fetchMedia() {
         List<Media> allMedia = new ArrayList<>();
         // Try to load the different types of media

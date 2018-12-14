@@ -17,7 +17,7 @@ import java.util.List;
 import static netflix.helpers.ImageButtonInfoHelper.usersToImageButtonInfos;
 
 /**
- * Page for selecting with user to use
+ * Page for selecting which user to use
  */
 public class UserSelectPage extends ScrollPane {
 

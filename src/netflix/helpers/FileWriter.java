@@ -15,13 +15,13 @@ public class FileWriter {
     /**
      * Saves the list of media to the disk.
      */
-    public static void saveMedia(List<Media> media) {
+    public static void saveMedia(List<Media> medias) {
         List<Saveable> data = new ArrayList<>();
-        for (Media m : media) {
-            if (m instanceof Saveable) {
-                data.add((Saveable) m);
+        for (Media media : medias) {
+            if (media instanceof Saveable) {
+                data.add((Saveable) media);
             } else {
-                String className = m.getClass().getSimpleName();
+                String className = media.getClass().getSimpleName();
                 System.err.println("Attempted to save media type " + className + "which isn't saveable.");
             }
         }

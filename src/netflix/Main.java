@@ -12,6 +12,10 @@ public class Main extends Application {
     private static Stage stage;
     private static User activeUser;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage stage) {
         Database.load();
@@ -20,7 +24,8 @@ public class Main extends Application {
         stage.setTitle("ITU-tube");
         stage.setOnCloseRequest(e -> {
             e.consume();
-            saveAndClose();
+            cleanup();
+            stage.close();
         });
         // Set default view
         Parent defaultPage = new UserSelectPage();
@@ -31,23 +36,33 @@ public class Main extends Application {
         stage.show();
     }
 
+    /**
+     * Set the current active view to display in the view
+     * @param page Page to display
+     */
     public static void setPage(Parent page) {
         stage.getScene().setRoot(page);
     }
 
-    private void saveAndClose() {
+    /**
+     * Do anything necessary before the application closes
+     */
+    private void cleanup() {
         Database.save();
-        stage.close();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
+    /**
+     * Get the currently logged in user
+     * @return Logged in user
+     */
     public static User getActiveUser() {
         return activeUser;
     }
 
+    /**
+     * Set the currently logged in user
+     * @param user User to log in
+     */
     public static void setActiveUser(User user) {
         Main.activeUser = user;
     }

@@ -10,13 +10,24 @@ import netflix.views.components.MediaButtonList;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Page for displaying information about a series.
+ */
 public class SeriesInfoContent extends MediaInfoContent {
 
+    /**
+     * @param series The series to display info for
+     */
     public SeriesInfoContent(Series series) {
         super(series);
         this.addContent(getSeasonsPreview(series));
     }
 
+    /**
+     * Create elements displaying the series's seasons.
+     * @param series The series to display the seasons of
+     * @return Elements display the series's seasons
+     */
     private static VBox getSeasonsPreview(Series series) {
         VBox seasons = new VBox();
         seasons.getStyleClass().add("seasons-box");

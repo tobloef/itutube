@@ -13,6 +13,9 @@ import netflix.views.pages.content.MediaGridPage;
 
 import java.util.List;
 
+/**
+ * Search bar for searching in all the media.
+ */
 public class SearchBar extends HBox {
 
     public SearchBar() {
