@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+/**
+ * Generates placeholder data for media objects.
+ */
 public class FakeData {
     private static String[] fakeNames = {"Mario Speedwagon", "Petey Cruiser", "Anna Sthesia", "Anna Mull", "Gail Forcewind", "Nick R. Bocker", "Mike Hunt", "Don Stairs"};
     private static String[] fakeRoles = {"Directors", "Actors", "Cameramen", "Audio"};
@@ -32,25 +35,49 @@ public class FakeData {
         return creditsArray;
     }
 
+    /**
+     * Generates a string of a set length, that contains lorem ipsum.
+     * @param characters The length of the string in characters.
+     * @return String of lorem ipsum text.
+     */
     public static String getLoremIpsum(int characters) {
         return loremIpsum.substring(0, Math.min(characters, loremIpsum.length()));
     }
 
+    /**
+     * Generates an alphanumeric ID using UUID.
+     * @return Random ID.
+     */
     public static String generateFakeId() {
         UUID uuid = UUID.randomUUID();
         return uuid.toString();
     }
 
+    /**
+     * Generates a random double from 0 to 10 with one decimal.
+     * @return Random rating.
+     */
     public static double generateFakeRating() {
         Random r = new Random();
         return (double) Math.round(r.nextDouble() * 100) / 10;
     }
 
+    /**
+     * Generates a random integer from 0 to 10800, representing the runtime of a media.
+     * @return Random integer.
+     */
     public static int generateFakeRuntime() {
         Random r = new Random();
         return r.nextInt(10800);
     }
 
+    /**
+     * Generates a random list of media from the database.
+     * @param media List of media.
+     * @param min Minimal length of the list.
+     * @param max Maximal length of the list.
+     * @return Random list of media.
+     */
     public static List<Media> generateRandomListOfMedia(List<Media> media, int min, int max) {
         List<Media> listOfMedia = new ArrayList<>();
         Random rand = new Random();
@@ -65,6 +92,11 @@ public class FakeData {
         return listOfMedia;
     }
 
+    /**
+     * Generates a list of MediaList objects from a list of media.
+     * @param media List of media
+     * @return Customized random media lists.
+     */
     public static List<MediaList> generateFakeFeaturedLists(List<Media> media) {
         List<MediaList> mediaLists = new ArrayList<>();
         mediaLists.add(new MediaList(
