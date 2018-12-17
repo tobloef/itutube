@@ -137,11 +137,6 @@ public abstract class MediaInfoContent extends ContentPage {
     private ActionButton createAddToListButton(Media media, Pane buttons, int buttonIndex) {
         return new ActionButton("+ My List", "#aa8372", e -> {
             Main.getActiveUser().addMediaToFavorites(media);
-            Alert addedAlert = new Alert(Alert.AlertType.INFORMATION);
-            addedAlert.setTitle("Added to list");
-            addedAlert.setHeaderText("Added to list");
-            addedAlert.setContentText("\"" + media.getName() + "\" has been successfully added to your list.");
-            addedAlert.showAndWait();
             buttons.getChildren().set(buttonIndex, createRemoveFromListButton(media, buttons, buttonIndex));
         });
     }
@@ -156,11 +151,6 @@ public abstract class MediaInfoContent extends ContentPage {
     private ActionButton createRemoveFromListButton(Media media, Pane buttons, int buttonIndex) {
         return new ActionButton("- My List", "#aaaaaa", e -> {
             Main.getActiveUser().removeMediaFromFavorites(media);
-            Alert addedAlert = new Alert(Alert.AlertType.INFORMATION);
-            addedAlert.setTitle("Removed from list");
-            addedAlert.setHeaderText("Removed from list");
-            addedAlert.setContentText("\"" + media.getName() + "\" has been removed from your list.");
-            addedAlert.showAndWait();
             buttons.getChildren().set(buttonIndex, createAddToListButton(media, buttons, buttonIndex));
         });
     }
