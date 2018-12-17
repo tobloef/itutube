@@ -1,5 +1,6 @@
-package itutube;
+package Tests;
 
+import itutube.Database;
 import itutube.exceptions.NoSuchIDException;
 import itutube.exceptions.UsernameTakenException;
 import itutube.models.User;
