@@ -5,6 +5,7 @@ import netflix.models.User;
 import netflix.models.media.Media;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class FileWriter {
         }
         for (HashMap.Entry<String, List<String>> entry : dataMap.entrySet()) {
             Path path = java.nio.file.Paths.get(Paths.getDataFilePath(entry.getKey()));
-            Files.write(path, entry.getValue());
+            Files.write(path, entry.getValue(), StandardCharsets.UTF_8);
         }
     }
 }

@@ -5,9 +5,9 @@ import netflix.models.User;
 import netflix.models.UserType;
 import netflix.models.media.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
@@ -25,13 +25,11 @@ public class FileParser {
     public static List<User> fetchUsers(HashMap<String, Media> mediaMap) throws IOException {
         List<User> newUsers = new ArrayList<>();
         // Try to read the file
-        String className = User.class.getSimpleName();
-        Path path = java.nio.file.Paths.get(Paths.getDataFilePath(className));
-        Scanner scanner = new Scanner(path);
+        String path = Paths.getDataFilePath(User.class.getSimpleName());
+        List<String> lines = getLines(path);
         // Parse the lines in the file
-        while (scanner.hasNext()) {
-            String userLine = scanner.nextLine();
-            String[] properties = userLine.split(";");
+        for(String line : lines) {
+            String[] properties = line.split(";");
             String name = properties[0];
             UserType type = UserType.valueOf(properties[1]);
             ArrayList<Media> favoritesList = new ArrayList<>();
@@ -95,15 +93,12 @@ public class FileParser {
     /**
      * Passes text file of movies to lineToMovie and returns the constructed objects.
      * @return List of all movies in file.
-     * @throws FileNotFoundException If Scanner cannot read the file at given path.
      */
-    public static List<Movie> fetchMovies() throws FileNotFoundException {
+    public static List<Movie> fetchMovies(){
         String path = Paths.getDataFilePath(Movie.class.getSimpleName());
-        File moviesFile = new File(path);
-        Scanner s = new Scanner(moviesFile);
-        ArrayList<Movie> movies = new ArrayList<>();
-        while (s.hasNext()) {
-            String line = s.nextLine();
+        List<String> lines = getLines(path);
+        List<Movie> movies = new ArrayList<>();
+        for(String line : lines) {
             movies.add(lineToMovie(line));
         }
         return movies;
@@ -113,19 +108,15 @@ public class FileParser {
     /**
      * Passes text file of series to lineToSeries and returns the constructed objects.
      * @return List of all series in file.
-     * @throws FileNotFoundException If Scanner cannot read the file at given path.
      */
-    public static List<Series> fetchSeries() throws FileNotFoundException {
+    public static List<Series> fetchSeries() {
         String path = Paths.getDataFilePath(Series.class.getSimpleName());
-        File seriesFile = new File(path);
-        Scanner s = new Scanner(seriesFile);
-        ArrayList<Series> seriesList = new ArrayList<>();
-        while (s.hasNext()) {
-            String line = s.nextLine();
-            Series series = lineToSeries(line);
-            seriesList.add(series);
+        List<String> lines = new ArrayList<String>(getLines(path));
+        List<Series> series = new ArrayList<>();
+        for(String line : lines) {
+            series.add(lineToSeries(line));
         }
-        return seriesList;
+        return series;
     }
 
 
@@ -235,4 +226,27 @@ public class FileParser {
 
         return series;
     }
+
+    /**
+     * Reads file with correct encoding (UTF-8).
+     * @param path Path to the file to read lines from.
+     * @return List of lines from the file.
+     */
+    private static List<String> getLines(String path) {
+        List<String> lines = new ArrayList<>();
+        try {
+            File dir = new File(path);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(dir), StandardCharsets.UTF_8));
+            String nextLine;
+            while((nextLine = reader.readLine()) != null) {
+                lines.add(nextLine);
+            }
+            reader.close();
+
+        } catch (IOException e) {
+            System.err.println("Error loading media: " + e.getMessage());
+        }
+        return lines;
+    }
+
 }
