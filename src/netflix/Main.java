@@ -7,6 +7,12 @@ import javafx.stage.Stage;
 import netflix.models.User;
 import netflix.views.pages.UserSelectPage;
 
+import java.io.*;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Collectors;
+
 public class Main extends Application {
 
     private static Stage stage;
