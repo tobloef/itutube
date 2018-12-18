@@ -4,6 +4,7 @@ import itutube.models.Credits;
 import itutube.models.Playable;
 import itutube.views.pages.PlayerPage;
 import javafx.scene.Parent;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Date;
 import java.util.List;
@@ -68,7 +69,7 @@ public abstract class VideoMedia extends Media implements Playable {
     @Override
     public double getProgress() {
         // TODO: This could be loaded from a file or something.
-        return new Random().nextDouble();
+        throw new NotImplementedException();
     }
 
     @Override

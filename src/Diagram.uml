@@ -3,197 +3,75 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="0.0" y="662.0">itutube.views.pages.UserSelectPage</node>
-    <node x="673.0" y="361.0">itutube.views.components.MediaButtonList</node>
-    <node x="338.0" y="662.0">itutube.helpers.MediaSorting</node>
-    <node x="277.0" y="109.0">itutube.models.Viewable</node>
-    <node x="0.0" y="588.0">itutube.exceptions.NoSuchIDException</node>
-    <node x="485.5" y="361.0">itutube.views.pages.content.FrontPage</node>
-    <node x="8.75" y="208.0">itutube.models.media.Music</node>
-    <node x="672.5" y="282.0">itutube.views.components.ImageButtonList</node>
-    <node x="321.5" y="361.0">itutube.views.pages.content.MediaInfoContent</node>
-    <node x="284.0" y="810.0">itutube.helpers.FakeData</node>
-    <node x="485.5" y="440.0">itutube.views.pages.content.SeriesInfoContent</node>
-    <node x="227.0" y="514.0">itutube.exceptions.UserNotFoundException</node>
-    <node x="0.0" y="884.0">itutube.models.Credits</node>
-    <node x="0.0" y="514.0">itutube.exceptions.UsernameTakenException</node>
-    <node x="759.0" y="736.0">itutube.helpers.FileWriter</node>
-    <node x="391.0" y="109.0">itutube.models.media.VideoMedia</node>
-    <node x="107.0" y="109.0">itutube.models.Saveable</node>
-    <node x="425.0" y="810.0">itutube.models.UserType</node>
-    <node x="321.5" y="440.0">itutube.views.pages.content.MovieInfoContent</node>
-    <node x="173.0" y="662.0">itutube.helpers.MediaActions</node>
-    <node x="472.0" y="736.0">itutube.views.components.SearchBar</node>
-    <node x="0.5" y="440.0">itutube.views.pages.content.MediaGridPage</node>
-    <node x="250.0" y="884.0">itutube.Main</node>
-    <node x="564.0" y="588.0">itutube.models.ImageButtonInfo</node>
-    <node x="448.0" y="514.0">itutube.helpers.ImageButtonInfoHelper</node>
-    <node x="697.0" y="810.0">itutube.views.components.Header</node>
-    <node x="161.0" y="736.0">itutube.helpers.MediaSorting.SortByRating</node>
-    <node x="664.0" y="662.0">itutube.helpers.NodeLookup</node>
-    <node x="129.0" y="884.0">itutube.helpers.Paths</node>
-    <node x="406.75" y="208.0">itutube.models.media.Episode</node>
-    <node x="197.75" y="208.0">itutube.models.media.Series</node>
-    <node x="0.0" y="810.0">itutube.helpers.FileParser</node>
-    <node x="502.0" y="662.0">itutube.views.components.ActionButton</node>
-    <node x="0.0" y="736.0">itutube.views.components.ImageButton</node>
-    <node x="142.0" y="810.0">itutube.Database</node>
-    <node x="295.75" y="208.0">itutube.models.media.Movie</node>
-    <node x="148.5" y="440.0">itutube.views.pages.content.EpisodeInfoContent</node>
-    <node x="665.0" y="514.0">itutube.exceptions.InvalidMediaException</node>
-    <node x="0.0" y="361.0">itutube.views.pages.content.ImageGridPage</node>
-    <node x="566.0" y="810.0">itutube.helpers.Images</node>
-    <node x="0.0" y="0.0">itutube.models.Playable</node>
-    <node x="315.5" y="0.0">itutube.models.media.Media</node>
-    <node x="106.75" y="208.0">itutube.models.User</node>
-    <node x="335.5" y="282.0">itutube.views.pages.ContentPage</node>
-    <node x="381.0" y="588.0">itutube.views.components.ImageButtonGrid</node>
-    <node x="322.0" y="736.0">itutube.views.pages.PlayerPage</node>
-    <node x="616.0" y="736.0">itutube.models.MediaList</node>
-    <node x="522.0" y="109.0">itutube.models.media.Season</node>
-    <node x="197.0" y="588.0">itutube.views.components.CreateUserDialog</node>
+    <node x="65.55833333333334" y="401.0">itutube.views.components.MediaButtonList</node>
+    <node x="0.0" y="322.0">itutube.views.components.ImageButtonList</node>
+    <node x="154.00000000000003" y="322.0">itutube.views.components.ImageButtonGrid</node>
+    <node x="100.61481481481485" y="189.0">itutube.views.components.ImageButton</node>
+    <node x="109.23055555555555" y="0.0">itutube.models.ImageButtonInfo</node>
+    <node x="244.3453703703704" y="145.0">itutube.helpers.ImageButtonInfoHelper</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="itutube.models.media.Movie" target="itutube.models.media.VideoMedia">
-      <point x="26.666666666666515" y="-14.5" />
-      <point x="362.4166666666665" y="188.0" />
-      <point x="418.75" y="188.0" />
-      <point x="-27.75" y="14.5" />
+    <edge source="itutube.views.components.MediaButtonList" target="itutube.helpers.ImageButtonInfoHelper">
+      <point x="44.33333333333334" y="-14.5" />
+      <point x="176.39166666666668" y="376.0" />
+      <point x="530.8453703703703" y="376.0" />
+      <point x="0.0" y="58.5" />
     </edge>
-    <edge source="itutube.views.pages.content.MediaGridPage" target="itutube.views.pages.content.ImageGridPage">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
+    <edge source="itutube.views.components.ImageButtonList" target="itutube.views.components.ImageButton">
+      <point x="44.66666666666666" y="-14.5" />
+      <point x="111.66666666666666" y="302.0" />
+      <point x="144.11481481481485" y="302.0" />
+      <point x="-14.5" y="14.5" />
     </edge>
-    <edge source="itutube.views.pages.content.ImageGridPage" target="itutube.views.pages.ContentPage">
-      <point x="0.0" y="-14.5" />
-      <point x="64.5" y="336.0" />
-      <point x="354.8333333333333" y="336.0" />
-      <point x="-38.666666666666686" y="14.5" />
+    <edge source="itutube.views.components.ImageButtonGrid" target="itutube.models.ImageButtonInfo">
+      <point x="45.99999999999997" y="-14.5" />
+      <point x="269.0" y="302.0" />
+      <point x="233.8453703703704" y="302.0" />
+      <point x="233.8453703703704" y="125.0" />
+      <point x="246.23055555555555" y="125.0" />
+      <point x="0.0" y="47.5" />
     </edge>
-    <edge source="itutube.models.media.VideoMedia" target="itutube.models.media.Media">
-      <point x="27.75" y="-14.5" />
-      <point x="474.25" y="59.0" />
-      <point x="365.5" y="59.0" />
-      <point x="10.0" y="14.5" />
+    <edge source="itutube.views.components.ImageButtonGrid" target="itutube.views.components.ImageButton">
+      <point x="-2.8421709430404007E-14" y="-14.5" />
+      <point x="223.0" y="302.0" />
+      <point x="202.11481481481485" y="302.0" />
+      <point x="43.5" y="14.5" />
     </edge>
-    <edge source="itutube.models.media.Series" target="itutube.models.Viewable">
-      <point x="26.0" y="-14.5" />
-      <point x="262.75" y="188.0" />
-      <point x="312.25" y="188.0" />
-      <point x="-11.75" y="14.5" />
+    <edge source="itutube.views.components.ImageButtonList" target="itutube.models.ImageButtonInfo">
+      <point x="-44.66666666666666" y="-14.5" />
+      <point x="22.333333333333343" y="282.0" />
+      <point x="66.66666666666669" y="282.0" />
+      <point x="66.66666666666669" y="125.0" />
+      <point x="136.63055555555556" y="125.0" />
+      <point x="-109.6" y="47.5" />
     </edge>
-    <edge source="itutube.models.media.Music" target="itutube.models.Playable">
-      <point x="-29.25" y="-14.5" />
-      <point x="18.5" y="188.0" />
-      <point x="3.428571428571445" y="188.0" />
-      <point x="3.428571428571445" y="89.0" />
-      <point x="22.75" y="89.0" />
-      <point x="-22.75" y="14.5" />
-    </edge>
-    <edge source="itutube.models.media.Season" target="itutube.models.media.Media">
-      <point x="0.0" y="-14.5" />
-      <point x="565.0" y="49.0" />
-      <point x="385.5" y="49.0" />
-      <point x="30.0" y="14.5" />
-    </edge>
-    <edge source="itutube.models.User" target="itutube.models.Saveable">
-      <point x="0.0" y="-14.5" />
-      <point x="-11.75" y="14.5" />
-    </edge>
-    <edge source="itutube.models.media.Music" target="itutube.models.Saveable">
-      <point x="9.75" y="-14.5" />
-      <point x="57.5" y="168.0" />
-      <point x="118.75" y="168.0" />
-      <point x="-35.25" y="14.5" />
-    </edge>
-    <edge source="itutube.models.media.Movie" target="itutube.models.Viewable">
-      <point x="0.0" y="-14.5" />
-      <point x="11.75" y="14.5" />
-    </edge>
-    <edge source="itutube.models.media.Movie" target="itutube.models.Saveable">
-      <point x="-26.666666666666515" y="-14.5" />
-      <point x="309.0833333333335" y="158.0" />
-      <point x="189.25" y="158.0" />
-      <point x="35.25" y="14.5" />
-    </edge>
-    <edge source="itutube.models.media.Music" target="itutube.models.Viewable">
-      <point x="29.25" y="-14.5" />
-      <point x="77.0" y="178.0" />
-      <point x="288.75" y="178.0" />
-      <point x="-35.25" y="14.5" />
-    </edge>
-    <edge source="itutube.models.media.Series" target="itutube.models.Saveable">
-      <point x="-26.0" y="-14.5" />
-      <point x="210.75" y="168.0" />
-      <point x="165.75" y="168.0" />
-      <point x="11.75" y="14.5" />
-    </edge>
-    <edge source="itutube.models.media.VideoMedia" target="itutube.models.Playable">
-      <point x="-27.75" y="-14.5" />
-      <point x="418.75" y="69.0" />
-      <point x="68.25" y="69.0" />
-      <point x="22.75" y="14.5" />
-    </edge>
-    <edge source="itutube.models.media.Music" target="itutube.models.media.Media">
-      <point x="-9.75" y="-14.5" />
-      <point x="38.0" y="188.0" />
-      <point x="33.75" y="188.0" />
-      <point x="33.75" y="79.0" />
-      <point x="325.5" y="79.0" />
-      <point x="-30.0" y="14.5" />
-    </edge>
-    <edge source="itutube.views.pages.content.SeriesInfoContent" target="itutube.views.pages.content.MediaInfoContent">
-      <point x="0.0" y="-14.5" />
-      <point x="556.5" y="415.0" />
-      <point x="441.5" y="415.0" />
-      <point x="48.0" y="14.5" />
-    </edge>
-    <edge source="itutube.models.media.Episode" target="itutube.models.Viewable">
-      <point x="-22.5" y="-14.5" />
-      <point x="429.25" y="178.0" />
-      <point x="359.25" y="178.0" />
-      <point x="35.25" y="14.5" />
-    </edge>
-    <edge source="itutube.models.media.Episode" target="itutube.models.media.VideoMedia">
-      <point x="22.5" y="-14.5" />
-      <point x="27.75" y="14.5" />
-    </edge>
-    <edge source="itutube.views.pages.content.FrontPage" target="itutube.views.pages.ContentPage">
-      <point x="0.0" y="-14.5" />
-      <point x="536.5" y="336.0" />
-      <point x="432.16666666666663" y="336.0" />
-      <point x="38.66666666666663" y="14.5" />
-    </edge>
-    <edge source="itutube.views.pages.content.MediaInfoContent" target="itutube.views.pages.ContentPage">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
+    <edge source="itutube.helpers.ImageButtonInfoHelper" target="itutube.models.ImageButtonInfo">
+      <point x="-143.25" y="-58.5" />
+      <point x="387.5953703703704" y="125.0" />
+      <point x="301.03055555555557" y="125.0" />
+      <point x="54.80000000000001" y="47.5" />
     </edge>
     <edge source="itutube.views.components.MediaButtonList" target="itutube.views.components.ImageButtonList">
       <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
+      <point x="132.05833333333334" y="376.0" />
+      <point x="100.5" y="376.0" />
+      <point x="33.5" y="14.5" />
     </edge>
-    <edge source="itutube.models.media.Series" target="itutube.models.media.Media">
+    <edge source="itutube.views.components.ImageButton" target="itutube.models.ImageButtonInfo">
       <point x="0.0" y="-14.5" />
-      <point x="236.75" y="89.0" />
-      <point x="345.5" y="89.0" />
-      <point x="-10.0" y="14.5" />
-    </edge>
-    <edge source="itutube.views.pages.content.MovieInfoContent" target="itutube.views.pages.content.MediaInfoContent">
-      <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="itutube.views.pages.content.EpisodeInfoContent" target="itutube.views.pages.content.MediaInfoContent">
-      <point x="0.0" y="-14.5" />
-      <point x="225.0" y="415.0" />
-      <point x="345.5" y="415.0" />
-      <point x="-48.0" y="14.5" />
+      <point x="158.61481481481485" y="125.0" />
+      <point x="191.43055555555554" y="125.0" />
+      <point x="-54.80000000000001" y="47.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.4353623188405797" x="1781.9873501997338" y="842.5" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="409.0" y="215.0" />
   <SelectedNodes />
-  <Categories />
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
   <SCOPE>All</SCOPE>
-  <VISIBILITY>private</VISIBILITY>
+  <VISIBILITY>protected</VISIBILITY>
 </Diagram>
 

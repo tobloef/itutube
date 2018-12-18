@@ -5,6 +5,7 @@ import itutube.models.Playable;
 import itutube.models.Saveable;
 import itutube.models.Viewable;
 import javafx.scene.Parent;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Date;
 import java.util.List;
@@ -25,31 +26,31 @@ public class Music extends Media implements Playable, Viewable, Saveable {
 
     @Override
     public String getMediaContent() {
-        return null;
+        throw new NotImplementedException();
     }
 
     @Override
     public double getProgress() {
-        return 0;
+        throw new NotImplementedException();
     }
 
     @Override
     public String getProgressString() {
-        return null;
+        throw new NotImplementedException();
     }
 
     @Override
     public Parent createPlayView() {
-        return null;
+        throw new NotImplementedException();
     }
 
     @Override
     public String getSaveString() {
-        return null;
+        throw new NotImplementedException();
     }
 
     @Override
     public Parent createInfoView() {
-        return null;
+        throw new NotImplementedException();
     }
 }

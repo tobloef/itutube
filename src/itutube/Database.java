@@ -6,6 +6,7 @@ import itutube.exceptions.UsernameTakenException;
 import itutube.helpers.FakeData;
 import itutube.helpers.FileParser;
 import itutube.helpers.FileWriter;
+import itutube.models.CheckedSupplier;
 import itutube.models.MediaList;
 import itutube.models.User;
 import itutube.models.UserType;
@@ -14,9 +15,9 @@ import itutube.models.media.Movie;
 import itutube.models.media.Series;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.lang.reflect.Type;
+import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
@@ -25,12 +26,16 @@ import java.util.stream.Collectors;
 public final class Database {
     private static HashMap<String, Media> mediaMap = new HashMap<>();
     private static List<User> users = new ArrayList<>();
+    private static final List<CheckedSupplier<List<? extends Media>, IOException>> mediaLoaders = new ArrayList<>(Arrays.asList(
+            FileParser::fetchMovies,
+            FileParser::fetchSeries
+    ));
 
     /**
-     * Get a itutube.media.Media by its ID.
+     * Get a Media by its ID.
      *
      * @param id Id of the media
-     * @return itutube.media.Media with the ID, otherwise null
+     * @return Media with the ID, otherwise null
      */
     public static Media getMediaById(String id) {
         if (mediaMap.containsKey(id)) {
@@ -133,18 +138,14 @@ public final class Database {
      */
     private static HashMap<String, Media> fetchMedia() {
         List<Media> allMedia = new ArrayList<>();
-        // Try to load the different types of media
-        try {
-            List<Movie> movies = FileParser.fetchMovies();
-            allMedia.addAll(movies);
-        } catch (IOException e) {
-            System.err.println("Error loading movies: " + e.getMessage());
-        }
-        try {
-            List<Series> series = FileParser.fetchSeries();
-            allMedia.addAll(series);
-        } catch (IOException e) {
-            System.err.println("Error loading series: " + e.getMessage());
+        for (CheckedSupplier<List<? extends Media>, IOException> loader : mediaLoaders) {
+            try {
+                List<? extends Media> media = loader.get();
+                allMedia.addAll(media);
+            } catch (IOException e) {
+                String className = loader.getClass().getSimpleName();
+                System.err.println("Error loading media of type " + className + ":" + e.getMessage());
+            }
         }
         // Return Id/Media map
         HashMap<String, Media> newMediaMap = new HashMap<>();
