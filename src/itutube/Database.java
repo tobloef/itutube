@@ -12,6 +12,7 @@ import itutube.models.media.Media;
 import itutube.models.media.Movie;
 import itutube.models.media.Series;
 
+import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -88,7 +89,7 @@ public final class Database {
      *
      * @param user The user to add
      */
-    public static void addUser(User user) {
+    public static void addUser(User user) throws UsernameTakenException {
         for (User existingUser : users) {
             // Checks if user already exists before adding to list
             if (existingUser.getName().equals(user.getName())) {

@@ -1,5 +1,6 @@
 package itutube.views.pages;
 
+import itutube.exceptions.UsernameTakenException;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
@@ -27,12 +28,14 @@ public class UserSelectPage extends ScrollPane {
         imageButtonInfos.add(new ImageButtonInfo("Add User", Images.getAddUserImage(), e -> {
             User newUser = CreateUserDialog.display();
             if (!newUser.getName().equals("") && newUser.getType() != null) {
-                Database.addUser(newUser);
+                try {
+                    Database.addUser(newUser);
+                }
+                catch (UsernameTakenException err) {
+                    errorAddingUser("This username is already taken");
+                }
             } else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Can't create user");
-                alert.setContentText("The user couldn't be added. Please try again with the correct info.");
-                alert.showAndWait();
+                errorAddingUser("The user couldn't be added. Please try again with the correct info.");
             }
             Main.setPage(new UserSelectPage());
         }));
@@ -47,5 +50,12 @@ public class UserSelectPage extends ScrollPane {
 
         this.setFitToWidth(true);
         this.setContent(wrapper);
+    }
+
+    private static void errorAddingUser(String reason) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Can't create user");
+        alert.setContentText(reason);
+        alert.showAndWait();
     }
 }
