@@ -29,7 +29,6 @@ public class FrontPage extends ContentPage {
             );
             content.getChildren().add(mediaButtonList);
         }
-
         this.setContent(content);
     }
 }

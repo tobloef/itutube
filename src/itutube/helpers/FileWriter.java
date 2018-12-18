@@ -1,5 +1,6 @@
 package itutube.helpers;
 
+import itutube.exceptions.DatabaseIOException;
 import itutube.exceptions.InvalidMediaException;
 import itutube.models.Saveable;
 import itutube.models.User;
@@ -18,19 +19,19 @@ public class FileWriter {
      * Passes list of medias to save file if they are Saveable.
      * @param medias List of media to save.
      */
-    public static void saveMedia(List<Media> medias) {
-        List<Saveable> data = new ArrayList<>();
+    public static void saveMedia(List<Media> medias) throws DatabaseIOException {
+        List<Saveable> mediaData = new ArrayList<>();
         for (Media media : medias) {
             if (media instanceof Saveable) {
-                data.add((Saveable) media);
+                mediaData.add((Saveable) media);
             } else {
                 throw new InvalidMediaException("Media is not saveable.", media);
             }
         }
         try {
-            saveData(data);
-        } catch (Exception exception) {
-            System.err.println("Error saving media: " + exception.getMessage());
+            saveData(mediaData);
+        } catch (IOException e) {
+            throw new DatabaseIOException("Error saving media.", e);
         }
     }
 
@@ -38,11 +39,11 @@ public class FileWriter {
      * Passes list of users to save file.
      * @param users List of users to save.
      */
-    public static void saveUsers(List<User> users) {
+    public static void saveUsers(List<User> users) throws DatabaseIOException {
         try {
             saveData(users);
-        } catch (Exception exception) {
-            System.err.println("Error saving users: " + exception.getMessage());
+        } catch (IOException e) {
+            throw new DatabaseIOException("Error saving users.", e);
         }
     }
 

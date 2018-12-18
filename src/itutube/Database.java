@@ -1,5 +1,6 @@
 package itutube;
 
+import itutube.exceptions.DatabaseIOException;
 import itutube.exceptions.NoSuchIDException;
 import itutube.exceptions.UserNotFoundException;
 import itutube.exceptions.UsernameTakenException;
@@ -11,13 +12,9 @@ import itutube.models.MediaList;
 import itutube.models.User;
 import itutube.models.UserType;
 import itutube.models.media.Media;
-import itutube.models.media.Movie;
-import itutube.models.media.Series;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.*;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
@@ -119,7 +116,7 @@ public final class Database {
     /**
      * Save the database to the disk.
      */
-    public static void save() {
+    public static void save() throws DatabaseIOException {
         FileWriter.saveMedia(getAllMedia());
         FileWriter.saveUsers(getUsers());
     }
@@ -127,12 +124,12 @@ public final class Database {
     /**
      * Load the database from the disk.
      */
-    public static void load() {
+    public static void load() throws DatabaseIOException {
         mediaMap = fetchMedia();
         try {
             users = FileParser.fetchUsers(mediaMap);
         } catch (IOException e) {
-            System.err.println("Error loading users: " + e.getMessage());
+            throw new DatabaseIOException("Error loading users.", e);
         }
     }
 
@@ -141,7 +138,7 @@ public final class Database {
      *
      * @return List of all media
      */
-    private static HashMap<String, Media> fetchMedia() {
+    private static HashMap<String, Media> fetchMedia() throws DatabaseIOException {
         List<Media> allMedia = new ArrayList<>();
         for (CheckedSupplier<List<? extends Media>, IOException> loader : mediaLoaders) {
             try {
@@ -149,7 +146,7 @@ public final class Database {
                 allMedia.addAll(media);
             } catch (IOException e) {
                 String className = loader.getClass().getSimpleName();
-                System.err.println("Error loading media of type " + className + ":" + e.getMessage());
+                throw new DatabaseIOException("Error loading media of type " + className + ".", e);
             }
         }
         // Return Id/Media map

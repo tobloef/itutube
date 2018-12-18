@@ -117,15 +117,15 @@ public class FakeData {
         List<MediaList> mediaLists = new ArrayList<>();
         mediaLists.add(new MediaList(
                 "Tobias' Top Picks",
-                generateRandomListOfMedia(media, 2, Math.min(media.size()/2, 15))
+                generateRandomListOfMedia(media, Math.min(media.size(), 2), Math.min(media.size()/2, 15))
         ));
         mediaLists.add(new MediaList(
                 "Nicolai's Special List",
-                generateRandomListOfMedia(media, 2, Math.min(media.size()/2, 15))
+                generateRandomListOfMedia(media, Math.min(media.size(), 2), Math.min(media.size()/2, 15))
         ));
         mediaLists.add(new MediaList(
                 "Julian's Favorites",
-                generateRandomListOfMedia(media, 2, Math.min(media.size()/2, 15))
+                generateRandomListOfMedia(media, Math.min(media.size(), 2), Math.min(media.size()/2, 15))
         ));
         return mediaLists;
     }

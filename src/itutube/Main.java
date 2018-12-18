@@ -1,10 +1,13 @@
 package itutube;
 
+import itutube.exceptions.DatabaseIOException;
 import itutube.models.User;
+import itutube.views.ExceptionAlert;
 import itutube.views.pages.UserSelectPage;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -18,17 +21,33 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        Database.load();
+        // Set global exception handler
+        Thread.currentThread().setUncaughtExceptionHandler((thread, exception) -> {
+            Alert alert = new ExceptionAlert(
+                    "Unhandled error",
+                    "Unfortunately the program encountered an unexpected error and couldn't continue. Sorry about that!",
+                    exception
+            );
+            alert.showAndWait();
+            cleanup();
+            stage.close();
+        });
+        // Load database
+        try {
+            Database.load();
+        } catch (DatabaseIOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error when loading the database.");
+            alert.setContentText("Couldn't load the database from the disk.");
+            alert.showAndWait();
+            return;
+        }
         // Setup stage
         Main.stage = stage;
         stage.setTitle("ITU-tube");
         stage.setOnCloseRequest(event -> {
             event.consume();
-            try {
-                cleanup();
-            } catch (Exception exception) {
-                System.err.println("Error cleaning up application." + exception.getMessage());
-            }
+            cleanup();
             stage.close();
         });
         // Set default view
@@ -52,7 +71,11 @@ public class Main extends Application {
      * Do anything necessary before the application closes
      */
     private void cleanup() {
-        Database.save();
+        try {
+            Database.save();
+        } catch (Exception exception) {
+            System.err.println("Error cleaning up application." + exception.getMessage());
+        }
     }
 
     /**
