@@ -1,10 +1,10 @@
 package itutube.views.pages;
 
+import itutube.views.components.Header;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import itutube.views.Header;
 
 /**
  * A page with a header and some main content

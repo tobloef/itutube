@@ -1,6 +1,5 @@
 package itutube.helpers;
 
-import javafx.scene.image.Image;
 import itutube.Main;
 import itutube.models.ImageButtonInfo;
 import itutube.models.MediaList;
@@ -8,6 +7,7 @@ import itutube.models.User;
 import itutube.models.UserType;
 import itutube.models.media.Media;
 import itutube.views.pages.content.FrontPage;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.HashMap;

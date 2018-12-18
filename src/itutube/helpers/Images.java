@@ -1,8 +1,8 @@
 package itutube.helpers;
 
-import javafx.scene.image.Image;
 import itutube.models.User;
 import itutube.models.media.Media;
+import javafx.scene.image.Image;
 
 import java.io.File;
 import java.util.HashMap;

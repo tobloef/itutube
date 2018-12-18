@@ -1,10 +1,10 @@
 package itutube.views.components;
 
+import itutube.models.ImageButtonInfo;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import itutube.models.ImageButtonInfo;
 
 import java.util.List;
 

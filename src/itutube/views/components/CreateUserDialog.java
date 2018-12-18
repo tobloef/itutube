@@ -1,5 +1,7 @@
 package itutube.views.components;
 
+import itutube.models.User;
+import itutube.models.UserType;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -10,8 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import itutube.models.User;
-import itutube.models.UserType;
 
 /**
  * Pop-up dialog for creating a new user.

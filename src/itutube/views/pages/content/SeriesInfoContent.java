@@ -1,13 +1,13 @@
 package itutube.views.pages.content;
 
-import javafx.scene.Node;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import itutube.helpers.MediaActions;
 import itutube.models.media.Media;
 import itutube.models.media.Season;
 import itutube.models.media.Series;
 import itutube.views.components.MediaButtonList;
+import javafx.scene.Node;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;

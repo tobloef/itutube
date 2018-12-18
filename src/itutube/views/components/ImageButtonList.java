@@ -1,12 +1,12 @@
 package itutube.views.components;
 
+import itutube.models.ImageButtonInfo;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import itutube.models.ImageButtonInfo;
 
 import java.util.List;
 

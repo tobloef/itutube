@@ -1,9 +1,9 @@
 package itutube.models.media;
 
-import javafx.scene.Parent;
 import itutube.models.Credits;
 import itutube.models.Playable;
 import itutube.views.pages.PlayerPage;
+import javafx.scene.Parent;
 
 import java.util.Date;
 import java.util.List;

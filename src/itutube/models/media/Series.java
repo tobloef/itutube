@@ -1,10 +1,10 @@
 package itutube.models.media;
 
-import javafx.scene.Parent;
 import itutube.models.Credits;
 import itutube.models.Saveable;
 import itutube.models.Viewable;
 import itutube.views.pages.content.SeriesInfoContent;
+import javafx.scene.Parent;
 
 import java.util.Date;
 import java.util.List;

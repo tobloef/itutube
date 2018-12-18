@@ -1,12 +1,12 @@
 package itutube.views.pages.content;
 
-import javafx.scene.layout.VBox;
 import itutube.Database;
 import itutube.Main;
 import itutube.helpers.MediaActions;
 import itutube.models.MediaList;
 import itutube.views.components.MediaButtonList;
 import itutube.views.pages.ContentPage;
+import javafx.scene.layout.VBox;
 
 import java.util.List;
 

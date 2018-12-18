@@ -1,10 +1,5 @@
-package itutube.views;
+package itutube.views.components;
 
-import javafx.geometry.Pos;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import itutube.Database;
 import itutube.Main;
 import itutube.helpers.MediaActions;
@@ -12,10 +7,14 @@ import itutube.helpers.MediaSorting;
 import itutube.models.media.Media;
 import itutube.models.media.Movie;
 import itutube.models.media.Series;
-import itutube.views.components.SearchBar;
 import itutube.views.pages.UserSelectPage;
 import itutube.views.pages.content.FrontPage;
 import itutube.views.pages.content.MediaGridPage;
+import javafx.geometry.Pos;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 
 import java.util.List;
 

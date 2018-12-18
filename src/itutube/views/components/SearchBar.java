@@ -1,15 +1,15 @@
 package itutube.views.components;
 
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import itutube.Database;
 import itutube.Main;
 import itutube.helpers.MediaActions;
 import itutube.helpers.MediaSorting;
 import itutube.models.media.Media;
 import itutube.views.pages.content.MediaGridPage;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 
 import java.util.List;
 

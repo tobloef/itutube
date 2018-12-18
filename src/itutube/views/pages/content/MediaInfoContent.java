@@ -1,12 +1,5 @@
 package itutube.views.pages.content;
 
-import javafx.scene.Parent;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import itutube.Main;
 import itutube.helpers.Images;
 import itutube.models.Playable;
@@ -14,6 +7,13 @@ import itutube.models.Saveable;
 import itutube.models.media.Media;
 import itutube.views.components.ActionButton;
 import itutube.views.pages.ContentPage;
+import javafx.scene.Parent;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import static itutube.helpers.MediaActions.setMediaPlayContent;
 

@@ -1,9 +1,9 @@
 package itutube.views.components;
 
+import itutube.models.ImageButtonInfo;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.ImageView;
-import itutube.models.ImageButtonInfo;
 
 /**
  * Button with an image and a title

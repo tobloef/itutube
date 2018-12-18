@@ -13,7 +13,6 @@ import itutube.models.media.Media;
 import itutube.models.media.Movie;
 import itutube.models.media.Series;
 
-import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,9 +1,5 @@
 package itutube.views.pages.content;
 
-import javafx.scene.Node;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import itutube.Main;
 import itutube.helpers.ImageButtonInfoHelper;
 import itutube.helpers.NodeLookup;
@@ -11,6 +7,10 @@ import itutube.models.ImageButtonInfo;
 import itutube.models.MediaList;
 import itutube.models.media.Media;
 import itutube.views.components.ActionButton;
+import javafx.scene.Node;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 
 import java.util.List;
 import java.util.function.Consumer;

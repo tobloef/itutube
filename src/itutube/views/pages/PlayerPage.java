@@ -1,15 +1,14 @@
 package itutube.views.pages;
 
-import itutube.exceptions.InvalidMediaException;
-import javafx.scene.control.Alert;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import itutube.Main;
+import itutube.exceptions.InvalidMediaException;
 import itutube.models.Playable;
 import itutube.models.media.Media;
 import itutube.views.components.ActionButton;
 import itutube.views.pages.content.FrontPage;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 /**
  * Mock page for displaying a media.

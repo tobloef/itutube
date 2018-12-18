@@ -1,20 +1,18 @@
 package itutube.views.pages;
 
-import itutube.exceptions.UsernameTakenException;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.VBox;
 import itutube.Database;
 import itutube.Main;
+import itutube.exceptions.UsernameTakenException;
 import itutube.helpers.Images;
 import itutube.models.ImageButtonInfo;
 import itutube.models.User;
 import itutube.views.components.CreateUserDialog;
 import itutube.views.components.ImageButtonGrid;
+import javafx.event.ActionEvent;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 
 import java.util.List;
 

@@ -1,11 +1,11 @@
 package itutube;
 
+import itutube.models.User;
+import itutube.views.pages.UserSelectPage;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import itutube.models.User;
-import itutube.views.pages.UserSelectPage;
 
 public class Main extends Application {
 

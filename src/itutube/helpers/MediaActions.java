@@ -1,8 +1,7 @@
 package itutube.helpers;
 
-import itutube.exceptions.InvalidMediaException;
-import javafx.scene.control.Alert;
 import itutube.Main;
+import itutube.exceptions.InvalidMediaException;
 import itutube.models.Playable;
 import itutube.models.Viewable;
 import itutube.models.media.Media;
