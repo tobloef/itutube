@@ -24,12 +24,17 @@ import java.util.stream.Collectors;
  * Database object for the entire application.
  */
 public final class Database {
-    private static HashMap<String, Media> mediaMap = new HashMap<>();
-    private static List<User> users = new ArrayList<>();
+    /**
+     * List of methods for loading media into the database from list.
+     * You have to add a new method to this list when you need to load a new type of media.
+     */
     private static final List<CheckedSupplier<List<? extends Media>, IOException>> mediaLoaders = Arrays.asList(
             FileParser::fetchMovies,
             FileParser::fetchSeries
     );
+
+    private static HashMap<String, Media> mediaMap = new HashMap<>();
+    private static List<User> users = new ArrayList<>();
 
     /**
      * Get a Media by its ID.
