@@ -2,70 +2,10 @@
 <Diagram>
   <ID>JAVA</ID>
   <OriginalElement />
-  <nodes>
-    <node x="65.55833333333334" y="401.0">itutube.views.components.MediaButtonList</node>
-    <node x="0.0" y="322.0">itutube.views.components.ImageButtonList</node>
-    <node x="154.00000000000003" y="322.0">itutube.views.components.ImageButtonGrid</node>
-    <node x="100.61481481481485" y="189.0">itutube.views.components.ImageButton</node>
-    <node x="109.23055555555555" y="0.0">itutube.models.ImageButtonInfo</node>
-    <node x="244.3453703703704" y="145.0">itutube.helpers.ImageButtonInfoHelper</node>
-  </nodes>
+  <nodes />
   <notes />
-  <edges>
-    <edge source="itutube.views.components.MediaButtonList" target="itutube.helpers.ImageButtonInfoHelper">
-      <point x="44.33333333333334" y="-14.5" />
-      <point x="176.39166666666668" y="376.0" />
-      <point x="530.8453703703703" y="376.0" />
-      <point x="0.0" y="58.5" />
-    </edge>
-    <edge source="itutube.views.components.ImageButtonList" target="itutube.views.components.ImageButton">
-      <point x="44.66666666666666" y="-14.5" />
-      <point x="111.66666666666666" y="302.0" />
-      <point x="144.11481481481485" y="302.0" />
-      <point x="-14.5" y="14.5" />
-    </edge>
-    <edge source="itutube.views.components.ImageButtonGrid" target="itutube.models.ImageButtonInfo">
-      <point x="45.99999999999997" y="-14.5" />
-      <point x="269.0" y="302.0" />
-      <point x="233.8453703703704" y="302.0" />
-      <point x="233.8453703703704" y="125.0" />
-      <point x="246.23055555555555" y="125.0" />
-      <point x="0.0" y="47.5" />
-    </edge>
-    <edge source="itutube.views.components.ImageButtonGrid" target="itutube.views.components.ImageButton">
-      <point x="-2.8421709430404007E-14" y="-14.5" />
-      <point x="223.0" y="302.0" />
-      <point x="202.11481481481485" y="302.0" />
-      <point x="43.5" y="14.5" />
-    </edge>
-    <edge source="itutube.views.components.ImageButtonList" target="itutube.models.ImageButtonInfo">
-      <point x="-44.66666666666666" y="-14.5" />
-      <point x="22.333333333333343" y="282.0" />
-      <point x="66.66666666666669" y="282.0" />
-      <point x="66.66666666666669" y="125.0" />
-      <point x="136.63055555555556" y="125.0" />
-      <point x="-109.6" y="47.5" />
-    </edge>
-    <edge source="itutube.helpers.ImageButtonInfoHelper" target="itutube.models.ImageButtonInfo">
-      <point x="-143.25" y="-58.5" />
-      <point x="387.5953703703704" y="125.0" />
-      <point x="301.03055555555557" y="125.0" />
-      <point x="54.80000000000001" y="47.5" />
-    </edge>
-    <edge source="itutube.views.components.MediaButtonList" target="itutube.views.components.ImageButtonList">
-      <point x="0.0" y="-14.5" />
-      <point x="132.05833333333334" y="376.0" />
-      <point x="100.5" y="376.0" />
-      <point x="33.5" y="14.5" />
-    </edge>
-    <edge source="itutube.views.components.ImageButton" target="itutube.models.ImageButtonInfo">
-      <point x="0.0" y="-14.5" />
-      <point x="158.61481481481485" y="125.0" />
-      <point x="191.43055555555554" y="125.0" />
-      <point x="-54.80000000000001" y="47.5" />
-    </edge>
-  </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="409.0" y="215.0" />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.5411635565312842" x="445.50000000000006" y="422.5649087221096" />
   <SelectedNodes />
   <Categories>
     <Category>Methods</Category>
