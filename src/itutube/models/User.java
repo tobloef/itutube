@@ -1,5 +1,6 @@
 package itutube.models;
 
+import itutube.exceptions.InvalidMediaException;
 import itutube.models.media.Media;
 
 import java.util.ArrayList;
@@ -62,6 +63,9 @@ public class User implements Saveable {
      * @param media The media to add to list
      */
     public void addMediaToFavorites(Media media) {
+        if (media instanceof Saveable) {
+            throw new InvalidMediaException("Media is not savable.", media);
+        }
         if (favoritesList.stream().noneMatch(m -> m.getId().equals(media.getId()))) {
             favoritesList.add(media);
         }

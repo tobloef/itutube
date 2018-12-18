@@ -20,9 +20,11 @@ public class FileParser {
      * Returns a list of users, generated from the user file.
      * @param mediaMap HashMap of all media in the database.
      * @return List of user objects.
-     * @throws IOException If the file cannot be read at the given path.
      */
     public static List<User> fetchUsers(HashMap<String, Media> mediaMap) throws IOException {
+        if (mediaMap == null) {
+            throw new IllegalArgumentException("Map of media cannot be null.");
+        }
         List<User> newUsers = new ArrayList<>();
         // Try to read the file
         String path = Paths.getDataFilePath(User.class.getSimpleName());
@@ -94,7 +96,7 @@ public class FileParser {
      * Passes text file of movies to lineToMovie and returns the constructed objects.
      * @return List of all movies in file.
      */
-    public static List<Movie> fetchMovies(){
+    public static List<Movie> fetchMovies() throws IOException {
         String path = Paths.getDataFilePath(Movie.class.getSimpleName());
         List<String> lines = getLines(path);
         List<Movie> movies = new ArrayList<>();
@@ -109,7 +111,7 @@ public class FileParser {
      * Passes text file of series to lineToSeries and returns the constructed objects.
      * @return List of all series in file.
      */
-    public static List<Series> fetchSeries() {
+    public static List<Series> fetchSeries() throws IOException {
         String path = Paths.getDataFilePath(Series.class.getSimpleName());
         List<String> lines = new ArrayList<String>(getLines(path));
         List<Series> series = new ArrayList<>();
@@ -232,20 +234,15 @@ public class FileParser {
      * @param path Path to the file to read lines from.
      * @return List of lines from the file.
      */
-    private static List<String> getLines(String path) {
+    private static List<String> getLines(String path) throws IOException {
         List<String> lines = new ArrayList<>();
-        try {
-            File dir = new File(path);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(dir), StandardCharsets.UTF_8));
-            String nextLine;
-            while((nextLine = reader.readLine()) != null) {
-                lines.add(nextLine);
-            }
-            reader.close();
-
-        } catch (IOException e) {
-            System.err.println("Error loading media: " + e.getMessage());
+        File dir = new File(path);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(dir), StandardCharsets.UTF_8));
+        String nextLine;
+        while((nextLine = reader.readLine()) != null) {
+            lines.add(nextLine);
         }
+        reader.close();
         return lines;
     }
 

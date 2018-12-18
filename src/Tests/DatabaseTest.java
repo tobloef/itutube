@@ -13,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DatabaseTest {
 
+    // TODO: No hard-coding
+
     private User VinceOffer = new User("Vince Offer", UserType.Admin);
     private User jeff = new User("jeff", UserType.Admin);
     private User simon = new User("simon", UserType.Admin);

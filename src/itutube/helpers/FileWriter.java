@@ -1,5 +1,6 @@
 package itutube.helpers;
 
+import itutube.exceptions.InvalidMediaException;
 import itutube.models.Saveable;
 import itutube.models.User;
 import itutube.models.media.Media;
@@ -23,8 +24,7 @@ public class FileWriter {
             if (media instanceof Saveable) {
                 data.add((Saveable) media);
             } else {
-                String className = media.getClass().getSimpleName();
-                System.err.println("Attempted to save media type " + className + "which isn't saveable.");
+                throw new InvalidMediaException("Media is not saveable.", media);
             }
         }
         try {

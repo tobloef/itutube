@@ -126,11 +126,18 @@ public final class Database {
     private static HashMap<String, Media> fetchMedia() {
         List<Media> allMedia = new ArrayList<>();
         // Try to load the different types of media
-        List<Movie> movies = FileParser.fetchMovies();
-        allMedia.addAll(movies);
-
-        List<Series> series = FileParser.fetchSeries();
-        allMedia.addAll(series);
+        try {
+            List<Movie> movies = FileParser.fetchMovies();
+            allMedia.addAll(movies);
+        } catch (IOException e) {
+            System.err.println("Error loading movies: " + e.getMessage());
+        }
+        try {
+            List<Series> series = FileParser.fetchSeries();
+            allMedia.addAll(series);
+        } catch (IOException e) {
+            System.err.println("Error loading series: " + e.getMessage());
+        }
         // Return Id/Media map
         HashMap<String, Media> newMediaMap = new HashMap<>();
         for (Media m : allMedia) {

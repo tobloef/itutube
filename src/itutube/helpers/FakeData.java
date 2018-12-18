@@ -1,5 +1,6 @@
 package itutube.helpers;
 
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import itutube.models.Credits;
 import itutube.models.MediaList;
 import itutube.models.media.Media;
@@ -43,6 +44,9 @@ public class FakeData {
      * @return String of lorem ipsum text.
      */
     public static String getLoremIpsum(int characters) {
+        if (characters < 0) {
+            throw new IllegalArgumentException("Character amount cannot be below zero.");
+        }
         return loremIpsum.substring(0, Math.min(characters, loremIpsum.length()));
     }
 
@@ -81,6 +85,12 @@ public class FakeData {
      * @return Random list of media.
      */
     public static List<Media> generateRandomListOfMedia(List<Media> media, int min, int max) {
+        if (media == null) {
+            throw new IllegalArgumentException("List of media cannot be null.");
+        }
+        if (max < min) {
+            throw new IllegalArgumentException("Maximum length cannot be below minimum length.");
+        }
         List<Media> possibleMedia = new ArrayList<>(media);
         List<Media> listOfMedia = new ArrayList<>();
         Random rand = new Random();
@@ -102,6 +112,9 @@ public class FakeData {
      * @return Customized random media lists.
      */
     public static List<MediaList> generateFakeFeaturedLists(List<Media> media) {
+        if (media == null) {
+            throw new IllegalArgumentException("List of media cannot be null.");
+        }
         List<MediaList> mediaLists = new ArrayList<>();
         mediaLists.add(new MediaList(
                 "Tobias' Top Picks",

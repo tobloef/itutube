@@ -1,5 +1,6 @@
 package itutube.views.pages;
 
+import itutube.exceptions.InvalidMediaException;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -26,11 +27,7 @@ public class PlayerPage extends StackPane {
 
         VBox textContainer = new VBox();
         if (!(media instanceof Playable)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error playing the media");
-            alert.setContentText("The was an error playing the media. The media is not playable.");
-            alert.showAndWait();
-            return;
+            throw new InvalidMediaException("Media is not playable.", media);
         } else {
             Playable playable = (Playable) media;
             textContainer.setStyle("-fx-background-color: " + playable.getMediaContent() + ";");
