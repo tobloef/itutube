@@ -13,7 +13,7 @@ import java.util.Random;
  * Generic video media
  */
 public abstract class VideoMedia extends Media implements Playable {
-    protected int runtime;
+    protected int runtimeSeconds;
 
     /**
      * @param id Id associated with the video media.
@@ -23,8 +23,7 @@ public abstract class VideoMedia extends Media implements Playable {
      * @param categories Categories held by the video media.
      * @param rating Rating of the video media.
      * @param credits Credits for the video media.
-     * @param imageFileName Name of video media image file.
-     * @param runtime Number of seconds the video media lasts for.
+     * @param runtimeSeconds Number of seconds the video media lasts for.
      */
     public VideoMedia(
             String id,
@@ -34,8 +33,7 @@ public abstract class VideoMedia extends Media implements Playable {
             List<String> categories,
             double rating,
             List<Credits> credits,
-            String imageFileName,
-            int runtime
+            int runtimeSeconds
     ) {
         super(
                 id,
@@ -44,17 +42,16 @@ public abstract class VideoMedia extends Media implements Playable {
                 releaseDate,
                 categories,
                 rating,
-                credits,
-                imageFileName
+                credits
         );
-        this.runtime = runtime;
+        this.runtimeSeconds = runtimeSeconds;
     }
 
     /**
      * @return The runtime in minutes seconds.
      */
     public int getRuntimeSeconds() {
-        return runtime;
+        return runtimeSeconds;
     }
 
     @Override

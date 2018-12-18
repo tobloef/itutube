@@ -16,7 +16,6 @@ public abstract class Media {
     protected List<String> categories;
     protected double rating;
     protected List<Credits> credits;
-    protected String imageFileName;
 
     /**
      * @param id Id associated with the media.
@@ -26,7 +25,6 @@ public abstract class Media {
      * @param categories Categories held by the media.
      * @param rating Rating of the media.
      * @param credits Credits for the media.
-     * @param imageFileName Name of media image file.
      */
     public Media(
             String id,
@@ -35,8 +33,7 @@ public abstract class Media {
             Date releaseDate,
             List<String> categories,
             double rating,
-            List<Credits> credits,
-            String imageFileName
+            List<Credits> credits
     ) {
         this.id = id;
         this.name = name;
@@ -45,7 +42,6 @@ public abstract class Media {
         this.categories = categories;
         this.rating = rating;
         this.credits = credits;
-        this.imageFileName = imageFileName;
     }
 
     public String getId() {
@@ -74,9 +70,5 @@ public abstract class Media {
 
     public List<Credits> getCredits() {
         return credits;
-    }
-
-    public String getImageFileName() {
-        return imageFileName;
     }
 }

@@ -23,7 +23,6 @@ public class Episode extends VideoMedia implements Viewable {
      * @param categories Categories held by the episode.
      * @param rating Rating of the episode.
      * @param credits Credits for the episode.
-     * @param imageFileName Name of episode image file.
      * @param runtime Number of seconds the episode lasts for.
      * @param season The season containing this episode.
      * @param series The series the episode is part of.
@@ -36,7 +35,6 @@ public class Episode extends VideoMedia implements Viewable {
             List<String> categories,
             double rating,
             List<Credits> credits,
-            String imageFileName,
             int runtime,
             Season season,
             Series series
@@ -49,7 +47,6 @@ public class Episode extends VideoMedia implements Viewable {
                 categories,
                 rating,
                 credits,
-                imageFileName,
                 runtime
         );
         this.season = season;

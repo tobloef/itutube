@@ -22,8 +22,7 @@ public class Movie extends VideoMedia implements Saveable, Viewable {
      * @param categories Categories held by the movie.
      * @param rating Rating of the movie.
      * @param credits Credits for the movie.
-     * @param imageFileName Name of movie image file.
-     * @param runtime The number of seconds the movie lasts for.
+     * @param runtimeSeconds The number of seconds the movie lasts for.
      */
     public Movie(
             String id,
@@ -33,8 +32,7 @@ public class Movie extends VideoMedia implements Saveable, Viewable {
             List<String> categories,
             double rating,
             List<Credits> credits,
-            String imageFileName,
-            int runtime
+            int runtimeSeconds
     ) {
         super(
                 id,
@@ -44,8 +42,7 @@ public class Movie extends VideoMedia implements Saveable, Viewable {
                 categories,
                 rating,
                 credits,
-                imageFileName,
-                runtime
+                runtimeSeconds
         );
 
     }

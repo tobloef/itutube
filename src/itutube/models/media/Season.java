@@ -20,7 +20,6 @@ public class Season extends Media {
      * @param categories Categories held by the season.
      * @param rating Rating of the season.
      * @param credits Credits for the season.
-     * @param imageFileName Name of season image file.
      * @param series The series that the season is part of.
      */
     public Season(
@@ -31,7 +30,6 @@ public class Season extends Media {
             List<String> categories,
             double rating,
             List<Credits> credits,
-            String imageFileName,
             Series series
     ) {
         super(
@@ -41,8 +39,7 @@ public class Season extends Media {
                 releaseDate,
                 categories,
                 rating,
-                credits,
-                imageFileName
+                credits
         );
         this.series = series;
     }

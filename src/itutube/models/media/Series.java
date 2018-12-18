@@ -25,7 +25,6 @@ public class Series extends Media implements Saveable, Viewable {
      * @param categories Categories held by the series.
      * @param rating Rating of the series.
      * @param credits Credits for the series.
-     * @param imageFileName Name of series image file.
      */
     public Series(
             String id,
@@ -35,8 +34,7 @@ public class Series extends Media implements Saveable, Viewable {
             Date endDate,
             List<String> categories,
             double rating,
-            List<Credits> credits,
-            String imageFileName
+            List<Credits> credits
     ) {
         super(
                 id,
@@ -45,8 +43,7 @@ public class Series extends Media implements Saveable, Viewable {
                 releaseDate,
                 categories,
                 rating,
-                credits,
-                imageFileName
+                credits
         );
         this.endDate = endDate;
     }

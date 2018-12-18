@@ -1,6 +1,7 @@
 package itutube;
 
 import itutube.exceptions.NoSuchIDException;
+import itutube.exceptions.UserNotFoundException;
 import itutube.exceptions.UsernameTakenException;
 import itutube.helpers.FakeData;
 import itutube.helpers.FileParser;
@@ -99,6 +100,13 @@ public final class Database {
         users.add(user);
     }
 
+    public static void removeUser(User user) {
+        boolean userRemove = users.removeIf(u -> u.getName().equals(user.getName()));
+        if (!userRemove) {
+            throw new UserNotFoundException("Tried to remove a user that was not in the database.", user);
+        }
+    }
+
     /**
      * Save the database to the disk.
      */
@@ -147,5 +155,7 @@ public final class Database {
         return newMediaMap;
     }
 
-
+    public static void setMediaMap(HashMap<String, Media> mediaMap) {
+        Database.mediaMap = mediaMap;
+    }
 }

@@ -2,61 +2,124 @@ package Tests;
 
 import itutube.Database;
 import itutube.exceptions.NoSuchIDException;
+import itutube.exceptions.UserNotFoundException;
 import itutube.exceptions.UsernameTakenException;
+import itutube.models.Credits;
 import itutube.models.User;
 import itutube.models.UserType;
+import itutube.models.media.Media;
+import itutube.models.media.Movie;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.xml.crypto.Data;
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DatabaseTest {
 
-    // TODO: No hard-coding
+    private User adminUser = new User("Vince Offer", UserType.Admin);
+    private User adultUser = new User("Jeff", UserType.Adult);
+    // Not in initial database
+    private User childUser = new User("Simon", UserType.Child);
 
-    private User VinceOffer = new User("Vince Offer", UserType.Admin);
-    private User jeff = new User("jeff", UserType.Admin);
-    private User simon = new User("simon", UserType.Admin);
+    private Credits testCredits = new Credits("Test Role", new String[]{"Test Person 1", "Test Person 2"});
+
+    private Movie testMovie = new Movie(
+            "001",
+            "Test Movie 1",
+            "",
+            new Date(2000, 1, 1),
+            new ArrayList<>(Arrays.asList("Test Category 1", "Test Category 2")),
+            10,
+            new ArrayList<>(Collections.singletonList(testCredits)),
+            120 * 60
+    );
+    private Movie testKidsMovie = new Movie(
+            "002",
+            "Test Kids Movie 1",
+            "",
+            new Date(2010, 1, 1),
+            new ArrayList<>(Arrays.asList("Test Category 1", "Family")),
+            10,
+            new ArrayList<>(Collections.singletonList(testCredits)),
+            70 * 60
+    );
+
+    void addTestUsers() throws UsernameTakenException {
+        Database.addUser(adminUser);
+        Database.addUser(adultUser);
+    }
+
+    void addTestMedia() {
+        HashMap<String, Media> newMediaMap = new HashMap<>();
+        newMediaMap.put(testMovie.getId(), testMovie);
+        newMediaMap.put(testKidsMovie.getId(), testKidsMovie);
+        Database.setMediaMap(newMediaMap);
+    }
+
+    void setupTestDatabase() throws UsernameTakenException {
+        addTestMedia();
+        addTestUsers();
+    }
 
     @BeforeEach
     void setUp() {
-        Database.load();
-    }
-
-    @Test
-    void getMediaById() {
-        assertEquals("Rocky", Database.getMediaById("040").getName());
-    }
-
-    @Test
-    void getMediaById2() {
-        assertThrows(NoSuchIDException.class,()-> Database.getMediaById("400"));
-    }
-
-    @Test
-    void getMediaById4() {
-        assertThrows(NoSuchIDException.class,()-> Database.getMediaById("jeff"));
-    }
-
-    void addPeople(){
         try {
-            Database.addUser(jeff);
-            Database.addUser(simon);
-            Database.addUser(VinceOffer);
-        }
-        catch (UsernameTakenException e) {
-            e.printStackTrace();
+            setupTestDatabase();
+        } catch (Exception e) {
+            (new Exception("Error setting up tests.", e)).printStackTrace();
         }
     }
 
     @Test
-    void addUser(){
-        assertThrows(UsernameTakenException.class, this::addPeople);
+    void getMediaById_Success() {
+        assertEquals(testMovie.getName(), Database.getMediaById(testMovie.getId()).getName());
     }
 
     @Test
-    void addUser2(){
-        assertThrows(UsernameTakenException.class, () -> Database.addUser(VinceOffer));
+    void getMediaById_Throws_InvalidId() {
+        assertThrows(NoSuchIDException.class, () -> Database.getMediaById("invalid_id"));
+    }
+
+    @Test
+    void addUser_Success() {
+        assertDoesNotThrow(() -> Database.addUser(childUser));
+        Database.removeUser(childUser);
+    }
+
+    @Test
+    void addUser_Throws_UsernameTaken() {
+        assertThrows(UsernameTakenException.class, () -> Database.addUser(adminUser));
+    }
+
+    @Test
+    void getAllMedia_Success() {
+        assertEquals(2, Database.getAllMedia(UserType.Adult).size());
+    }
+
+    @Test
+    void getAllMedia_Success_KidsOnly() {
+        assertEquals(1, Database.getAllMedia(UserType.Child).size());
+    }
+
+    @Test
+    void getUsers_Success() {
+        assertEquals(2, Database.getUsers().size());
+    }
+
+    @Test
+    void removeUser_Success() throws UsernameTakenException {
+        assertDoesNotThrow(() -> Database.removeUser(adultUser));
+        Database.addUser(adultUser);
+    }
+
+    @Test
+    void removeUser_Throws_UserNotFound() {
+        assertThrows(UserNotFoundException.class, () -> Database.removeUser(childUser));
     }
 }
