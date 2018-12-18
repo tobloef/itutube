@@ -2,7 +2,7 @@ package itutube.exceptions;
 /**
  * Exception thrown when a username already exists in the database.
  */
-public class UsernameTakenException extends RuntimeException{
+public class UsernameTakenException extends Exception{
     private String username;
 
     /**

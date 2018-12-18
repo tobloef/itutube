@@ -38,9 +38,14 @@ class DatabaseTest {
     }
 
     void addPeople(){
-        Database.addUser(jeff);
-        Database.addUser(simon);
-        Database.addUser(VinceOffer);
+        try {
+            Database.addUser(jeff);
+            Database.addUser(simon);
+            Database.addUser(VinceOffer);
+        }
+        catch (UsernameTakenException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
