@@ -55,4 +55,9 @@ public class Season extends Media {
     public Series getSeries() {
         return series;
     }
+
+    @Override
+    public String getImageFileName() {
+        return series.getImageFileName();
+    }
 }

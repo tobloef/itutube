@@ -69,4 +69,9 @@ public class Episode extends VideoMedia implements Viewable {
     public Series getSeries() {
         return series;
     }
+
+    @Override
+    public String getImageFileName() {
+        return season.getImageFileName();
+    }
 }

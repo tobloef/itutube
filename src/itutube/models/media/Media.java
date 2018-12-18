@@ -71,4 +71,9 @@ public abstract class Media {
     public List<Credits> getCredits() {
         return credits;
     }
+
+    public String getImageFileName() {
+        String className = getClass().getSimpleName();
+        return className + "/" + name + ".jpg";
+    }
 }

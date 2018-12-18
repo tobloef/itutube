@@ -82,13 +82,11 @@ public class FileParser {
         Date releaseDate = new Date(Integer.parseInt(properties[2]), 1, 1);
         List<String> categories = Arrays.asList(trimArray(properties[3].split(",")));
         double rating = Double.parseDouble(formatRating(properties[4]));
-
         String description = FakeData.getLoremIpsum(100);
         List<Credits> credits = FakeData.generateFakeCredits();
-        String imageFileName = name + ".jpg";
         int runtime = FakeData.generateFakeRuntime();
 
-        return new Movie(id, name, description, releaseDate, categories, rating, credits, imageFileName, runtime);
+        return new Movie(id, name, description, releaseDate, categories, rating, credits, runtime);
     }
 
 
@@ -138,10 +136,8 @@ public class FileParser {
             List<String> categories = season.getCategories();
             double rating = FakeData.generateFakeRating();
             List<Credits> credits = season.getCredits();
-            String imageFileName = season.getImageFileName();
             int runtime = FakeData.generateFakeRuntime();
-
-            episodes.add(new Episode(id, name, description, releaseDate, categories, rating, credits, imageFileName, runtime, season, series));
+            episodes.add(new Episode(id, name, description, releaseDate, categories, rating, credits, runtime, season, series));
         }
         return episodes;
     }
@@ -172,9 +168,7 @@ public class FileParser {
             List<String> categories = series.getCategories();
             double rating = FakeData.generateFakeRating();
             List<Credits> credits = series.getCredits();
-            String imageFileName = series.getImageFileName();
-
-            Season season = new Season(id, name, description, currentSeasonDate, categories, rating, credits, imageFileName, series);
+            Season season = new Season(id, name, description, currentSeasonDate, categories, rating, credits, series);
 
 
             List<Episode> episodes = fetchEpisodes(series, season, episodeAmount);
@@ -220,9 +214,7 @@ public class FileParser {
 
         String description = FakeData.getLoremIpsum(175);
         List<Credits> credits = FakeData.generateFakeCredits();
-        String imageFileName = name + ".jpg";
-
-        Series series = new Series(id, name, description, releaseDate, endDate, categories, rating, credits, imageFileName);
+        Series series = new Series(id, name, description, releaseDate, endDate, categories, rating, credits);
         Season[] seasons = fetchSeasons(series, properties[5]);
         series.setSeasons(seasons);
 

@@ -30,9 +30,8 @@ public class Paths {
         if (media == null) {
             return null;
         }
-        String mediaType = media.getClass().getSimpleName();
-        String mediaName = media.getName();
-        return Resources + "posters/" + mediaType + "Posters/" + mediaName + ".jpg";
+        String imageFileName = media.getImageFileName();
+        return Resources + "posters/" + imageFileName;
     }
 
     /**
