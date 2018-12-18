@@ -1,6 +1,9 @@
 package itutube.views.pages;
 
 import itutube.exceptions.UsernameTakenException;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
@@ -25,20 +28,7 @@ public class UserSelectPage extends ScrollPane {
     public UserSelectPage() {
         // User list
         List<ImageButtonInfo> imageButtonInfos = usersToImageButtonInfos(Database.getUsers());
-        imageButtonInfos.add(new ImageButtonInfo("Add User", Images.getAddUserImage(), e -> {
-            User newUser = CreateUserDialog.display();
-            if (!newUser.getName().equals("") && newUser.getType() != null) {
-                try {
-                    Database.addUser(newUser);
-                }
-                catch (UsernameTakenException err) {
-                    errorAddingUser("This username is already taken");
-                }
-            } else {
-                errorAddingUser("The user couldn't be added. Please try again with the correct info.");
-            }
-            Main.setPage(new UserSelectPage());
-        }));
+        imageButtonInfos.add(new ImageButtonInfo("Add User", Images.getAddUserImage(), this::handleAddUser));
         Parent usersView = new ImageButtonGrid("Select User", imageButtonInfos);
         usersView.getStyleClass().add("center");
         // Wrapper
@@ -50,6 +40,34 @@ public class UserSelectPage extends ScrollPane {
 
         this.setFitToWidth(true);
         this.setContent(wrapper);
+    }
+
+    private void handleAddUser(ActionEvent event) {
+        User newUser = CreateUserDialog.display();
+        if (userInfoIsValid(newUser)) {
+            try {
+                Database.addUser(newUser);
+            }
+            catch (UsernameTakenException err) {
+                errorAddingUser("This username is already taken. Please try again with another username.");
+            }
+        } else {
+            errorAddingUser("The user couldn't be added. Please try again with the correct info.");
+        }
+        Main.setPage(new UserSelectPage());
+    }
+
+    private boolean userInfoIsValid(User user) {
+        if (user == null) {
+            return false;
+        }
+        if (user.getName().equals("")) {
+            return false;
+        }
+        if (user.getType() == null) {
+            return false;
+        }
+        return true;
     }
 
     private static void errorAddingUser(String reason) {
