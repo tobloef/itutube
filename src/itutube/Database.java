@@ -26,10 +26,10 @@ import java.util.stream.Collectors;
 public final class Database {
     private static HashMap<String, Media> mediaMap = new HashMap<>();
     private static List<User> users = new ArrayList<>();
-    private static final List<CheckedSupplier<List<? extends Media>, IOException>> mediaLoaders = new ArrayList<>(Arrays.asList(
+    private static final List<CheckedSupplier<List<? extends Media>, IOException>> mediaLoaders = Arrays.asList(
             FileParser::fetchMovies,
             FileParser::fetchSeries
-    ));
+    );
 
     /**
      * Get a Media by its ID.
