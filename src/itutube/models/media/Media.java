@@ -45,6 +45,8 @@ public abstract class Media {
         this.credits = credits;
     }
 
+    public Media() {}
+
     public String getId() {
         return id;
     }

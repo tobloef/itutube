@@ -1,7 +1,10 @@
 package Tests;
 
 import itutube.controllers.FileParser;
+import itutube.models.User;
 import itutube.models.media.Media;
+import itutube.models.media.Movie;
+import itutube.models.media.Series;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -11,23 +14,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FileParserTest {
 
-    private static HashMap<String, Media> mediaMap = new HashMap<>();
-
     @Test
-    void fetchMovies_Success() throws IOException {
-        assertDoesNotThrow(FileParser::fetchMovies);
-        assertTrue(FileParser.fetchMovies().size() > 0);
+    void fetchMovies_Success() throws IOException, InstantiationException, IllegalAccessException {
+        assertTrue(FileParser.fetchSaveable(Movie.class).size() > 0);
     }
 
     @Test
-    void fetchSeries_Success() throws IOException {
-        assertDoesNotThrow(FileParser::fetchSeries);
-        assertTrue(FileParser.fetchSeries().size() > 0);
+    void fetchSeries_Success() throws IOException, InstantiationException, IllegalAccessException {
+        assertTrue(FileParser.fetchSaveable(Series.class).size() > 0);
     }
 
     @Test
     void fetchUsers_Success() {
-        assertDoesNotThrow(() -> FileParser.fetchUsers(mediaMap));
+        assertDoesNotThrow(() -> FileParser.fetchSaveable(User.class).size() > 0);
+
     }
 
 }

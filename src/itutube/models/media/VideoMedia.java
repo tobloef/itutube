@@ -48,6 +48,10 @@ public abstract class VideoMedia extends Media implements Playable {
         this.runtimeSeconds = runtimeSeconds;
     }
 
+    public VideoMedia() {
+        super();
+    }
+
     /**
      * @return The runtime in minutes seconds.
      */

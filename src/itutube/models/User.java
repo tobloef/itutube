@@ -1,9 +1,13 @@
 package itutube.models;
 
+import itutube.Database;
 import itutube.exceptions.InvalidMediaException;
 import itutube.models.media.Media;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import static itutube.controllers.FileParser.trimArray;
 
 /**
  * A user for the logged in account
@@ -32,6 +36,10 @@ public class User implements Saveable {
      */
     public User(String name, UserType type) {
         this(name, type, new ArrayList<>());
+    }
+
+    public User() {
+        this.favoritesList = new ArrayList<>();
     }
 
     /**
@@ -91,5 +99,22 @@ public class User implements Saveable {
         }
         String idString = String.join(",", idArray);
         return name + ";" + type + ";" + idString + ";";
+    }
+
+    @Override
+    public void loadFromSaveString(String string) {
+        String[] properties = string.split(";");
+        this.name = properties[0];
+        this.type = UserType.valueOf(properties[1]);
+        this.favoritesList = new ArrayList<>();
+        HashMap<String, Media> mediaMap = Database.getMediaMap();
+        if (properties.length == 3 && mediaMap != null) {
+            String[] favoriteIds = trimArray(properties[2].split(","));
+            for (String id : favoriteIds) {
+                if (mediaMap.containsKey(id)) {
+                    favoritesList.add(mediaMap.get(id));
+                }
+            }
+        }
     }
 }

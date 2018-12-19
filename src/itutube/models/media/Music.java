@@ -24,6 +24,10 @@ public class Music extends Media implements Playable, Viewable, Saveable {
         super(id, name, description, releaseDate, categories, rating, credits);
     }
 
+    public Music() {
+        super();
+    }
+
     @Override
     public String getMediaContent() {
         throw new NotImplementedException();
@@ -46,6 +50,11 @@ public class Music extends Media implements Playable, Viewable, Saveable {
 
     @Override
     public String getSaveString() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void loadFromSaveString(String string) {
         throw new NotImplementedException();
     }
 

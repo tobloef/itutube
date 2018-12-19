@@ -53,6 +53,7 @@ public class Episode extends VideoMedia implements Viewable {
         this.series = series;
     }
 
+
     /**
      * Creates an info view for the object.
      * @return This episodes's info view.

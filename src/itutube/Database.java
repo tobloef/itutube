@@ -7,27 +7,22 @@ import itutube.exceptions.UsernameTakenException;
 import itutube.controllers.FakeData;
 import itutube.controllers.FileParser;
 import itutube.controllers.FileWriter;
-import itutube.models.CheckedSupplier;
-import itutube.models.MediaList;
-import itutube.models.User;
-import itutube.models.UserType;
+import itutube.models.*;
 import itutube.models.media.Media;
+import itutube.models.media.Movie;
+import itutube.models.media.Series;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
+
 
 /**
  * Database object for the entire application.
  */
 public final class Database {
-    /**
-     * List of methods for loading media into the database from list.
-     * You have to add a new method to this list when you need to load a new type of media.
-     */
-    private static final List<CheckedSupplier<List<? extends Media>, IOException>> mediaLoaders = new ArrayList<>(Arrays.asList(
-            FileParser::fetchMovies,
-            FileParser::fetchSeries
+    private static final List<CheckedSupplier<List<? extends Media>, Exception>> mediaLoaders = new ArrayList<>(Arrays.asList(
+            () -> FileParser.fetchSaveable(Movie.class),
+            () -> FileParser.fetchSaveable(Series.class)
     ));
 
     private static HashMap<String, Media> mediaMap = new HashMap<>();
@@ -139,8 +134,8 @@ public final class Database {
     public static void load() throws DatabaseIOException {
         mediaMap = fetchMedia();
         try {
-            users = FileParser.fetchUsers(mediaMap);
-        } catch (IOException e) {
+            users = FileParser.fetchSaveable(User.class);
+        } catch (Exception e) {
             throw new DatabaseIOException("Error loading users.", e);
         }
     }
@@ -152,11 +147,11 @@ public final class Database {
      */
     private static HashMap<String, Media> fetchMedia() throws DatabaseIOException {
         List<Media> allMedia = new ArrayList<>();
-        for (CheckedSupplier<List<? extends Media>, IOException> loader : mediaLoaders) {
+        for (CheckedSupplier<List<? extends Media>, Exception> loader : mediaLoaders) {
             try {
                 List<? extends Media> media = loader.get();
                 allMedia.addAll(media);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 String className = loader.getClass().getSimpleName();
                 throw new DatabaseIOException("Error loading media of type " + className + ".", e);
             }
@@ -175,5 +170,9 @@ public final class Database {
 
     public static void setUsers(List<User> users) {
         Database.users = users;
+    }
+
+    public static HashMap<String, Media> getMediaMap() {
+        return mediaMap;
     }
 }

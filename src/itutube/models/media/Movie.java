@@ -1,13 +1,18 @@
 package itutube.models.media;
 
+import itutube.controllers.FakeData;
 import itutube.models.Credits;
 import itutube.models.Saveable;
 import itutube.models.Viewable;
 import itutube.views.pages.content.MovieInfoContent;
 import javafx.scene.Parent;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
+import static itutube.controllers.FileParser.trimArray;
 
 /**
  * A movie
@@ -44,7 +49,10 @@ public class Movie extends VideoMedia implements Saveable, Viewable {
                 credits,
                 runtimeSeconds
         );
+    }
 
+    public Movie() {
+        super();
     }
 
     /**
@@ -54,6 +62,19 @@ public class Movie extends VideoMedia implements Saveable, Viewable {
     public String getSaveString() {
         String categoryString = String.join(",", categories);
         return id + ";" + name + ";" + releaseDate.getYear() + ";" + categoryString + ";" + rating + ";";
+    }
+
+    @Override
+    public void loadFromSaveString(String string) {
+        String[] properties = trimArray(string.split(";"));
+        this.id = properties[0];
+        this.name = properties[1];
+        this.releaseDate = new Date(Integer.parseInt(properties[2]), 1, 1);
+        this.categories = new ArrayList<>(Arrays.asList(trimArray(properties[3].split(","))));
+        this.rating = Double.parseDouble((properties[4].replace(",", ".")));
+        this.description = FakeData.getLoremIpsum(100);
+        this.credits = FakeData.generateFakeCredits();
+        this.runtimeSeconds = FakeData.generateFakeRuntime();
     }
 
     /**
