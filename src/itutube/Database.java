@@ -106,6 +106,10 @@ public final class Database {
         users.add(user);
     }
 
+    /**
+     * Removes a user from the database, which name matches the parameter's name
+     * @param user The user to remove
+     */
     public static void removeUser(User user) {
         boolean userRemove = users.removeIf(u -> u.getName().equals(user.getName()));
         if (!userRemove) {

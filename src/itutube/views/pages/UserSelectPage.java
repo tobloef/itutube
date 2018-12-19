@@ -40,6 +40,10 @@ public class UserSelectPage extends ScrollPane {
         this.setContent(wrapper);
     }
 
+    /**
+     * Attempts to add a user to
+     * @param event
+     */
     private void handleAddUser(ActionEvent event) {
         User newUser = CreateUserDialog.display();
         if (userInfoIsValid(newUser)) {
