@@ -78,6 +78,7 @@ public class ImageButtonInfoHelper {
     /**
      * Converts list of users to ImageButtonInfo.
      * @param users Users to get button info from.
+     * @param handleAction Handler for when a user is clicked.
      * @return list of ImageButtonInfo generated from list.
      */
     public static List<ImageButtonInfo> usersToImageButtonInfos(List<User> users, Consumer<User> handleAction) {

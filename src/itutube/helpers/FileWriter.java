@@ -18,6 +18,7 @@ public class FileWriter {
     /**
      * Passes list of medias to save file if they are Saveable.
      * @param medias List of media to save.
+     * @throws DatabaseIOException if the data couldn't be saved to disk
      */
     public static void saveMedia(List<Media> medias) throws DatabaseIOException {
         List<Saveable> mediaData = new ArrayList<>();
@@ -38,6 +39,7 @@ public class FileWriter {
     /**
      * Passes list of users to save file.
      * @param users List of users to save.
+     * @throws DatabaseIOException if the data couldn't be saved to disk
      */
     public static void saveUsers(List<User> users) throws DatabaseIOException {
         try {

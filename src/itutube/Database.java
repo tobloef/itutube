@@ -82,7 +82,9 @@ public final class Database {
     }
 
     /**
-     * Get a list of the featured lists for the front page
+     * Get a list of the featured lists for the front page.
+     *
+     * @param userType Type of user to get featured lists for.
      *
      * @return List of featured media lists
      */
@@ -95,6 +97,8 @@ public final class Database {
      * Add a new user to the database
      *
      * @param user The user to add
+     *
+     * @throws UsernameTakenException if the user's name has already been taken.
      */
     public static void addUser(User user) throws UsernameTakenException {
         for (User existingUser : users) {
@@ -119,6 +123,8 @@ public final class Database {
 
     /**
      * Save the database to the disk.
+     *
+     * @throws DatabaseIOException if the database couldn't be saved to disk
      */
     public static void save() throws DatabaseIOException {
         FileWriter.saveMedia(getAllMedia());
@@ -127,6 +133,8 @@ public final class Database {
 
     /**
      * Load the database from the disk.
+     *
+     * @throws DatabaseIOException if the database couldn't be loaded from disk
      */
     public static void load() throws DatabaseIOException {
         mediaMap = fetchMedia();

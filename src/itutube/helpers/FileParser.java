@@ -14,10 +14,12 @@ import java.util.*;
  */
 public class FileParser {
 
+
     /**
      * Returns a list of users, generated from the user file.
      * @param mediaMap HashMap of all media in the database.
      * @return List of user objects.
+     * @throws IOException if the user file cannot be read.
      */
     public static List<User> fetchUsers(HashMap<String, Media> mediaMap) throws IOException {
         if (mediaMap == null) {
@@ -91,6 +93,7 @@ public class FileParser {
     /**
      * Passes text file of movies to lineToMovie and returns the constructed objects.
      * @return List of all movies in file.
+     * @throws IOException if the movie file cannot be read.
      */
     public static List<Movie> fetchMovies() throws IOException {
         String path = Paths.getDataFilePath(Movie.class.getSimpleName());
@@ -106,6 +109,7 @@ public class FileParser {
     /**
      * Passes text file of series to lineToSeries and returns the constructed objects.
      * @return List of all series in file.
+     * @throws IOException if the series file cannot be read.
      */
     public static List<Series> fetchSeries() throws IOException {
         String path = Paths.getDataFilePath(Series.class.getSimpleName());

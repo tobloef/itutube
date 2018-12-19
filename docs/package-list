@@ -1,0 +1,10 @@
+Tests
+itutube
+itutube.exceptions
+itutube.helpers
+itutube.models
+itutube.models.media
+itutube.views
+itutube.views.components
+itutube.views.pages
+itutube.views.pages.content
