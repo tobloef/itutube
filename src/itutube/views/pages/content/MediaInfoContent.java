@@ -1,7 +1,7 @@
 package itutube.views.pages.content;
 
 import itutube.Main;
-import itutube.helpers.Images;
+import itutube.controllers.Images;
 import itutube.models.Playable;
 import itutube.models.Saveable;
 import itutube.models.media.Media;
@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-import static itutube.helpers.MediaActions.setMediaPlayContent;
+import static itutube.controllers.MediaActions.setMediaPlayContent;
 
 /**
  * Page for displaying info about a piece of media

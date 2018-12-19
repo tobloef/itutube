@@ -1,6 +1,6 @@
 package Tests;
 
-import itutube.helpers.FileParser;
+import itutube.controllers.FileParser;
 import itutube.models.media.Media;
 import org.junit.jupiter.api.Test;
 

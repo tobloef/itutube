@@ -1,6 +1,6 @@
 package Tests;
 
-import itutube.helpers.NodeLookup;
+import itutube.controllers.NodeLookup;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.control.Button;

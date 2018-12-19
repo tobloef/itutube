@@ -1,10 +1,9 @@
 package Tests;
 
-import itutube.helpers.ImageButtonInfoHelper;
+import itutube.controllers.ImageButtonInfoHelper;
 import itutube.models.*;
 import itutube.models.media.Media;
 import itutube.models.media.Movie;
-import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

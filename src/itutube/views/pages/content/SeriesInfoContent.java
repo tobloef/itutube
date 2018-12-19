@@ -1,6 +1,6 @@
 package itutube.views.pages.content;
 
-import itutube.helpers.MediaActions;
+import itutube.controllers.MediaActions;
 import itutube.models.media.Media;
 import itutube.models.media.Season;
 import itutube.models.media.Series;
@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-import static itutube.helpers.NodeLookup.findFirstByClassName;
+import static itutube.controllers.NodeLookup.findFirstByClassName;
 
 /**
  * Page for displaying information about a series.

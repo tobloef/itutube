@@ -2,7 +2,7 @@ package itutube.views.pages.content;
 
 import itutube.Database;
 import itutube.Main;
-import itutube.helpers.MediaActions;
+import itutube.controllers.MediaActions;
 import itutube.models.MediaList;
 import itutube.views.components.MediaButtonList;
 import itutube.views.pages.ContentPage;

@@ -2,8 +2,8 @@ package itutube.views.components;
 
 import itutube.Database;
 import itutube.Main;
-import itutube.helpers.MediaActions;
-import itutube.helpers.MediaSorting;
+import itutube.controllers.MediaActions;
+import itutube.controllers.MediaSorting;
 import itutube.models.media.Media;
 import itutube.views.pages.content.MediaGridPage;
 import javafx.geometry.Pos;
@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
 import java.util.List;
+
+import static itutube.controllers.SearchController.searchAction;
 
 /**
  * Search bar for searching in all the media.
@@ -33,15 +35,5 @@ public class SearchBar extends HBox {
         this.setAlignment(Pos.CENTER);
         this.getChildren().add(textField);
         this.getChildren().add(button);
-    }
-
-    private void searchAction(String query) {
-        List<Media> results = MediaSorting.findBySearch(query, Database.getAllMedia(Main.getActiveUser().getType()));
-        String title = results.size() + " result";
-        if (results.size() > 1) {
-            title += "s";
-        }
-        title += " for: \"" + query + "\"";
-        Main.setPage(new MediaGridPage(title, results, MediaActions::setMediaInfoContent, false));
     }
 }

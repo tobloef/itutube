@@ -1,4 +1,4 @@
-package itutube.helpers;
+package itutube.controllers;
 
 import itutube.models.Credits;
 import itutube.models.MediaList;

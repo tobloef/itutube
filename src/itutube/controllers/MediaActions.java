@@ -1,4 +1,4 @@
-package itutube.helpers;
+package itutube.controllers;
 
 import itutube.Main;
 import itutube.exceptions.InvalidMediaException;

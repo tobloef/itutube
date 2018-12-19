@@ -1,9 +1,8 @@
-package itutube.helpers;
+package itutube.controllers;
 
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,13 +3,12 @@ package itutube.views.pages;
 import itutube.Database;
 import itutube.Main;
 import itutube.exceptions.UsernameTakenException;
-import itutube.helpers.Images;
+import itutube.controllers.Images;
 import itutube.models.ImageButtonInfo;
 import itutube.models.User;
 import itutube.views.components.CreateUserDialog;
 import itutube.views.components.ImageButtonGrid;
 import itutube.views.pages.content.FrontPage;
-import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
@@ -17,7 +16,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.List;
 
-import static itutube.helpers.ImageButtonInfoHelper.usersToImageButtonInfos;
+import static itutube.controllers.ImageButtonInfoHelper.usersToImageButtonInfos;
 
 /**
  * Page for selecting which user to use
