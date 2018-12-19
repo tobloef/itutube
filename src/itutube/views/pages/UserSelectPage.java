@@ -41,6 +41,9 @@ public class UserSelectPage extends ScrollPane {
         this.setContent(wrapper);
     }
 
+    /**
+     * Opens user creation pop-up, validates the user and tries to add the user to the database.
+     */
     private void handleAddUser() {
         User newUser = CreateUserDialog.display();
         if (userInfoIsValid(newUser)) {

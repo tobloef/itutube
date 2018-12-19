@@ -18,11 +18,16 @@ public class ExceptionAlert extends Alert {
         super(AlertType.ERROR);
         this.setTitle(title);
         this.setContentText(content);
-        Parent exceptionContent = createExceptionContent(exception);
+        Parent exceptionContent = createScrollableStackTrace(exception);
         this.getDialogPane().setExpandableContent(exceptionContent);
     }
 
-    private Parent createExceptionContent(Throwable exception) {
+    /**
+     * Generates a UI element in form of a scrollable stacktrace from a given exception.
+     * @param exception The exception from which to get the stacktrace.
+     * @return A Parent containing a stacktrace UI-element.
+     */
+    private Parent createScrollableStackTrace(Throwable exception) {
         // Create expandable Exception.
         StringWriter stringWriter = new StringWriter();
         PrintWriter printWriter = new PrintWriter(stringWriter);
