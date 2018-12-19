@@ -2,7 +2,7 @@ package itutube.controllers;
 
 import itutube.exceptions.DatabaseIOException;
 import itutube.exceptions.InvalidMediaException;
-import itutube.models.Saveable;
+import itutube.models.Serializable;
 import itutube.models.User;
 import itutube.models.media.Media;
 
@@ -16,15 +16,15 @@ import java.util.List;
 
 public class FileWriter {
     /**
-     * Passes list of medias to save file if they are Saveable.
+     * Passes list of medias to save file if they are Serializable.
      * @param medias List of media to save.
      * @throws DatabaseIOException if the data couldn't be saved to disk
      */
     public static void saveMedia(List<Media> medias) throws DatabaseIOException {
-        List<Saveable> mediaData = new ArrayList<>();
+        List<Serializable> mediaData = new ArrayList<>();
         for (Media media : medias) {
-            if (media instanceof Saveable) {
-                mediaData.add((Saveable) media);
+            if (media instanceof Serializable) {
+                mediaData.add((Serializable) media);
             } else {
                 throw new InvalidMediaException("Media is not saveable.", media);
             }
@@ -50,18 +50,18 @@ public class FileWriter {
     }
 
     /**
-     * Takes a Saveable list and saves each item as a line in file named the same as item class.
-     * @param data List of Saveable to save to file.
+     * Takes a Serializable list and saves each item as a line in file named the same as item class.
+     * @param data List of Serializable to save to file.
      * @throws IOException If data cannot be written to the given path.
      */
-    private static void saveData(List<? extends Saveable> data) throws IOException {
+    private static void saveData(List<? extends Serializable> data) throws IOException {
         HashMap<String, List<String>> dataMap = new HashMap<>();
-        for (Saveable saveable : data) {
-            String className = saveable.getClass().getSimpleName();
+        for (Serializable serializable : data) {
+            String className = serializable.getClass().getSimpleName();
             if (!dataMap.containsKey(className)) {
                 dataMap.put(className, new ArrayList<>());
             }
-            dataMap.get(className).add(saveable.getSaveString());
+            dataMap.get(className).add(serializable.getString());
         }
         for (HashMap.Entry<String, List<String>> entry : dataMap.entrySet()) {
             Path path = java.nio.file.Paths.get(Paths.getDataFilePath(entry.getKey()));

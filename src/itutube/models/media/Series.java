@@ -2,7 +2,7 @@ package itutube.models.media;
 
 import itutube.controllers.FakeData;
 import itutube.models.Credits;
-import itutube.models.Saveable;
+import itutube.models.Serializable;
 import itutube.models.Viewable;
 import itutube.views.pages.content.SeriesInfoContent;
 import javafx.scene.Parent;
@@ -14,7 +14,7 @@ import static itutube.controllers.FileParser.trimArray;
 /**
  * A series
  */
-public class Series extends Media implements Saveable, Viewable {
+public class Series extends Media implements Serializable, Viewable {
     private Date endDate;
     private List<Season> seasons;
 
@@ -58,7 +58,7 @@ public class Series extends Media implements Saveable, Viewable {
      * The string that should be saved to text file when saving series.
      * @return String containing id, name, release- and end-date, categories, rating and seasons.
      */
-    public String getSaveString() {
+    public String getString() {
         StringBuilder seasonString = new StringBuilder();
         for (int i = 1; i <= seasons.size(); i++) {
             seasonString.append(i).append("-").append(seasons.get(i - 1).getEpisodes().size()).append(" ");
@@ -77,7 +77,7 @@ public class Series extends Media implements Saveable, Viewable {
     }
 
     @Override
-    public void loadFromSaveString(String string) {
+    public void loadFromString(String string) {
         String[] properties = trimArray(string.split(";"));
         this.id = properties[0];
         this.name = properties[1];

@@ -12,7 +12,7 @@ import static itutube.controllers.FileParser.trimArray;
 /**
  * A user for the logged in account
  */
-public class User implements Saveable {
+public class User implements Serializable {
     private String name;
     private UserType type;
     private ArrayList<Media> favoritesList;
@@ -71,7 +71,7 @@ public class User implements Saveable {
      * @param media The media to add to list
      */
     public void addMediaToFavorites(Media media) {
-        if (media instanceof Saveable) {
+        if (media instanceof Serializable) {
             throw new InvalidMediaException("Media is not savable.", media);
         }
         if (favoritesList.stream().noneMatch(m -> m.getId().equals(media.getId()))) {
@@ -92,7 +92,7 @@ public class User implements Saveable {
      * @return returns a string with name, usertype and their favourites
      */
     @Override
-    public String getSaveString() {
+    public String getString() {
         String[] idArray = new String[favoritesList.size()];
         for (int i = 0; i < favoritesList.size(); i++) {
             idArray[i] = favoritesList.get(i).getId();
@@ -101,8 +101,12 @@ public class User implements Saveable {
         return name + ";" + type + ";" + idString + ";";
     }
 
+    /**
+     * Load this objects data from a serialized string.
+     * @param string String to load data from.
+     */
     @Override
-    public void loadFromSaveString(String string) {
+    public void loadFromString(String string) {
         String[] properties = string.split(";");
         this.name = properties[0];
         this.type = UserType.valueOf(properties[1]);

@@ -2,7 +2,7 @@ package itutube.models.media;
 
 import itutube.models.Credits;
 import itutube.models.Playable;
-import itutube.models.Saveable;
+import itutube.models.Serializable;
 import itutube.models.Viewable;
 import javafx.scene.Parent;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -10,7 +10,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.Date;
 import java.util.List;
 
-public class Music extends Media implements Playable, Viewable, Saveable {
+public class Music extends Media implements Playable, Viewable, Serializable {
     /**
      * @param id          Id associated with the media.
      * @param name        Name of the media.
@@ -49,12 +49,12 @@ public class Music extends Media implements Playable, Viewable, Saveable {
     }
 
     @Override
-    public String getSaveString() {
+    public String getString() {
         throw new NotImplementedException();
     }
 
     @Override
-    public void loadFromSaveString(String string) {
+    public void loadFromString(String string) {
         throw new NotImplementedException();
     }
 

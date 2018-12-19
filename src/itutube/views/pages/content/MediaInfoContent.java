@@ -3,7 +3,7 @@ package itutube.views.pages.content;
 import itutube.Main;
 import itutube.controllers.Images;
 import itutube.models.Playable;
-import itutube.models.Saveable;
+import itutube.models.Serializable;
 import itutube.models.media.Media;
 import itutube.views.components.ActionButton;
 import itutube.views.pages.ContentPage;
@@ -111,7 +111,7 @@ public abstract class MediaInfoContent extends ContentPage {
             buttons.getChildren().add(playButton);
         }
 
-        if (media instanceof Saveable) {
+        if (media instanceof Serializable) {
             ActionButton listButton;
             int listButtonIndex = buttons.getChildren().size();
             if (Main.getActiveUser().getFavoritesList().contains(media)) {

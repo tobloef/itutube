@@ -13,7 +13,7 @@ public class Paths {
     public static final String AddUserImage = Resources + "AddUser.png";
 
     /**
-     * Gets file path for Saveable data.
+     * Gets file path for Serializable data.
      * @param dataType Type of data to get path for.
      * @return Path to file for dataType.
      */

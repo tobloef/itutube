@@ -1,8 +1,6 @@
 package itutube.controllers;
 
-import itutube.models.Saveable;
-import itutube.models.User;
-import itutube.models.media.Movie;
+import itutube.models.Serializable;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -15,13 +13,13 @@ import java.util.List;
 public class FileParser {
 
 
-    public static <T extends Saveable> List<T> fetchSaveable(Class<T> type) throws IOException, IllegalAccessException, InstantiationException {
+    public static <T extends Serializable> List<T> fetchSaveable(Class<T> type) throws IOException, IllegalAccessException, InstantiationException {
         String path = Paths.getDataFilePath(type.getSimpleName());
         List<String> lines = getLines(path);
         List<T> saveables = new ArrayList<>();
         for(String line : lines) {
             T saveable = type.newInstance();
-            saveable.loadFromSaveString(line);
+            saveable.loadFromString(line);
             saveables.add(saveable);
         }
         return saveables;

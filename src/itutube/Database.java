@@ -20,6 +20,10 @@ import java.util.stream.Collectors;
  * Database object for the entire application.
  */
 public final class Database {
+    /**
+     * List of methods for loading media into the database from list.
+     * You have to add a new method to this list when you need to load a new type of media.
+     */
     private static final List<CheckedSupplier<List<? extends Media>, Exception>> mediaLoaders = new ArrayList<>(Arrays.asList(
             () -> FileParser.fetchSaveable(Movie.class),
             () -> FileParser.fetchSaveable(Series.class)

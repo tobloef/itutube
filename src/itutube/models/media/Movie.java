@@ -2,7 +2,7 @@ package itutube.models.media;
 
 import itutube.controllers.FakeData;
 import itutube.models.Credits;
-import itutube.models.Saveable;
+import itutube.models.Serializable;
 import itutube.models.Viewable;
 import itutube.views.pages.content.MovieInfoContent;
 import javafx.scene.Parent;
@@ -17,7 +17,7 @@ import static itutube.controllers.FileParser.trimArray;
 /**
  * A movie
  */
-public class Movie extends VideoMedia implements Saveable, Viewable {
+public class Movie extends VideoMedia implements Serializable, Viewable {
 
     /**
      * @param id Id associated with the movie.
@@ -59,13 +59,13 @@ public class Movie extends VideoMedia implements Saveable, Viewable {
      * The string that should be saved to text file when saving movies.
      * @return String containing id, name, release date, categories, and rating.
      */
-    public String getSaveString() {
+    public String getString() {
         String categoryString = String.join(",", categories);
         return id + ";" + name + ";" + releaseDate.getYear() + ";" + categoryString + ";" + rating + ";";
     }
 
     @Override
-    public void loadFromSaveString(String string) {
+    public void loadFromString(String string) {
         String[] properties = trimArray(string.split(";"));
         this.id = properties[0];
         this.name = properties[1];
