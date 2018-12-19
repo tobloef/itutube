@@ -71,7 +71,7 @@ public class User implements Serializable {
      * @param media The media to add to list
      */
     public void addMediaToFavorites(Media media) {
-        if (media instanceof Serializable) {
+        if (!(media instanceof Serializable)) {
             throw new InvalidMediaException("Media is not savable.", media);
         }
         if (favoritesList.stream().noneMatch(m -> m.getId().equals(media.getId()))) {
