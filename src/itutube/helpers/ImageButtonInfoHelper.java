@@ -80,7 +80,7 @@ public class ImageButtonInfoHelper {
      * @param users Users to get button info from.
      * @return list of ImageButtonInfo generated from list.
      */
-    public static List<ImageButtonInfo> usersToImageButtonInfos(List<User> users) {
+    public static List<ImageButtonInfo> usersToImageButtonInfos(List<User> users, Consumer<User> handleAction) {
         List<ImageButtonInfo> infos = new ArrayList<>();
         for (User user : users) {
             String text = user.getName();
@@ -88,10 +88,7 @@ public class ImageButtonInfoHelper {
                 text += " (Admin)";
             }
             Image image = Images.getUserImage(user);
-            infos.add(new ImageButtonInfo(text, image, e -> {
-                Main.setActiveUser(user);
-                Main.setPage(new FrontPage());
-            }));
+            infos.add(new ImageButtonInfo(text, image, e -> handleAction.accept(user)));
         }
         return infos;
     }

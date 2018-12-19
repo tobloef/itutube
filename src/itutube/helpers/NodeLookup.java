@@ -3,6 +3,7 @@ package itutube.helpers;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.BorderPane;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class NodeLookup {
      * @param className The class name to search for
      * @return The first node with a matching class name or null.
      */
-    public static Node findFirstByClass(Parent parent, String className) {
+    public static Node findFirstByClassName(Parent parent, String className) {
         List<Node> children = new ArrayList<>(parent.getChildrenUnmodifiable());
         if (parent instanceof ScrollPane) {
             Node child = ((ScrollPane) parent).getContent();
@@ -27,7 +28,7 @@ public class NodeLookup {
                 return child;
             }
             if (child instanceof Parent) {
-                Node result = findFirstByClass((Parent) child, className);
+                Node result = findFirstByClassName((Parent) child, className);
                 if (result != null) {
                     return result;
                 }

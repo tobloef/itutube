@@ -4,6 +4,7 @@ import itutube.models.Credits;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Generic media class, for all types of media on the site
@@ -75,5 +76,24 @@ public abstract class Media {
     public String getImageFileName() {
         String className = getClass().getSimpleName();
         return className + "/" + name + ".jpg";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Media media = (Media) o;
+        return Double.compare(media.rating, rating) == 0 &&
+                Objects.equals(id, media.id) &&
+                Objects.equals(name, media.name) &&
+                Objects.equals(description, media.description) &&
+                Objects.equals(releaseDate, media.releaseDate) &&
+                Objects.equals(categories, media.categories) &&
+                Objects.equals(credits, media.credits);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, releaseDate, categories, rating, credits);
     }
 }

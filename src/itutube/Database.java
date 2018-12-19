@@ -25,10 +25,10 @@ public final class Database {
      * List of methods for loading media into the database from list.
      * You have to add a new method to this list when you need to load a new type of media.
      */
-    private static final List<CheckedSupplier<List<? extends Media>, IOException>> mediaLoaders = Arrays.asList(
+    private static final List<CheckedSupplier<List<? extends Media>, IOException>> mediaLoaders = new ArrayList<>(Arrays.asList(
             FileParser::fetchMovies,
             FileParser::fetchSeries
-    );
+    ));
 
     private static HashMap<String, Media> mediaMap = new HashMap<>();
     private static List<User> users = new ArrayList<>();
@@ -159,5 +159,9 @@ public final class Database {
 
     public static void setMediaMap(HashMap<String, Media> mediaMap) {
         Database.mediaMap = mediaMap;
+    }
+
+    public static void setUsers(List<User> users) {
+        Database.users = users;
     }
 }

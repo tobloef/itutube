@@ -12,6 +12,7 @@ import itutube.models.media.Movie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.xml.crypto.Data;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,7 +24,7 @@ class DatabaseTest {
     // Not in initial database
     private User childUser = new User("Simon", UserType.Child);
 
-    private Credits testCredits = new Credits("Test Role", new String[]{"Test Person 1", "Test Person 2"});
+    private Credits testCredits = new Credits("Test Role", new String[] {"Test Person 1", "Test Person 2"});
 
     private Movie testMovie = new Movie(
             "001",
@@ -46,9 +47,8 @@ class DatabaseTest {
             70 * 60
     );
 
-    void addTestUsers() throws UsernameTakenException {
-        Database.addUser(adminUser);
-        Database.addUser(adultUser);
+    void addTestUsers() {
+        Database.setUsers(new ArrayList<>(Arrays.asList(adminUser, adultUser)));
     }
 
     void addTestMedia() {
@@ -58,13 +58,13 @@ class DatabaseTest {
         Database.setMediaMap(newMediaMap);
     }
 
-    void setupTestDatabase() throws UsernameTakenException {
+    void setupTestDatabase() {
         addTestMedia();
         addTestUsers();
     }
 
     @BeforeEach
-    void setUp() {
+    void setup() {
         try {
             setupTestDatabase();
         } catch (Exception e) {

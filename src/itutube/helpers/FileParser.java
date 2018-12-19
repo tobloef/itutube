@@ -78,7 +78,7 @@ public class FileParser {
         String id = properties[0];
         String name = properties[1];
         Date releaseDate = new Date(Integer.parseInt(properties[2]), 1, 1);
-        List<String> categories = Arrays.asList(trimArray(properties[3].split(",")));
+        List<String> categories = new ArrayList<>(Arrays.asList(trimArray(properties[3].split(","))));
         double rating = Double.parseDouble(formatRating(properties[4]));
         String description = FakeData.getLoremIpsum(100);
         List<Credits> credits = FakeData.generateFakeCredits();
@@ -207,7 +207,7 @@ public class FileParser {
         Date releaseDate = dates[0];
         Date endDate = dates[1];
 
-        List<String> categories = Arrays.asList(trimArray(properties[3].split(",")));
+        List<String> categories = new ArrayList<>(Arrays.asList(trimArray(properties[3].split(","))));
         double rating = Double.parseDouble(formatRating(properties[4]));
 
         String description = FakeData.getLoremIpsum(175);

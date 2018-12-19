@@ -4,6 +4,7 @@ import itutube.models.media.Media;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A list of media
@@ -42,5 +43,19 @@ public class MediaList {
      */
     public List<Media> getMedia() {
         return media;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MediaList mediaList = (MediaList) o;
+        return Objects.equals(name, mediaList.name) &&
+                Objects.equals(media, mediaList.media);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, media);
     }
 }

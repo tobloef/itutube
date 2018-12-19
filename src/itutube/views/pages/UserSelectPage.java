@@ -8,6 +8,7 @@ import itutube.models.ImageButtonInfo;
 import itutube.models.User;
 import itutube.views.components.CreateUserDialog;
 import itutube.views.components.ImageButtonGrid;
+import itutube.views.pages.content.FrontPage;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
@@ -25,8 +26,8 @@ public class UserSelectPage extends ScrollPane {
 
     public UserSelectPage() {
         // User list
-        List<ImageButtonInfo> imageButtonInfos = usersToImageButtonInfos(Database.getUsers());
-        imageButtonInfos.add(new ImageButtonInfo("Add User", Images.getAddUserImage(), this::handleAddUser));
+        List<ImageButtonInfo> imageButtonInfos = usersToImageButtonInfos(Database.getUsers(), this::handleClickUser);
+        imageButtonInfos.add(new ImageButtonInfo("Add User", Images.getAddUserImage(), e -> this.handleAddUser()));
         Parent usersView = new ImageButtonGrid("Select User", imageButtonInfos);
         usersView.getStyleClass().add("center");
         // Wrapper
@@ -40,7 +41,7 @@ public class UserSelectPage extends ScrollPane {
         this.setContent(wrapper);
     }
 
-    private void handleAddUser(ActionEvent event) {
+    private void handleAddUser() {
         User newUser = CreateUserDialog.display();
         if (userInfoIsValid(newUser)) {
             try {
@@ -54,6 +55,12 @@ public class UserSelectPage extends ScrollPane {
         }
         Main.setPage(new UserSelectPage());
     }
+
+    private void handleClickUser(User user) {
+        Main.setActiveUser(user);
+        Main.setPage(new FrontPage());
+    }
+
 
     private boolean userInfoIsValid(User user) {
         if (user == null) {

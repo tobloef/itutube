@@ -47,7 +47,7 @@ public class MediaGridPage extends ImageGridPage {
                     e -> Main.setPage(categoryGridPage)
             );
             // Add category button
-            Node titleWrapper = NodeLookup.findFirstByClass(this, "title-wrapper");
+            Node titleWrapper = NodeLookup.findFirstByClassName(this, "title-wrapper");
             if (!(titleWrapper instanceof HBox)) {
                 System.err.println("Error finding title wrapper, can't add category filter button.");
             } else {

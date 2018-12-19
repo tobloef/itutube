@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-import static itutube.helpers.NodeLookup.findFirstByClass;
+import static itutube.helpers.NodeLookup.findFirstByClassName;
 
 /**
  * Page for displaying information about a series.
@@ -46,7 +46,7 @@ public class SeriesInfoContent extends MediaInfoContent {
     }
 
     private void setDateInfo(Series series) {
-        Node dateInfo = findFirstByClass(this, "info-date");
+        Node dateInfo = findFirstByClassName(this, "info-date");
         if (dateInfo instanceof Text) {
             Text text = (Text) dateInfo;
             if (series.getEndDate() != series.getReleaseDate()) {
