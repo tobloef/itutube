@@ -1,7 +1,7 @@
 Tests
 itutube
+itutube.controllers
 itutube.exceptions
-itutube.helpers
 itutube.models
 itutube.models.media
 itutube.views

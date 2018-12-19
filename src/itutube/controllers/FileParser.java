@@ -13,6 +13,15 @@ import java.util.List;
 public class FileParser {
 
 
+    /**
+     * Fetch a savable object from the disk.
+     * @param type The class type of object
+     * @param <T> Generic identifier
+     * @return A list of the specified type of object loaded from the disk.
+     * @throws IOException if the file couldn't be read
+     * @throws IllegalAccessException If the class cannot be instantiated because of access issues
+     * @throws InstantiationException If the class cannot be instantiated
+     */
     public static <T extends Serializable> List<T> fetchSaveable(Class<T> type) throws IOException, IllegalAccessException, InstantiationException {
         String path = Paths.getDataFilePath(type.getSimpleName());
         List<String> lines = getLines(path);
