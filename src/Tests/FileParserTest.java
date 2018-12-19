@@ -2,12 +2,8 @@ package Tests;
 
 import itutube.helpers.FileParser;
 import itutube.models.media.Media;
-import itutube.models.media.Movie;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
