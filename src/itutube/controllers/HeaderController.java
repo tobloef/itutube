@@ -1,22 +1,24 @@
 package itutube.controllers;
 
 import itutube.Database;
+import itutube.Helpers.MediaSorting;
 import itutube.Main;
 import itutube.models.media.Media;
 import itutube.models.media.Movie;
 import itutube.models.media.Series;
 import itutube.views.pages.UserSelectPage;
-import itutube.views.pages.content.FrontPage;
 import itutube.views.pages.content.MediaGridPage;
 
 import java.util.List;
+
+import static itutube.controllers.PageActions.setFrontPage;
 
 public class HeaderController {
     /**
      * Go to the front page
      */
     public static void handleFrontPageClick() {
-        Main.setPage(new FrontPage());
+        setFrontPage();
     }
 
     /**
@@ -24,7 +26,7 @@ public class HeaderController {
      */
     public static void handleMovieClick() {
         List<Media> movieList = MediaSorting.findByType(Movie.class, Database.getAllMedia(Main.getActiveUser().getType()));
-        Main.setPage(new MediaGridPage("Movies", movieList, MediaActions::setMediaInfoContent, true));
+        Main.setPage(new MediaGridPage("Movies", movieList, PageActions::setMediaInfoContent, true));
     }
 
     /**
@@ -32,7 +34,7 @@ public class HeaderController {
      */
     public static void handleSeriesClick() {
         List<Media> seriesList = MediaSorting.findByType(Series.class, Database.getAllMedia(Main.getActiveUser().getType()));
-        Main.setPage(new MediaGridPage("Series", seriesList, MediaActions::setMediaInfoContent, true));
+        Main.setPage(new MediaGridPage("Series", seriesList, PageActions::setMediaInfoContent, true));
     }
 
     /**
@@ -41,7 +43,7 @@ public class HeaderController {
     public static void handleMyListClick() {
         List<Media> mediaInList = Main.getActiveUser().getFavoritesList();
         String name = nameToPossessiveForm(Main.getActiveUser().getName()) + " List";
-        Main.setPage(new MediaGridPage(name, mediaInList, MediaActions::setMediaInfoContent, false));
+        Main.setPage(new MediaGridPage(name, mediaInList, PageActions::setMediaInfoContent, false));
     }
 
     /**

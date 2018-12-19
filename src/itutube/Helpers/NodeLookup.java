@@ -1,4 +1,4 @@
-package itutube.controllers;
+package itutube.Helpers;
 
 import javafx.scene.Node;
 import javafx.scene.Parent;

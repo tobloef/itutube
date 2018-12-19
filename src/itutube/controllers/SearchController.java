@@ -1,6 +1,7 @@
 package itutube.controllers;
 
 import itutube.Database;
+import itutube.Helpers.MediaSorting;
 import itutube.Main;
 import itutube.models.media.Media;
 import itutube.views.pages.content.MediaGridPage;
@@ -15,6 +16,6 @@ public class SearchController {
             title += "s";
         }
         title += " for: \"" + query + "\"";
-        Main.setPage(new MediaGridPage(title, results, MediaActions::setMediaInfoContent, false));
+        Main.setPage(new MediaGridPage(title, results, PageActions::setMediaInfoContent, false));
     }
 }

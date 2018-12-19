@@ -1,8 +1,8 @@
 package itutube.views.pages.content;
 
 import itutube.Main;
-import itutube.controllers.ImageButtonInfoHelper;
-import itutube.controllers.NodeLookup;
+import itutube.Helpers.ImageButtonInfoHelper;
+import itutube.Helpers.NodeLookup;
 import itutube.models.ImageButtonInfo;
 import itutube.models.MediaList;
 import itutube.models.media.Media;
@@ -15,8 +15,8 @@ import javafx.scene.layout.Region;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static itutube.controllers.ImageButtonInfoHelper.categoriesToImageButtonInfos;
-import static itutube.controllers.ImageButtonInfoHelper.mediasToCategories;
+import static itutube.Helpers.ImageButtonInfoHelper.categoriesToImageButtonInfos;
+import static itutube.Helpers.ImageButtonInfoHelper.mediasToCategories;
 
 /**
  * Page for displaying a grid of medias, using image buttons.

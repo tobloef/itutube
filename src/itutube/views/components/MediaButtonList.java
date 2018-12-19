@@ -1,6 +1,6 @@
 package itutube.views.components;
 
-import itutube.controllers.ImageButtonInfoHelper;
+import itutube.Helpers.ImageButtonInfoHelper;
 import itutube.models.media.Media;
 
 import java.util.List;

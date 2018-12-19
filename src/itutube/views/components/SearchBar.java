@@ -1,17 +1,9 @@
 package itutube.views.components;
 
-import itutube.Database;
-import itutube.Main;
-import itutube.controllers.MediaActions;
-import itutube.controllers.MediaSorting;
-import itutube.models.media.Media;
-import itutube.views.pages.content.MediaGridPage;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-
-import java.util.List;
 
 import static itutube.controllers.SearchController.searchAction;
 

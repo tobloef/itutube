@@ -1,6 +1,6 @@
 package Tests;
 
-import itutube.controllers.MediaSorting;
+import itutube.Helpers.MediaSorting;
 import itutube.models.Credits;
 import itutube.models.media.Media;
 import itutube.models.media.Movie;

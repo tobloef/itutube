@@ -2,7 +2,7 @@ package itutube.views.pages.content;
 
 import itutube.Database;
 import itutube.Main;
-import itutube.controllers.MediaActions;
+import itutube.controllers.PageActions;
 import itutube.models.MediaList;
 import itutube.views.components.MediaButtonList;
 import itutube.views.pages.ContentPage;
@@ -25,7 +25,7 @@ public class FrontPage extends ContentPage {
             MediaButtonList mediaButtonList = new MediaButtonList(
                     list.getName(),
                     list.getMedia(),
-                    MediaActions::setMediaInfoContent
+                    PageActions::setMediaInfoContent
             );
             content.getChildren().add(mediaButtonList);
         }

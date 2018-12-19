@@ -1,6 +1,6 @@
 package itutube.models.media;
 
-import itutube.controllers.FakeData;
+import itutube.Helpers.FakeData;
 import itutube.models.Credits;
 import itutube.models.Serializable;
 import itutube.models.Viewable;
@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import static itutube.controllers.FileParser.trimArray;
+import static itutube.Helpers.FileParser.trimArray;
 
 /**
  * A movie

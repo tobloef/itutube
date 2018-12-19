@@ -1,14 +1,12 @@
 package Tests;
 
-import itutube.controllers.FileParser;
+import itutube.Helpers.FileParser;
 import itutube.models.User;
-import itutube.models.media.Media;
 import itutube.models.media.Movie;
 import itutube.models.media.Series;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 

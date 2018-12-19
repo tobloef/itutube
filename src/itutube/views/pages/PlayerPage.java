@@ -10,6 +10,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import static itutube.controllers.PageActions.setFrontPage;
+
 /**
  * Mock page for displaying a media.
  * Just displays the Media's color, for testing.
@@ -37,7 +39,7 @@ public class PlayerPage extends StackPane {
         ActionButton goBackButton = new ActionButton(
                 "Go Back",
                 "#deaa00",
-                e -> Main.setPage(new FrontPage())
+                e -> setFrontPage()
         );
 
         VBox content = new VBox(20);

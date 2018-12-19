@@ -1,6 +1,6 @@
 package itutube.views.pages.content;
 
-import itutube.controllers.MediaActions;
+import itutube.controllers.PageActions;
 import itutube.models.media.Media;
 import itutube.models.media.Season;
 import itutube.models.media.Series;
@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-import static itutube.controllers.NodeLookup.findFirstByClassName;
+import static itutube.Helpers.NodeLookup.findFirstByClassName;
 
 /**
  * Page for displaying information about a series.
@@ -38,7 +38,7 @@ public class SeriesInfoContent extends MediaInfoContent {
         seasons.getStyleClass().add("seasons-box");
         for (Season s : series.getSeasons()) {
             List<Media> episodes = new ArrayList<>(s.getEpisodes());
-            MediaButtonList buttonList = new MediaButtonList(s.getName(), episodes, MediaActions::setMediaInfoContent);
+            MediaButtonList buttonList = new MediaButtonList(s.getName(), episodes, PageActions::setMediaInfoContent);
             seasons.getChildren().add(buttonList);
         }
 

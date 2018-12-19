@@ -5,11 +5,12 @@ import itutube.exceptions.InvalidMediaException;
 import itutube.models.Playable;
 import itutube.models.Viewable;
 import itutube.models.media.Media;
+import itutube.views.pages.content.FrontPage;
 
 /**
  * General handlers for creating info views for media.
  */
-public class MediaActions {
+public class PageActions {
 
     /**
      * Sets page to info page for given media.
@@ -35,5 +36,12 @@ public class MediaActions {
         } else {
             throw new InvalidMediaException("Media is not playable.", media);
         }
+    }
+
+    /**
+     * Set the view to the front page.
+     */
+    public static void setFrontPage() {
+        Main.setPage(new FrontPage());
     }
 }

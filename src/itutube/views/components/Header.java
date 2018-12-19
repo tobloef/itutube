@@ -1,22 +1,11 @@
 package itutube.views.components;
 
-import itutube.Database;
 import itutube.Main;
-import itutube.controllers.MediaActions;
-import itutube.controllers.MediaSorting;
-import itutube.models.media.Media;
-import itutube.models.media.Movie;
-import itutube.models.media.Series;
-import itutube.views.pages.UserSelectPage;
-import itutube.views.pages.content.FrontPage;
-import itutube.views.pages.content.MediaGridPage;
 import javafx.geometry.Pos;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
-
-import java.util.List;
 
 import static itutube.controllers.HeaderController.*;
 

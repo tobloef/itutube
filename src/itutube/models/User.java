@@ -7,7 +7,7 @@ import itutube.models.media.Media;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static itutube.controllers.FileParser.trimArray;
+import static itutube.Helpers.FileParser.trimArray;
 
 /**
  * A user for the logged in account

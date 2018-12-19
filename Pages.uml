@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="440.0" y="248.0">itutube.views.pages.content.EpisodeInfoContent</node>
+    <node x="420.0" y="346.0">itutube.views.components.Header</node>
+    <node x="213.0" y="344.0">itutube.views.pages.UserSelectPage</node>
+    <node x="50.0" y="135.5">itutube.views.pages.content.ImageGridPage</node>
+    <node x="430.5" y="0.0">itutube.views.pages.ContentPage</node>
+    <node x="908.0" y="248.0">itutube.views.pages.content.MovieInfoContent</node>
+    <node x="476.1875" y="135.5">itutube.views.pages.content.FrontPage</node>
+    <node x="0.0" y="248.0">itutube.views.pages.content.MediaGridPage</node>
+    <node x="683.0" y="124.0">itutube.views.pages.content.MediaInfoContent</node>
+    <node x="0.0" y="344.0">itutube.views.pages.PlayerPage</node>
+    <node x="685.0" y="248.0">itutube.views.pages.content.SeriesInfoContent</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="itutube.views.pages.content.FrontPage" target="itutube.views.pages.ContentPage">
+      <point x="0.0" y="-25.5" />
+      <point x="542.1875" y="99.0" />
+      <point x="526.5" y="99.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="itutube.views.pages.content.SeriesInfoContent" target="itutube.views.pages.content.MediaInfoContent">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="itutube.views.pages.content.MovieInfoContent" target="itutube.views.pages.content.MediaInfoContent">
+      <point x="0.0" y="-25.5" />
+      <point x="1011.5" y="223.0" />
+      <point x="855.5" y="223.0" />
+      <point x="69.0" y="37.0" />
+    </edge>
+    <edge source="itutube.views.pages.content.ImageGridPage" target="itutube.views.pages.ContentPage">
+      <point x="0.0" y="-25.5" />
+      <point x="210.0" y="99.0" />
+      <point x="462.5" y="99.0" />
+      <point x="-64.0" y="37.0" />
+    </edge>
+    <edge source="itutube.views.pages.content.EpisodeInfoContent" target="itutube.views.pages.content.MediaInfoContent">
+      <point x="0.0" y="-25.5" />
+      <point x="552.5" y="223.0" />
+      <point x="717.5" y="223.0" />
+      <point x="-69.0" y="37.0" />
+    </edge>
+    <edge source="itutube.views.pages.content.MediaInfoContent" target="itutube.views.pages.ContentPage">
+      <point x="0.0" y="-37.0" />
+      <point x="786.5" y="99.0" />
+      <point x="590.5" y="99.0" />
+      <point x="64.0" y="37.0" />
+    </edge>
+    <edge source="itutube.views.pages.content.MediaGridPage" target="itutube.views.pages.content.ImageGridPage">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="557.5" y="197.5" />
+  <SelectedNodes>
+    <node>itutube.views.components.Header</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>protected</VISIBILITY>
+</Diagram>
+

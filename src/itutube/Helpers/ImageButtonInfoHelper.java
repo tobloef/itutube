@@ -1,4 +1,4 @@
-package itutube.controllers;
+package itutube.Helpers;
 
 import itutube.models.ImageButtonInfo;
 import itutube.models.MediaList;

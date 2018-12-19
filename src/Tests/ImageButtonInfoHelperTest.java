@@ -1,6 +1,6 @@
 package Tests;
 
-import itutube.controllers.ImageButtonInfoHelper;
+import itutube.Helpers.ImageButtonInfoHelper;
 import itutube.models.*;
 import itutube.models.media.Media;
 import itutube.models.media.Movie;
